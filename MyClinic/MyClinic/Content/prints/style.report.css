@@ -1,0 +1,233 @@
+﻿@media print {
+    body {-webkit-print-color-adjust: exact;} 
+    table.rpt-tbl tr th
+    {
+        padding: 7px 2px;
+        background-color:#eee !important;
+        -webkit-print-color-adjust: exact; 
+    }
+}
+
+#header h1
+{
+    font-size: 16px;
+    line-height: 22px;
+    text-align:center;
+    font-weight: bold;   
+}
+
+.header h2
+{
+    font-size: 16px;
+    line-height: 22px;
+    text-align:center;
+    font-weight: bold;   
+}
+
+#header .srch-dte
+{
+    text-align: center;
+    font-size: 12px;   
+}
+
+.rpt-tbl
+{
+    width: 100%;   
+    font-size:10px;
+    line-height: 14px;
+}
+
+table.rpt-tbl tr th
+{
+    padding: 7px 2px;
+    background-color:#eee;
+    -webkit-print-color-adjust: exact; 
+}
+
+table.rpt-tbl tr td
+{
+    padding-left: 2px;   
+}
+
+.paging .red,
+table.rpt-tbl tr td {
+    font-size: 10px !important;
+    line-height: 14px !important;
+    padding: 2px !important;
+}
+
+table.rpt-tbl tr .rgh
+{
+    text-align: right;   
+}
+
+table.rpt-tbl tr .lft
+{
+    text-align: left;   
+} 
+
+table.rpt-tbl tr .cntr
+{
+    text-align: center;   
+}
+
+table.rpt-tbl tr .bld
+{
+    text-align: right;   
+}
+
+/*Remain 1 days*/
+.next-exp td
+{
+    background-color:#F7F7D0 !important;
+    color: #000;
+} 
+
+/*Remain 2 days*/
+.near-exp td
+{
+    background-color: #E3F7D0 !important;
+    color: #000;
+} 
+/*Remain 0 days*/
+.exp td
+{
+    background-color: #FAC0C4 !important;
+    color: #000;
+    
+}
+
+.rpt-tbl tr.odd {
+    background: #eeeeee !important;
+}
+
+#print-lyt table.rpt-tbl tr td.main-val
+{
+    background-color: #eee;
+    font-size: 14px !important;
+    font-weight: bold;
+    padding: 5px !important;
+    border-left: 1px solid #ddd;
+    border-right: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+}
+
+table.rpt-tbl tr
+{
+    border-top: 1px solid #ddd;
+}
+
+table.rpt-tbl tr th,
+table.rpt-tbl tr.odd td,
+table.rpt-tbl tr.event td
+{
+   border-left: 1px solid #ddd;
+}
+
+table.rpt-tbl tr th.last,
+table.rpt-tbl tr td.last
+{
+    border-right: 1px solid #ddd;
+}
+
+.container h2
+{
+    font-size: 14px;
+    line-height: 28px;
+    text-align:left;
+    font-weight: bold;   
+    margin: 0px;
+ }
+
+
+.rpt-tbl .cat{
+    background: #FFF; 
+    font-size: 16px;
+}
+
+.rpt-tbl .cat h3{
+    font-size: 16px;
+    margin: 0px;
+    line-height: 24px;
+    padding: 5px 0px;
+}
+
+.rpt-tbl .itm{ 
+    background: #EEE;
+}
+
+.rpt-tbl .itm h4
+{
+    font-size: 14px;
+}
+
+.rpt-tbl.inventory .fst
+{
+    width: 65px;
+}
+
+.rpt-tbl.inventory .sec
+{
+    width: 65px;
+}
+
+.rpt-tbl.inventory .sep
+{
+   border-right: 1px solid #ddd;  
+}
+
+.notfound td
+{
+    background: #FFF; 
+}
+
+table.rpt-tbl.nbdr tr td
+{
+    border: none;    
+}
+ 
+
+.rpt-tbl.inventory .desc .ttl-itm
+{
+    width: 300px;
+}
+
+.rpt-tbl tr th
+{
+    text-align: center;
+}
+
+.note
+{
+    font-size: 12px;
+    line-height: 16px; 
+    margin-bottom: 5px;  
+    float:left;
+    
+}
+
+.note ul li
+{
+    float:left;   
+    list-style: none;
+    padding-right: 10px;
+}
+
+.note ul{
+    padding: 0;
+}
+
+.lst-grp .lst
+{
+    border-right: 1px solid #ddd;    
+}
+
+.lst-grp .fst
+{
+    border-left: 1px solid #ddd;    
+}
+
+.lst-grp th
+{
+    font-weight: normal;    
+}

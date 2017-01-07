@@ -1,0 +1,136 @@
+﻿@model MyClinic.Models.UserModels
+@using MyClinic.Resources;
+@using Utilities;
+@{
+    Random rnd = new Random();
+    ViewBag.Title = Translator.DetailUser;
+    var imgPath = Model.user.Image + "?v=" + rnd.Next(1, 9);
+    var userType = Model.user.UserType;
+    string[] Type = userType.Split(new[] { "," }, StringSplitOptions.None);
+    var getUserType = "";
+    for (int index = 0; index < Type.Count(); index++)
+    {
+        foreach (var usertype in Model.usertypes)
+        {
+            if (usertype.TypeCode == Type[index])
+            {
+                getUserType = getUserType + usertype.TypeName + " | ";
+            }
+        }
+    }
+    getUserType = getUserType.Substring(0, getUserType.Count() - 2);
+    var modifiedName = "N/A";
+    if (Model.userModified.Name != null)
+    {
+        modifiedName = Model.userModified.Name;
+    }
+}
+<div class="title">@Translator.DetailUser</div>
+<div style="margin-left:25px;" id="dtl"​ class="detail-html">
+        <div style="float:left;">
+            <fieldset>
+                <table >
+                    <tr>
+                        <td class="editor-label">
+                            <Label>@Translator.Name</Label>
+                        </td>
+                        <td class="editor-field"  style="padding-left:10px;">:
+                            @Html.DisplayFor(model => model.user.Name)
+                        </td>
+                        <td class="editor-label2">
+                            <Label>@Translator.IsActived</Label>
+                        </td>
+                        <td class="editor-field">:
+                             @(Model.user.IsActived == 1 ? "Yes" : "No")
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td class="editor-label">
+                            <Label>@Translator.UserName</Label>
+                        </td>
+                        <td class="editor-field" style="padding-left:10px;">:
+                            @Html.DisplayFor(model => model.user.UserName)
+                        
+                        </td>
+                        <td class="editor-label2">
+                            <Label>@Translator.CreatedDate</Label>
+                        </td>
+                        <td class="editor-field">:
+                             @Common.GetDateTimeFormateFull(Model.user.CreatedDate)
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td class="editor-label">
+                            <Label>@Translator.Password</Label>
+                        </td>
+                        <td class="editor-field" style="padding-left:10px;">:
+                            *********
+                        </td>
+                        <td class="editor-label2">
+                            <Label>@Translator.CreatedBy</Label>
+                        </td>
+                        <td class="editor-field">:
+                             @Model.userCreate.Name
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="editor-label">
+                            <Label>@Translator.Email</Label>
+                        </td>
+                        <td class="editor-field" style="padding-left:10px;">:
+                            @Html.DisplayFor(model => model.user.Email)
+                        
+                        </td>
+                         <td class="editor-label2">
+                            <Label>@Translator.ModifiedDate</Label>
+                        </td>
+                        <td class="editor-field">:
+                             @Common.GetDateTimeFormateFull(Model.user.ModifiedDate)
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="editor-label">
+                            <Label>@Translator.UserType</Label>
+                        </td>
+                        <td class="editor-field" style="padding-left:10px;">:
+                            @getUserType
+                        </td>
+                        <td class="editor-label2">
+                            <Label>@Translator.ModifiedBy</Label>
+                        </td>
+                        <td class="editor-field">:
+                             @modifiedName
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="editor-label">
+                            <Label>@Translator.Tel</Label>
+                        </td>
+                        <td class="editor-field" style="padding-left:10px;">:
+                            @Html.DisplayFor(model => model.user.Tel)
+                        </td>
+                    </tr>
+                    <tr class="rlst-btn">
+                        <td colspan="4">
+                            <input onclick="$Common.setRedirectPage('@Url.Action("Edit", "User", new { Id = Model.user.Id })');" class="myLabel" type="button" value="@Translator.Edit"/>
+                            <input onclick="$Common.setRedirectPage('@Url.Action("Index", "User")');" class="myLabel" type="button" value="@Translator.BackToList"/>
+                        </td>
+                    </tr> 
+                </table>
+            </fieldset>
+        </div>
+        <div class="bx-img">
+            @Html.TextBox("Image", "", new { id = "PhotoFileBase", type = "file", accept = "image/*", @style = "width: 0px;height:0px;" })
+            <div id="imgPhoto" class="bx-pt">
+                <img style="width:100%;height:100%;object-fit: cover;" src="@imgPath"/>
+            </div>
+        </div>
+</div>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $transaction.initDefindActionId("1");
+        $transaction.initChangeClassMenu("icon-u-m", "icon-u-m-selected");
+    });
+</script>

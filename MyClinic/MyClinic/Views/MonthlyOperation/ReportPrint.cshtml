@@ -1,0 +1,99 @@
+﻿@using Utilities;
+@using MyClinic.Resources  
+@model MyClinic.Models.MonthlyOperationModels
+
+@{
+    ViewBag.Title = Translator.DailyOperationReport;
+    var host = Utilities.Common.host;
+    String pageVersion = System.Configuration.ConfigurationManager.AppSettings["Source:Version"];
+    int intIndex = 0;
+}
+
+<link href="@Url.Content("~/Content/prints/style.report.css?v=" + pageVersion)" rel="stylesheet" type="text/css" />
+<div id="header">
+    <h1>@Translator.DailyOperationReport</h1>
+    <p class="srch-dte">From <strong>@Common.GetSearchDateTimeFormate(Model.startDate)</strong> to <strong>@Common.GetSearchDateTimeFormate(Model.endDate)</strong></p>
+    <div class="container">
+        <div class="row">
+            <div style="text-align: left; float:left;">@Translator.Result <strong>@Model.totalRecords</strong> @Translator.Records</div>
+            <div style="text-align: right; float:right;">@Common.GetCurrentFullDate()</div>
+            <div class="note" style="width: 100%; margin-top: 10px;">
+                <ul>
+                    <li><strong>@Translator.Note:</strong></li>
+                    <li><strong style="color:#FAC0C4;background: #FAC0C4 !important;padding: 2px 10px; color: #555;">@Translator.Red</strong> @Translator.Expired.</li>
+                    <li><strong style="color:#F7F7D0;background: #F7F7D0 !important;padding: 2px 10px; color: #555;">@Translator.Yellow</strong> @Translator.OneDayRemain.</li>
+                    <li><strong style="color:#E3F7D0;background: #E3F7D0 !important;padding: 2px 10px; color: #555;">@Translator.Green</strong> @Translator.TwoDayRemain.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <table class="rpt-tbl">
+            <tr>
+                <th class="cntr frt-rcd">@Translator.Id</th>
+                <th class="cntr">@Translator.PatientName</th>
+                <th class="cntr">@Translator.Sex</th>
+                <th class="cntr">@Translator.Age</th>
+                <th class="cntr">@Translator.Tel</th>
+                <th class="cntr">@Translator.DiseaseName</th>
+                <th class="cntr">@Translator.SymptomType</th>
+                <th class="cntr">@Translator.DoctorName</th>
+                <th class="cntr">@Translator.DoctorTel</th>
+                <th class="cntr">@Translator.DiagnoseCycle</th>
+                <th class="cntr">@Translator.Visit</th>
+                <th class="cntr last">@Translator.VisitAgain</th>
+            </tr>
+      
+            @foreach (var record in Model.lstRecords)
+            {
+                intIndex = intIndex + 1;
+                string clssR = "event";
+                if (intIndex % 2 == 0)
+                {
+                    clssR = "odd";
+                }
+
+                DateTime oldDate = record.ExpiredDate;
+                DateTime newDate = DateTime.Now;
+                int differenceInDays = (oldDate - newDate).Days;
+                string strExpClss = "";
+                if (differenceInDays == 1)
+                {
+                    strExpClss = "next-exp";
+                }
+                else if (differenceInDays == 2)
+                {
+                    strExpClss = "near-exp";
+                }
+                else if (differenceInDays <= 0)
+                {
+                    strExpClss = "exp";
+                }
+                
+                <tr class="@clssR @strExpClss">
+                    <td class="frt-rcd">@record.Id</td>
+                    <td>@Utilities.Common.GetValueDisplay(@record.Name, String.Empty)</td>
+                    <td>@Utilities.Common.GetValueDisplay(record.Sex, String.Empty)</td>	
+                    <td>@record.Age</td>
+                    <td>@Utilities.Common.GetValueDisplay(record.Tel, String.Empty)</td>
+                    <td>@Utilities.Common.GetValueDisplay(record.Dis_Name, String.Empty)</td>
+                    <td>@Utilities.Common.GetValueDisplay(record.Sym_Type, String.Empty)</td>
+                    <td>@Utilities.Common.GetValueDisplay(record.Emp_Name, String.Empty)</td>
+                    <td>@Utilities.Common.GetValueDisplay(record.Emp_Tel, String.Empty)</td>
+                    <td class="cntr">@record.DiagnoseCycle</td>
+                    <td class="cntr">@Utilities.Common.GetDateTimeFormate(record.DiagnoseDate)</td>
+                    <td class="cntr last">@Utilities.Common.GetDateTimeFormate(record.ExpiredDate)</td>
+                </tr>
+            } 
+            <tr><td colspan="12"></td></tr>
+        </table>
+    </div>
+</div>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $print.loadPrint();
+    });
+</script>

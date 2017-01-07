@@ -1,0 +1,58 @@
+﻿@model MyClinic.Models.LogModels
+@using MyClinic.Resources;
+           
+@{
+    ViewBag.Title = @Translator.LogManagement;
+    var pageUtilities = Model.pageUtilities;
+    var host = Utilities.Common.host;
+    String pageVersion = System.Configuration.ConfigurationManager.AppSettings["Source:Version"];
+    var objSession = Session["user"] as MyClinic.Infrastructure.SessUser;
+    var userName = objSession.Username;
+    var userId = objSession.UserId;
+}
+<!----- Title ----->
+<link href="@Url.Content("~/Content/themes/base/jquery.ui.all.css?v=" + pageVersion)" rel="stylesheet" type="text/css" />
+<div class="title">@Translator.LogManagement</div>
+
+<div id="content" class="rpt-view">
+    <div class="action">
+        <div class="editor" id="lst-ctr-srch" data-action="@Url.Action("AjindexSearchByDate", "LogUser")">
+            <ul>
+                <li style="display:none">
+                    <select id="cboUser" name="cboUser" class="slc-ctr">
+                        <option Value = @userId.ToString()> @userName</option>
+                    </select>
+                </li>
+                <li>
+                    @Html.DropDownList("cboPro", Model.lstProcessTypes.Select(item => new SelectListItem
+               {
+                   Value = item.ProcessType.ToString(),
+                   Text = item.ProcessType.ToString(),
+                   Selected = "" == item.ProcessType ? true : false
+               }), @Translator.SelectProcessType, new { @class = "slc-ctr" }) 
+                </li>
+                <li class="ttl-ctr">@Translator.FromDate</li>
+                <li><input type="text" id="startDate" class="txt-ctr ch_date" name="startDate" value="@Model.startDate"/></li>
+                <li class="ttl-ctr">@Translator.ToDate</li>
+                <li><input type="text" id="endDate" class="txt-ctr ch_date" name="endDate" value="@Model.endDate"/></li>
+                <li class="ttl-ctr"><a style="padding:0px;"><input type="button" class="btn-stl" id="search-button" value="@Translator.Search" onclick="$managelog.SearchLogByDate();" /></a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="clear"></div>
+
+    <div id="lstContainer" class="tbl">
+        @{Html.RenderPartial("Partial/List");}    
+    </div>
+</div>
+<script src="@Url.Content("~/Scripts/jquery.ui.datepicker.js?v=" + pageVersion)" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/script.datepicker.js?v=" + pageVersion)" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/script.managelog.js?v=" + pageVersion)" type="text/javascript"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $transaction.initDatePicker("#startDate");
+        $transaction.initDatePicker("#endDate");
+        $transaction.initDefindActionId("1");
+        $transaction.initChangeClassMenu("icon-l-m", "icon-l-m-selected");
+    });
+</script>

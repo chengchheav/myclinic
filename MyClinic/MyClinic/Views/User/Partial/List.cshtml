@@ -1,0 +1,55 @@
+﻿@model MyClinic.Models.UserModels
+@using Utilities
+@using MyClinic.Resources;
+@{
+    var pageUtilities = Model.pageUtilities;
+    var orderField = pageUtilities.orderBy;
+    var order = pageUtilities.order;
+    var intIndex = 1;
+}          
+
+<table class="rpt-tbl" id="myTable">
+    <tr style="background:#FFF;">
+        <th style="width:60px;">@Html.Raw(Sorting.GetSortOrder(Translator.Id, "Id", orderField, order))</th>
+        <th>@Html.Raw(Sorting.GetSortOrder(Translator.Name, "Name", orderField, order))</th>
+        <th>@Html.Raw(Sorting.GetSortOrder(Translator.UserName, "UserName", orderField, order))</th>
+        <th>@Html.Raw(Sorting.GetSortOrder(Translator.Email, "Email", orderField, order))</th>
+        <th style="width:130px;">@Html.Raw(Sorting.GetSortOrder(Translator.Tel, "Tel", orderField, order))</th>
+        <th style="width:91px;"></th>
+    </tr>                 
+
+    @foreach (var user in Model.users)
+    {
+        var strClass = "op" + @user.Id;
+        intIndex = intIndex + 1;
+        string clssR = "event";
+        if (intIndex % 2 == 0)
+        {
+            clssR = "odd";
+        }
+    <tr id=@user.Id class="@clssR">
+        <td>@user.Id</td>
+        <td>@Html.Raw(user.Name)</td>
+        <td>@Html.Raw(user.UserName)</td>
+        <td>@Html.Raw(user.Email)</td>
+        <td>@Html.Raw(user.Tel)</td>
+        <!--<td>
+            @Html.ActionLink(Translator.Edit, "Edit", new { id = user.Id }) |
+            @Html.ActionLink(Translator.Detail, "Detail", new { id = user.Id }) |
+             <a class="btnsm" onclick="$dialogAlert.confirmDelete('','','@Translator.MsgConfirmDeleteUser @user.Name?',' @Url.Action("DeleteConfirmed", "User", new { id = user.Id }) ');">@Translator.Delete</a>
+        </td>-->
+        <td>
+            <select id="sh" -moz-dir="rtl" class="d-ac showAction" data-value="@user.Id" data-name="@user.Name" onchange="$popup.initSetValueSelectAndPopUpAction(this,'@strClass');">
+                    <option value="-1" class="al @strClass" style="display:none;">@Translator.Action</option>
+                    <option value="19" class="al">@Translator.Edit</option>
+                    <option value="20" class="al">@Translator.Detail</option>
+                    <option value="21" class="al">@Translator.Delete</option>
+              </select>
+        </td>
+    </tr>
+    }
+</table>
+<div class="action">
+    @Html.Raw(pageUtilities.listHeader)
+    @Html.Raw(pageUtilities.listFooter)
+</div>

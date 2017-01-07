@@ -1,0 +1,59 @@
+﻿@model MyClinic.Models.DailyFinancialModels
+@using Utilities
+@{
+    ViewBag.Title = "Daily Financial Report";
+    var pageUtilities   = Model.pageUtilities;
+    var host            = Utilities.Common.host;
+    String pageVersion = System.Configuration.ConfigurationManager.AppSettings["Source:Version"];
+}
+
+<!----- Title ----->
+<link href="@Url.Content("~/Content/easy-autocomplete.min.css?v=")" rel="stylesheet" type="text/css" />
+<link href="@Url.Content("~/Content/themes/base/jquery.ui.all.css?v=")" rel="stylesheet" type="text/css" />
+<script src="@Url.Content("~/Scripts/jquery.easy-autocomplete.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/jquery.ui.core.js")" type="text/javascript"></script>
+<div class="title">Daily Financial Report</div>
+<div id="content" class="rpt-view">
+    <div class="action">
+        <div class="editor" id="lst-ctr-srch" data-action="@Url.Action("Ajreport", "DailyFinancial")">
+            <ul>
+                <li class="ttl-ctr">Pawner:</li>
+                <li><input type="text" id="pawnerName" class="txt-ctr" name="pawnerName" value=""/></li>
+                <li class="ttl-ctr">Status:</li>
+                <li>
+                    <select id="statusRecord" class="slc-ctr">
+                        <option value="1">New</option>
+                        <option value="2">Renew</option>
+                        <option value="3">Redeem</option>
+                        <option value="4">Void</option>
+                        <option value="5">Expired</option>
+                        <option value="6">Closed</option>
+                     </select>
+                </li>
+                <li class="ttl-ctr">From Date:</li>
+                <li><input type="text" id="startDate" class="txt-ctr ch_date" name="startDate" value=""/></li>
+                <li class="ttl-ctr">To Date:</li>
+                <li><input type="text" id="endDate" class="txt-ctr ch_date" name="endDate" value=""/></li>
+                <li class="ttl-ctr"><a style="padding:0px;"><input type="button" class="btn-stl" id="search-button" value="Search" onclick="$manage.SearchManageRecords();" /></a></li>
+                <li class="ttl-ctr"><a style="padding:0px;" target="_blank"><input onclick="$manage.printManageRecords('@Url.Action("ReportPrint", "Police")');" type="button" class="btn-stl" id="print-button" value="Print"/></a></li>
+           </ul>
+        </div>
+    </div>
+    <div class="clear"></div>
+    <div id="lstContainer" class="tbl">
+        @{Html.RenderPartial("Partials/ListReport");}    
+    </div>
+</div>
+<script src="@Url.Content("~/Scripts/script.auto.js?v=" + pageVersion)" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/jquery.ui.datepicker.js?v=" + pageVersion)" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/script.datepicker.js?v=" + pageVersion)" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/script.manage.js?v=" + pageVersion)" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/script.print.js")" type="text/javascript"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $transaction.initDefindActionId("1");
+        $transaction.initChangeClassMenu("icon-report", "icon-report-selected");
+        $datepicker.initRangeDate();
+        $auto.initSearch('@Url.Action("AutoPawner", "Pawn")');
+    });
+</script>

@@ -1,0 +1,38 @@
+﻿@using Utilities;
+@using MyClinic.Resources;
+@model MyClinic.Models.PrescriptionModels
+@{
+    ViewBag.Title = Translator.PrescriptionManagement;
+    var pageUtilities = Model.pageUtilities;
+    var host = Utilities.Common.host;
+}
+<!----- Title ----->
+<div class="title">@Translator.PrescriptionManagement</div>
+
+<div id="content">
+<div class="action">
+    <div class="editor">
+        <ul>
+            <li>
+                <select id="cmbSearchBy">
+                    <option value="Med_Name">@Translator.MedicineName</option>
+                    <option value="Name">@Translator.PatientName</option>
+                    <option value="Emp_Name">@Translator.DoctorName</option>
+                 </select>
+            </li>
+            <li><a><input type="search" id="searchKeyWord" placeholder="@Translator.Search..." onkeypress="$common.searchEnter(event);"/></a></li>
+            <li style="background:none;"><a style="padding:0px;"><input type="button" id="search-button" value="@Translator.Search" onclick="$common.searchClick();" /></a></li>
+        </ul>
+    </div>
+</div>
+
+<div class="clear"></div>
+
+<div id="lstContainer" class="tbl">
+    @{Html.RenderPartial("Partial/List");}
+</div>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $transaction.initChangeClassMenu("diagnosis", "diagnosis-selected");
+    });
+</script>

@@ -1,0 +1,60 @@
+﻿@model MyClinic.Models.PoliceModels
+@using Utilities
+@using MyClinic.Resources
+
+@{
+    var orderField = Model.orderBy;
+    var order = Model.order;
+    var host = Utilities.Common.host;
+    int intIndex = 0;
+}          
+<div class="info-rslt">@Translator.Result @Model.totalRecords @Translator.Records</div>
+<table class="rpt-tbl">
+    <tr class="hdr">
+        <th class="wc">@Html.Raw(Sorting.GetSortOrderManageRecord(Translator.PawnerName, "PawnerName", orderField, order))</th>
+        <th>@Html.Raw(Sorting.GetSortOrderManageRecord(Translator.Tel, "Tel", orderField, order))</th>
+        <th>@Html.Raw(Sorting.GetSortOrderManageRecord(Translator.PawnItem, "ItemName", orderField, order))</th>
+        <th>@Html.Raw(Sorting.GetSortOrderManageRecord(Translator.PawnDesc, "ItemDetail", orderField, order))</th>
+        <th>@Html.Raw(Sorting.GetSortOrderManageRecord(Translator.Guarantor, "Guarantor", orderField, order))</th>
+        <th>@Html.Raw(Sorting.GetSortOrderManageRecord(Translator.TicketNumber, "TransNumber", orderField, order))</th>
+        <th class="cntr">@Html.Raw(Sorting.GetSortOrderManageRecord(Translator.PawnDate, "PawnDate", orderField, order))</th>
+        <th class="cntr">@Html.Raw(Sorting.GetSortOrderManageRecord(Translator.Status, "Status", orderField, order))</th>
+    </tr>
+      
+    @foreach (var record in Model.lstRecords)
+    {
+        intIndex = intIndex + 1;
+        string clssR = "odd";
+        if(intIndex % 2 == 0){
+            clssR = "event";
+        }
+
+        DateTime oldDate = record.ExpireDate;
+        DateTime newDate = DateTime.Now;
+        int differenceInDays = (oldDate - newDate).Days;
+        string strExpClss = "";
+        if (differenceInDays == 1)
+        {
+            strExpClss = "next-exp";
+        }
+        else if (differenceInDays == 2) {
+            strExpClss = "near-exp";
+        }
+        else if (differenceInDays <= 0)
+        {
+            strExpClss = "exp";
+        }
+        
+        <tr class="@clssR @strExpClss">
+            <td class="wc">@Utilities.Common.GetValueDisplay(@record.PawnerName, String.Empty)</td>
+            <td>@Utilities.Common.GetValueDisplay(record.Tel, String.Empty)</td>		
+            <td>@Utilities.Common.GetValueDisplay(record.ItemName, String.Empty)</td>
+            <td>@Utilities.Common.GetValueDisplay(record.ItemDetail, String.Empty)</td>
+            <td>@Utilities.Common.GetValueDisplay(record.Guarantor, String.Empty)</td>
+            <td>@Utilities.Common.GetValueDisplay(record.TransNumber, String.Empty)</td>
+            <td class="cntr">@Utilities.Common.GetDateTimeFormate(record.PawnDate)</td>
+            <td class="cntr status">@Utilities.Common.GetPawnStatus(record.TransStatus) </td>
+        </tr>
+    }
+
+</table>

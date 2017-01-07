@@ -1,0 +1,57 @@
+﻿@model MyClinic.Models.UserModels
+@using MyClinic.Resources;
+@{
+    var link = Utilities.Common.GetLanguageChangeUrl(Request.Url.Segments);
+    ViewBag.Title = Translator.Home;
+    var pass = Model.user == null ? "" : Model.user.Password;
+    var host = Utilities.Common.host;
+    var licenseMessage = Model.LicenseMessage;
+    
+}
+
+<div class="lang" onclick="$Common.setRedirectPage('@link');">
+        @Html.Partial("Partials/_LanguagePartial")
+</div>
+<div class="form-login">
+    <h2>@Translator.Login</h2>
+        
+    @using (Html.BeginForm()) 
+        {
+        @Html.ValidationSummary(true)
+        <div class="form">
+            <ul>
+                <li><img src="@host/Images/icons/icon-user.png" />@Html.TextBoxFor(x => x.user.UserName, new { placeholder = @Translator.UserName })</li>
+                
+                <li><img src="@host/Images/icons/icon-password.png" style="margin-left: 14px;" />@Html.PasswordFor(x => x.user.Password, new { placeholder = @Translator.Password, value = pass })</li>
+                <li style="margin-top: 16px;">
+                    <input style="width:40px;" id="Remember" name="Remember" value="true" type="checkbox" @(Model.user == null ? "":"checked=checked") />
+                        <span style="cursor:default;" onclick="initCheckRemember('#Remember');">@Translator.Remember</span>
+                </li>
+                <li><button style="margin-top: 16px;margin-bottom:20px;" type="submit" >@Translator.Submit</button></li>
+                
+            </ul>
+        </div>
+        }
+    <div style="clear:both"></div>
+    
+</div>
+    <div style="clear:both"></div>
+    <br /><br />
+    <div style="width:100%;text-align:center;text-shadow: 0.5px 0.5px rgb(189, 182, 182);font-weight:bold;color:rgb(89, 87, 87);">@licenseMessage</div>
+<div class="developed"> 
+    <img src="@host/Images/logo.png" />
+    <ul>
+        <li>Application: Version: 7.0</li>
+        <li>Release Date: 17-Jul-2016</li>
+        <li>Developed By: RoogRog Technology, LLC</li>
+    </ul>
+</div>
+
+<script type="text/javascript">
+    function initCheckRemember(strId) {
+        if ($(strId).is(':checked'))
+            $(strId).prop('checked', false);
+        else
+            $(strId).prop('checked', true);
+    }
+</script>

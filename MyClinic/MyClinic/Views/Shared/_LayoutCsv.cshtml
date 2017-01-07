@@ -1,0 +1,18 @@
+﻿@{
+    String iconFavicon = System.Configuration.ConfigurationManager.AppSettings["Icon:Url"];
+    String pageVersion = System.Configuration.ConfigurationManager.AppSettings["Source:Version"];
+    iconFavicon = iconFavicon + "?v=" + pageVersion;
+    var langPage = "en";
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+</head>
+<body id="csv-lyt">
+    <div>
+        @RenderBody()
+    </div>
+</body>
+</html>

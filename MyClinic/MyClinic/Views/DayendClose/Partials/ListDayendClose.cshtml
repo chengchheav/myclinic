@@ -1,0 +1,87 @@
+﻿@model MyClinic.Models.DayendCloseModels
+@using Utilities;
+@using MyClinic.Resources
+
+@{
+    var orderField = Model.orderBy;
+    var order = Model.order;
+    var host = Utilities.Common.host;
+    int intIndex = 0;
+    decimal TotalItem = 0;
+    decimal ExpireItem = 0;
+    decimal SaleableItem = 0;
+    decimal NewGrant = 0;
+    decimal Redeem = 0;
+    decimal Renew = 0;
+    decimal InterestEarned = 0;
+    decimal SoldOut = 0;
+    decimal RedeemSome = 0;
+    var strDate = System.DateTime.Parse(Model.strDate);
+}          
+<div class="info-rslt">@Translator.Result @Model.totalRecords @Translator.Records</div>
+<table class="rpt-tbl">
+    <tr class="hdr">
+        <th>@Translator.CategoryName</th>
+        <th>@Translator.TotalItem</th>
+        <th>@Translator.ExpireItem</th>
+        <th>@Translator.SaleableItem</th>
+        <th>@Translator.NewGrant</th>
+        <th>@Translator.Redeem</th>
+        <th>@Translator.Renew</th>
+        <th>@Translator.InterestEarned</th>
+        <th>@Translator.SoldOut</th>
+        <th>@Translator.RedeemSome</th>
+        <th>@Translator.TransDate</th>
+    </tr>
+      
+    @foreach (var record in Model.lstDayendClose)
+    {
+        intIndex = intIndex + 1;
+        string clssR = "odd";
+        if (intIndex % 2 == 0)
+        {
+            clssR = "event";
+        }
+
+        TotalItem = TotalItem + record.TotalItem;
+        ExpireItem = ExpireItem + record.ExpireItem;
+        NewGrant = NewGrant + record.NewGrant;
+        Redeem = Redeem + record.Redeem;
+        Renew = Renew + record.Renew;
+        InterestEarned = InterestEarned + record.InterestEarned;
+        SoldOut = SoldOut + record.SoldOut;
+        RedeemSome = RedeemSome + record.RedeemSome;
+        SaleableItem = SaleableItem + record.SaleableItem;
+
+        string strTotalItemUrl = Url.Action("Report", "InventoryDetailItem", new { typeReport = 0, categoryId = record.ItemCategoryId, transDate = Common.GetDatePickerDisplay(strDate), ticketType = Model.ticketType });
+        string strExpiredItemUrl = Url.Action("Report", "InventoryDetailItem", new { typeReport = 1, categoryId = record.ItemCategoryId, transDate = Common.GetDatePickerDisplay(strDate), ticketType = Model.ticketType });
+        string strSoleItemUrl = Url.Action("Report", "InventoryDetailItem", new { typeReport = 2, categoryId = record.ItemCategoryId, transDate = Common.GetDatePickerDisplay(strDate), ticketType = Model.ticketType });
+        
+        <tr class="@clssR">
+            <td>@Utilities.Common.GetValueDisplay(record.CategoryName, String.Empty)</td>	
+            <td class="rgh lnk" onclick="$Common.setRedirectNewTab('@strTotalItemUrl');">@Utilities.Common.GetValueDisplay(record.TotalItem.ToString(), String.Empty)</td>
+            <td class="rgh lnk" onclick="$Common.setRedirectNewTab('@strExpiredItemUrl');">@Utilities.Common.GetValueDisplay(record.ExpireItem.ToString(), String.Empty)</td>
+            <td class="rgh lnk" onclick="$Common.setRedirectNewTab('@strSoleItemUrl');">@Utilities.Common.GetValueDisplay(record.SaleableItem.ToString())</td>
+            <td class="rgh lnk" onclick="$manage.detailRecordManageRecords('@record.ItemCategoryId', '@Common.GetDatePickerDisplay(strDate)', 'NewGrant');">@Utilities.Common.GetCurrencyFormate(record.NewGrant)</td>
+            <td class="rgh lnk" onclick="$manage.detailRecordManageRecords('@record.ItemCategoryId', '@Common.GetDatePickerDisplay(strDate)', 'Redeem');">@Utilities.Common.GetCurrencyFormate(record.Redeem)</td>
+            <td class="rgh lnk" onclick="$manage.detailRecordManageRecords('@record.ItemCategoryId', '@Common.GetDatePickerDisplay(strDate)', 'Renew');">@Utilities.Common.GetCurrencyFormate(record.Renew)</td>
+            <td class="rgh lnk" onclick="$manage.detailRecordManageRecords('@record.ItemCategoryId', '@Common.GetDatePickerDisplay(strDate)', 'InterestEarned');">@Utilities.Common.GetCurrencyFormate(record.InterestEarned)</td>
+            <td class="rgh lnk" onclick="$manage.detailRecordManageRecords('@record.ItemCategoryId', '@Common.GetDatePickerDisplay(strDate)', 'SoldOut');">@Utilities.Common.GetCurrencyFormate(record.SoldOut)</td>
+            <td class="rgh lnk" onclick="$manage.detailRecordManageRecords('@record.ItemCategoryId', '@Common.GetDatePickerDisplay(strDate)', 'Renew', '@Model.ticketType');">@Utilities.Common.GetCurrencyFormate(record.RedeemSome)</td>
+            <td class="cntr">@Utilities.Common.GetDateTimeFormate(strDate)</td>
+        </tr>
+    }
+    <tr class="sub-val">
+        <td></td>
+        <td class="main-val rgh">@TotalItem</td>
+        <td class="main-val rgh">@ExpireItem</td>
+        <td class="rgh main-val">@Utilities.Common.GetValueDisplay(SaleableItem.ToString())</td>
+        <td class="rgh main-val">@Utilities.Common.GetCurrencyFormate(NewGrant)</td>
+        <td class="rgh main-val">@Utilities.Common.GetCurrencyFormate(Redeem)</td>
+        <td class="rgh main-val">@Utilities.Common.GetCurrencyFormate(Renew)</td>
+        <td class="rgh main-val">@Utilities.Common.GetCurrencyFormate(InterestEarned)</td>
+        <td class="rgh main-val">@Utilities.Common.GetCurrencyFormate(SoldOut)</td>
+        <td class="rgh main-val">@Utilities.Common.GetCurrencyFormate(RedeemSome)</td>
+        <td></td>
+    </tr>
+</table>

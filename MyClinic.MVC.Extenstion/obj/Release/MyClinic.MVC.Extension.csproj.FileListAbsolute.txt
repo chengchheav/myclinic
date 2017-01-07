@@ -1,0 +1,14 @@
+D:\MyProjects\MyClinic\myclinic\MyClinic.MVC.Extenstion\obj\Release\MyClinic.MVC.Extension.csprojResolveAssemblyReference.cache
+D:\MyProjects\MyClinic\myclinic\MyClinic.MVC.Extenstion\bin\Release\MyClinic.MVC.Extenstion.dll
+D:\MyProjects\MyClinic\myclinic\MyClinic.MVC.Extenstion\bin\Release\MyClinic.MVC.Extenstion.pdb
+D:\MyProjects\MyClinic\myclinic\MyClinic.MVC.Extenstion\bin\Release\MyClinic.Core.dll
+D:\MyProjects\MyClinic\myclinic\MyClinic.MVC.Extenstion\bin\Release\MyClinic.Infrastructure.dll
+D:\MyProjects\MyClinic\myclinic\MyClinic.MVC.Extenstion\bin\Release\Utilities.dll
+D:\MyProjects\MyClinic\myclinic\MyClinic.MVC.Extenstion\bin\Release\log4net.dll
+D:\MyProjects\MyClinic\myclinic\MyClinic.MVC.Extenstion\bin\Release\EntityFramework.dll
+D:\MyProjects\MyClinic\myclinic\MyClinic.MVC.Extenstion\bin\Release\MyClinic.Core.pdb
+D:\MyProjects\MyClinic\myclinic\MyClinic.MVC.Extenstion\bin\Release\MyClinic.Infrastructure.pdb
+D:\MyProjects\MyClinic\myclinic\MyClinic.MVC.Extenstion\bin\Release\Utilities.pdb
+D:\MyProjects\MyClinic\myclinic\MyClinic.MVC.Extenstion\bin\Release\EntityFramework.xml
+D:\MyProjects\MyClinic\myclinic\MyClinic.MVC.Extenstion\obj\Release\MyClinic.MVC.Extenstion.dll
+D:\MyProjects\MyClinic\myclinic\MyClinic.MVC.Extenstion\obj\Release\MyClinic.MVC.Extenstion.pdb

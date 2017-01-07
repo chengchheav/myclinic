@@ -1,0 +1,175 @@
+﻿@using Utilities;
+@model MyClinic.Models.DiagnosisModels
+@using MyClinic.Resources;
+@{
+    Random rnd = new Random();
+    ViewBag.Title = Translator.DiagnosisDetail;
+    var host = Utilities.Common.host;
+    var intIndex = 1;
+    var i = 0;
+    var objDateBirth = Model.dtodiagnosis.ExpiredDate;
+    string date = "N/A";
+    var strValue = "1990-01-01";
+    DateTime objDate;
+    DateTime.TryParse(strValue, out objDate);
+    if (Model.dtodiagnosis.ExpiredDate != objDate)
+    {
+        date = Common.GetDatePickerDisplay(objDateBirth);
+    }
+
+    var referalLink = Request.UrlReferrer.ToString();
+    var backLink = referalLink.Contains("Patient/Detail") ? referalLink : @Url.Action("Index", "diagnosis",new{ Id="1"});
+
+    var objSession = Session["user"] as MyClinic.Infrastructure.SessUser;    
+}
+
+<div class="title">@Translator.DiagnosisDetail</div>
+<div class="detail-html">
+    <div class="inner">
+        <div style="float:left;" id="dtl" class="pndtl">
+            <table>
+                <tr>
+                    <td class="editor-label">
+                        @Translator.PatientName
+                    </td>
+                    <td class="editor-field" >:
+                        @Html.DisplayFor(model => Model.dtodiagnosis.Patient_Name)
+                    </td>
+                    <td class="editor-label2">
+                        @Translator.DiagnoseCycle
+                    </td>
+                    <td class="editor-field" >:
+                        @Html.DisplayFor(model => Model.dtodiagnosis.DiagnoseCycle)
+                    </td>
+                </tr>
+                <tr>
+                    <td class="editor-label">
+                        @Translator.DoctorName
+                    </td>
+                    <td class="editor-field" >:
+                        @Html.DisplayFor(model => Model.dtodiagnosis.Diagnose_Name)
+                    </td>
+                    <td class="editor-label2">
+                        @Translator.ExpireDate
+                    </td>
+                    <td class="editor-field" >:
+                        @date
+                    </td>
+                </tr>
+                <tr>
+                    <td class="editor-label">
+                        @Translator.DiagnoseDate
+                    </td>
+                    <td class="editor-field" >:
+                        @Common.GetDateTimeFormateFull(Model.dtodiagnosis.DiagnoseDate)
+                    </td>
+                    <td class="editor-label2">
+                         @Translator.CreatedBy
+                    </td>
+                    <td class="editor-field" >:
+                       @Html.DisplayFor(model => Model.dtodiagnosis.Created_Name)
+                    </td>
+                </tr>
+                <tr>
+                    <td class="editor-label">
+                        @Translator.SymptomType
+                    </td>
+                    <td class="editor-field" >:
+                        @Model.dtodiagnosis.Symptom_Type
+                    </td>
+                    <td class="editor-label2">
+                        @Translator.Status
+                    </td>
+                    <td class="editor-field" >:
+                        @(Model.dtodiagnosis.Status == 1 ? Translator.Active:Translator.Inactive)
+                    </td>
+                    
+                </tr>
+                <tr>
+                    <td class="editor-label">
+                        @Translator.Disease
+                    </td>
+                    <td class="editor-field" >:
+                        @Model.dtodiagnosis.Disease_Name
+                    </td>
+                    
+                </tr>
+                <tr>
+                    <td class="editor-label" style="vertical-align:top;">
+                        @Translator.Symptom
+                    </td>
+                    <td class="editor-field"  colspan="3">:
+                        @Html.DisplayFor(model => Model.dtodiagnosis.Symptom)
+                    </td>
+                </tr>
+            </table>
+         </div>
+         <div class="lst-btn">
+            <div class="inner">
+                @{
+                    if (!objSession.UserType.Contains("FUR"))
+                    {
+                        <input onclick="$Common.setRedirectPage('@Url.Action("Edit", "diagnosis", new { Id = Model.dtodiagnosis.Id })');" class="myLabel" type="button" value="@Translator.EditDiagnosis"/>
+                    }
+                 }
+                <input onclick="$Common.setRedirectPage('@backLink');" class="myLabel" type="button" value="@Translator.BackToList"/>
+            </div>
+        </div>
+    </div> 
+</div>
+
+<!--List For Prescription-->
+<div class="clear"></div>
+<div class="title">@Translator.DetailPrescription</div>
+<div class="detail-html">
+    <div class="tbl" style="margin:25px 0px 50px 0px; float: left;">
+        <table style="width:100%" class="rpt-tbl">
+            <tr style="background-color:#fff;" >
+                <th>@Translator.Id</th>
+				<th>@Translator.MedicineName</th>
+				<th>@Translator.Qty</th>
+				<th>@Translator.Usage</th>
+				<th>@Translator.Mor</th>
+				<th>@Translator.Noon</th>
+				<th>@Translator.Night</th>
+				<th>@Translator.Other</th>
+            </tr>
+      
+            @foreach (var prescrition in Model.medicineRecords)
+            {
+             i++;
+             intIndex = intIndex + 1;
+            string clssR = "event";
+            if (intIndex % 2 == 0)
+            {
+                clssR = "odd";
+            }
+            <tr id=@prescrition.Id class="@clssR">
+                <td>@i</td>
+				<td class="no">@prescrition.Med_Name</td>
+				<td class="tll" align="center">@prescrition.Qty</td>
+				<td align="center">@prescrition.Use_Name</td>
+				<td align="center">@prescrition.Morning</td>
+				<td align="center">@prescrition.Noon</td>
+				<td align="center">@prescrition.Night</td>
+                <td width="25%">@prescrition.Remark</td>
+            </tr>
+            }
+        </table>
+    </div>
+    <div style="float: right;margin-right: 110px;">
+        <input style="margin-right:8px;" onclick="$Common.setRedirectPage('@backLink');" class="myLabel" type="button" value="@Translator.BackToList"/>
+        @{
+            if (!objSession.UserType.Contains("FUR"))
+            {
+                <input onclick="$Common.setRedirectPage('@Url.Action("Edit", "Prescription", new { Id = Model.dtodiagnosis.Id })');" class="myLabel edp" type="button" value="@Translator.EditPrescription"/>
+            }
+        }
+    </div>
+</div>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $transaction.initDefindActionId("1");
+        $transaction.initChangeClassMenu("diagnosis", "diagnosis-selected");
+    });
+</script>

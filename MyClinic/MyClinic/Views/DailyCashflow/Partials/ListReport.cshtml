@@ -1,0 +1,106 @@
+﻿@model MyClinic.Models.DailyCashflowModels
+@using MyClinic.Resources
+@using Utilities
+
+@{
+    var host = Utilities.Common.host;
+    int intIndex = 0;
+    decimal totalAmount = 0;
+    var lastSourceName = "";
+    decimal subTotal = 0;
+}          
+
+<h2>@Translator.Inflow</h2>
+<table class="rpt-tbl" style="width: 700px;">
+    <tr>
+        <th class="rgh" colspan="2" style="padding-right: 2%;">@Translator.Amount</th>
+    </tr>
+    @foreach (var record in Model.lstRecords)
+    {
+        if (record.Cashflow.Trim().ToLower() == "Inflow".ToLower())
+        {
+            intIndex = intIndex + 1;
+            string clssR = "odd";
+            if (intIndex % 2 == 0)
+            {
+                clssR = "event";
+            }
+
+            if (!lastSourceName.Trim().ToLower().Equals(record.SourceName.Trim().ToLower()))
+            {
+                if (!lastSourceName.Equals(""))
+                {                    
+                    <tr class="sub-val"><td></td><td class="rgh main-val" style="padding-right: 2%;background-color:#5fa7a4">@Utilities.Common.GetCurrencyFormate(totalAmount)</td></tr>
+                }
+
+                lastSourceName = Utilities.Common.GetValueDisplay(record.SourceName, String.Empty);
+                <tr>
+                    <td colspan="2"><b>@lastSourceName</b></td>
+                </tr>  
+                totalAmount = 0;
+            }
+
+            totalAmount = totalAmount + record.Amount;
+            subTotal += record.Amount;
+            <tr class="@clssR">
+                <td>&nbsp;&nbsp;&nbsp;&nbsp;@Utilities.Common.GetValueDisplay(record.Name, String.Empty)</td>		
+                <td class="rgh" style="padding-right: 2%;">@Utilities.Common.GetCurrencyFormate(record.Amount)</td>
+            </tr>
+        }
+    } 
+    <tr class="sub-val"><td style="text-align:right;"><b>@Translator.SubTotal:</b></td><td class="rgh main-val" style="padding-right: 2%;background-color:#5fa7a4">@Utilities.Common.GetCurrencyFormate(totalAmount)</td></tr>
+    <tr class="sub-val"><td style="text-align:right;"><b>@Translator.Total:</b></td><td class="rgh main-val" style="padding-right: 2%;">@Utilities.Common.GetCurrencyFormate(subTotal)</td></tr>    
+</table>
+
+@{
+    intIndex = 0;
+    totalAmount = 0;
+    subTotal = 0;
+    lastSourceName = "";
+}   
+<h2>@Translator.Outflow</h2>
+<table class="rpt-tbl" style="width: 700px;">
+    <tr>
+        <th class="rgh" colspan="2" style="padding-right: 2%;">@Translator.Amount</th>
+    </tr>
+    @foreach (var record in Model.lstRecords)
+    {
+        if (record.Cashflow.Trim().ToLower() == "Outflow".ToLower())
+        {
+            intIndex = intIndex + 1;
+            string clssR = "odd";
+            if (intIndex % 2 == 0)
+            {
+                clssR = "event";
+            }
+
+            if (!lastSourceName.Trim().ToLower().Equals(record.SourceName.Trim().ToLower()))
+            {
+                if (!lastSourceName.Equals(""))
+                {                    
+                    <tr class="sub-val"><td></td><td class="rgh main-val" style="padding-right: 2%;background-color:#5fa7a4">@Utilities.Common.GetCurrencyFormate(totalAmount)</td></tr>
+                }
+
+                lastSourceName = Utilities.Common.GetValueDisplay(record.SourceName, String.Empty);
+                <tr>
+                    <td colspan="2"><b>@lastSourceName</b></td>
+                </tr>  
+                totalAmount = 0;
+            }
+
+            totalAmount = totalAmount + record.Amount;
+            subTotal += record.Amount;
+            <tr class="@clssR">
+                <td>&nbsp;&nbsp;&nbsp;&nbsp;@record.Name</td>		
+                <td class="rgh" style="padding-right: 2%;">@Utilities.Common.GetCurrencyFormate(record.Amount)</td>
+            </tr>
+        }
+    } 
+    <tr class="sub-val"><td style="text-align:right;"><b>@Translator.SubTotal:</b></td><td class="rgh main-val" style="padding-right: 2%;background-color:#5fa7a4">@Utilities.Common.GetCurrencyFormate(totalAmount)</td></tr>
+    <tr class="sub-val"><td style="text-align:right;"><b>@Translator.Total:</b></td><td class="rgh main-val" style="padding-right: 2%;">@Utilities.Common.GetCurrencyFormate(subTotal)</td></tr>    
+</table>
+<style type="text/css">
+    #lstContainer {
+        box-shadow:none !important;
+    }
+</style>

@@ -1,0 +1,66 @@
+﻿@model MyClinic.Infrastructure.User
+@{
+    ViewBag.Title = "Delete";
+    MyClinic.Infrastructure.User user = new MyClinic.Infrastructure.User();
+}
+<div style="width:50%;margin-left:25px;">
+<br/>
+<br/>
+<br/>
+
+</div>
+<div style="width:30%;margin-left:25px;">   
+       @using (Html.BeginForm("DeleteConfirmed", "Home", FormMethod.Post))
+       { 
+            <table>
+                <tr>
+                    <td>@Html.HiddenFor(n => n.Id) </td>
+                </tr>
+             <tr>
+                   <td>@Html.Label("Name") </td>
+                   <td>@Html.ValidationMessage("Name", "*")</td>                          
+                   <td>@Html.TextBoxFor(n => n.Name)</td> 
+            </tr>
+
+            <tr>
+                   <td>@Html.Label("UserName")</td>                           
+                   <td>@Html.ValidationMessage("UserName", "*")</td>
+                   <td>@Html.TextBoxFor(n => n.UserName)</td> 
+            </tr>
+
+            <tr>
+                   <td>@Html.Label("Password")</td>
+                   <td>@Html.ValidationMessage("Password", "*")</td>
+                   <td>@Html.PasswordFor(n => n.Password)</td> 
+            </tr>
+            <tr>
+                   <td>@Html.Label("Email")</td>
+                   <td>@Html.ValidationMessage("Email", "*")</td>                     
+                   <td>@Html.TextBoxFor(n => n.Email)</td> 
+            </tr>
+            <tr>
+                   <td>@Html.Label("UserType")</td>
+                   <td>@Html.ValidationMessage("UserType", "*")</td>
+                   <td>@Html.DropDownList("UserType", new List<SelectListItem>
+                    {
+                        new SelectListItem { Text = "-- Select UserType --", Value = "0", Selected=true},
+                        new SelectListItem { Text = "Admin", Value = "ADM"},
+                        new SelectListItem { Text = "User", Value = "USR"},
+                        new SelectListItem { Text = "Report User", Value = "RPV"},
+                        new SelectListItem { Text = "Client", Value = "CLN"}
+                    })</td>
+            </tr>
+            <tr>
+                   <td>@Html.Label("IsActived :")</td>   
+                   <td>@Html.ValidationMessage("IsActived", "*")</td>            
+                   <td>@Html.CheckBox("IsActived", user.IsActived)</td>  
+            </tr>
+             <tr>
+                  <td colspan=3><input class="myLabel" style="float:right;color:White;font-weight:600;margin-top:40px;margin-right:10px;margin-bottom:10px;" type="submit" value="Delete"/></td>
+            </tr>  
+        </table>
+       }
+       
+</div>
+    
+ 

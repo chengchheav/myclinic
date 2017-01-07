@@ -1,0 +1,41 @@
+﻿@using Utilities;
+@using MyClinic.Resources   
+@model MyClinic.Models.AdjustmentModels     
+@{
+    ViewBag.Title = Translator.AdjustmentReport;
+    var host = Utilities.Common.host;
+    String pageVersion = System.Configuration.ConfigurationManager.AppSettings["Source:Version"];
+    DateTime preDate = DateTime.Today.AddDays(-1);
+    string strPreDate = Common.GetDatePickerDisplay(preDate);
+}
+<!----- Title ----->
+<link href="@Url.Content("~/Content/themes/base/jquery.ui.all.css?v=" + pageVersion)" rel="stylesheet" type="text/css" />
+<div class="title">@Translator.AdjustmentReport</div>
+<div id="content" class="rpt-view">
+    <div class="action">
+        <div class="editor" id="lst-ctr-srch" data-action="@Url.Action("Ajindex", "Adjustment")">
+            <ul>
+                <li class="ttl-ctr">@Translator.FromDate:</li>
+                <li><input type="text" id="startDate" class="txt-ctr ch_date" name="startDate" value="@Model.startDate"/></li>
+                <li class="ttl-ctr">@Translator.ToDate:</li>
+                <li><input type="text" id="endDate" class="txt-ctr ch_date" name="endDate" value="@Model.endDate"/></li>
+                <li class="ttl-ctr"><a style="padding:0px;"><input type="button" class="btn-stl" id="search-button" value="@Translator.Search" onclick="$manage.SearchManageRecords();" /></a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="clear"></div>
+
+    <div id="lstContainer" class="tbl">
+        @{Html.RenderPartial("Partials/List");}    
+    </div>
+</div>
+<script src="@Url.Content("~/Scripts/jquery.ui.datepicker.js?v=" + pageVersion)" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/script.datepicker.js?v=" + pageVersion)" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/script.manage.js?v=" + pageVersion)" type="text/javascript"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $transaction.initDefindActionId("1");
+        $transaction.initChangeClassMenu("icon-report", "icon-report-selected");
+        $datepicker.initRangeDate();
+    });
+</script>

@@ -1,0 +1,195 @@
+﻿@using Utilities;
+@using MyClinic.Resources;
+@model MyClinic.Models.PrescriptionModels
+@{
+    ViewBag.Title = Translator.EditPrescription;
+    var host = Utilities.Common.host;
+    var objTranslateSwitch = new TranslateSwitch();
+    String pageVersion = System.Configuration.ConfigurationManager.AppSettings["Source:Version"];
+    int intIndex = 0;
+    string strScript = "";
+    var usageSelectBox = ViewData["usageSelectBox"].ToString();
+    int totalRecord = 0;
+}
+
+<link href="@Url.Content("~/Content/easy-autocomplete.min.css?v=")" rel="stylesheet" type="text/css" />
+<link href="@Url.Content("~/Content/themes/base/jquery.ui.all.css?v=")" rel="stylesheet" type="text/css" />
+<link href="@Url.Content("~/Content/style.prescription.css?v=" + pageVersion)" rel="stylesheet" type="text/css" /> 
+<script language="javascript">
+    var usageSelectBox = '@Html.Raw(usageSelectBox)';
+</script>
+<div class="title">@Translator.EditPrescription</div>
+<div class="frm-bx">
+    <div class="frm-info">
+         <p>@Translator.MessageForm <strong>@Translator.MessageFormBold</strong>. <strong>@Translator.Note:</strong> @Translator.MessageForm1</p>
+    </div>
+    @using (Html.BeginForm("Edit", "Prescription", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        @Html.ValidationSummary(true) 
+        <div class="info-bx">
+            <fieldset>
+                <table class="two-ctr">
+                    <tr>
+                        <td class="editor-label1 imp">
+                            <label>@Translator.PatentName</label>
+                        </td>
+                        <td class="editor-field" style="width:25%;">
+                            <p>@Model.dtoDiagnosis.Patient_Name</p>
+                        </td>
+                        <td class="editor-label2 imp">
+                            <label>@Translator.Sex</label>
+                        </td>
+                        <td class="editor-field" >
+                             <p>@Common.GetGender(Model.dtoDiagnosis.Patient_Sex)</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="editor-label1 imp">
+                            <label>@Translator.DiagnosisDescription</label>
+                        </td>
+                        <td class="editor-field" colspan="3" style="padding-bottom: 10px;">
+                            <p>@Model.dtoDiagnosis.Disease_Name</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="4">
+                             <input type="hidden" value="@Model.dtoDiagnosis.Id" name="DiagnosisId">
+                             <table id="tbl-pres">
+                                <thead>
+                                    <tr>
+                                        <th style="width:5%;">@Translator.RecordNo</th>
+                                        <th style="width:23%;">@Translator.Medicine</th>
+                                        <th style="width:8%;">@Translator.Qty</th>
+                                        <!--<th style="width:10%;">@Translator.MedicineType</th>-->
+                                        <th style="width:12%;">@Translator.Usage</th>
+                                        <th style="width:8%;">@Translator.Morning</th>
+                                        <th style="width:8%;">@Translator.Noon</th>
+                                        <th style="width:8%;">@Translator.Night</th>
+                                        <th style="width:22%;">@Translator.Other</th>
+                                        <th  style="width:15%;" class="last">
+                                            <a href="#" onclick="$pres.addPres();">+</a>
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var record in Model.medicineRecords)
+                                    {
+                                        intIndex = intIndex + 1;
+                                        totalRecord = intIndex;
+                                        var strRow = "med" + intIndex;
+                                        var strRowId = "medId" + intIndex; 
+                                        var strRowName = "medName" + intIndex;
+                                        string strRowFrm = "row" + intIndex;
+
+                                        strScript = strScript + "$key.initKeypressForMedicine('" + strRow + "', '" + strRowId + "', '" + strRowName + "'); $pres.initGetMedicine('#" + strRowFrm + " input[name=\"Medicine\"]', '#" + strRowFrm + " input[name=\"MedicineId\"]', '#" + strRowFrm + " input[name=\"MedicineType\"]', '#" + strRowFrm + " input[name=\"MedicineName\"]');";
+                                        
+                                        <tr class="rcd-dta bdr" id="@strRowFrm">    
+                                            <td><div class="vle-bx no" style="text-align:center;">@intIndex</div></td>    
+                                            <td>
+                                                <div class="vle-bx">
+                                                    <input type="text" value="@record.Med_Name" id = "@strRow" name="Medicine"/>
+                                                    <input type="hidden" value="@record.Id" name="Id"/>
+                                                    <input type="hidden" value="@record.Med_Name" id="@strRowName"  name="MedicineName"/>
+                                                    <input type="hidden" value="@record.MedicineId" id="@strRowId" name="MedicineId"/>
+                                                </div>
+                                            </td>    
+                                            <td>
+                                                <div class="vle-bx">
+                                                    <input style="text-align:center;" type="text" value="@record.Qty" name="Qty">
+                                                </div>
+                                            </td>    
+                                            <!--<td>
+                                                <div class="vle-bx">
+                                                    <input type="text" value="@record.MedicineType" name="MedicineType">
+                                                    <input type="hidden" value="@record.MedicineType" name="MedicineTypeId">
+                                                </div>
+                                                <div class="vle-bx">
+                                                    @Html.DropDownList("MedicineType", Model.medicineTypeRecords.Select(item => new SelectListItem
+                                                    {
+                                                        Value = item.Type,
+                                                        Text = item.Type,
+                                                        Selected = record.MedicineType == item.Type ? true : false
+                                                    }), new { @class = "slc-ctl" })
+                                                    <div class="error">
+                                                        @Html.Raw(objTranslateSwitch.Get(Html.ValidationMessage("MedicineType")))
+                                                    </div>
+                                                </div>
+                                            </td> -->  
+                                            <td>
+                                                <div class="vle-bx">
+                                                    @Html.DropDownList("UsageId", Model.usageRecords.Select(item => new SelectListItem
+                                                    {
+                                                        Value = item.Id.ToString(),
+                                                        Text = item.Name,
+                                                        Selected = record.UsageId == item.Id ? true : false
+                                                    }), new { @class = "slc-ctl" })
+                                                    <div class="error">
+                                                        @Html.Raw(objTranslateSwitch.Get(Html.ValidationMessage("MedicineType")))
+                                                    </div>
+                                                </div>
+                                            </td>  
+                                            <td>
+                                                <div class="vle-bx">
+                                                    <input style="text-align:center;" type="text" value="@record.Morning" name="Morning">
+                                                </div>
+                                            </td>    
+                                            <td>
+                                                <div class="vle-bx">
+                                                    <input style="text-align:center;" type="text" value="@record.Noon" name="Noon">
+                                                </div>
+                                            </td>    
+                                            <td>
+                                                <div class="vle-bx">
+                                                    <input style="text-align:center;" type="text" value="@record.Night" name="Night">
+                                                </div>
+                                            </td>    
+                                            <td>
+                                                <div class="vle-bx">
+                                                    <input type="text" value="@record.Remark" name="Remark">
+                                                </div>
+                                            </td>    
+                                            <td class="last act">        
+                                                <a href="#" onclick="$pres.confirmDelete('@intIndex', '@Translator.AreSureRemovePresc @record.Med_Name?');" class="btn">-</a>    
+                                            </td>
+                                       </tr>
+                                        
+                                    }
+                                </tbody>
+                                <tfoot>
+                                    <tr class="msg bdr">
+                                        <td colspan="2" id="msgMedicine" style="width: 20%;"></td>
+                                        <td id="msgQty"></td>
+                                        <td id="msgMedicineType"></td>
+                                        <td colspan="3" id="msgTime"></td>
+                                        <td id="msgRemark"></td>
+                                        <td id="msgAct"></td>
+                                    </tr>
+                                </tfoot>    
+                            </table>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="4">
+                            <input type="button" id="btn-add" class="myLabel" value="@Translator.Clear" onclick="$pres.confirmClear('@Translator.ConfirmClearPrescription');"/>
+                            <input id="btnSubmit" class="myLabel" type="submit" onclick="return $pres.checkValidForm();" value="@Translator.Save"/>
+                        </td>
+                    </tr> 
+                </table>
+            </fieldset>
+        </div>
+    }
+</div>
+
+<script src="@Url.Content("~/Scripts/jquery.easy-autocomplete.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/script.auto.js?v=" + pageVersion)" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/script.prescription.js?v=" + pageVersion)" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/script.keyChecking.js?v=" + pageVersion)" type="text/javascript"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $transaction.initChangeClassMenu("diagnosis", "diagnosis-selected");
+        $auto.initSearch('@Url.Action("AutoMedicine", "Medicine")');
+        $pres.init('@Url.Action("AutoMedicine", "Medicine")', @intIndex);
+        @Html.Raw(strScript);
+        $arrElement.Code = @totalRecord;
+    });
+</script>

@@ -1,0 +1,346 @@
+2016-08-20 12:09:32,939 [27] ERROR MyClinic.Controllers.PatientController - Microsoft.CSharp.RuntimeBinder.RuntimeBinderException: Cannot apply indexing with [] to an expression of type 'System.Dynamic.DynamicObject'
+   at CallSite.Target(Closure , CallSite , Object , String , String )
+   at System.Dynamic.UpdateDelegates.UpdateAndExecute3[T0,T1,T2,TRet](CallSite site, T0 arg0, T1 arg1, T2 arg2)
+   at MyClinic.Controllers.PatientController.Add(String id) in D:\MyProjects\MyClinic\myclinic\MyClinic\MyClinic\Controllers\PatientController.cs:line 120
+2016-08-20 12:10:02,980 [51] ERROR MyClinic.Controllers.PatientController - Microsoft.CSharp.RuntimeBinder.RuntimeBinderException: Cannot apply indexing with [] to an expression of type 'System.Dynamic.DynamicObject'
+   at CallSite.Target(Closure , CallSite , Object , String , String )
+   at MyClinic.Controllers.PatientController.Add(String id) in D:\MyProjects\MyClinic\myclinic\MyClinic\MyClinic\Controllers\PatientController.cs:line 120
+2016-08-20 12:11:38,978 [51] ERROR MyClinic.Controllers.PatientController - Microsoft.CSharp.RuntimeBinder.RuntimeBinderException: Cannot apply indexing with [] to an expression of type 'System.Dynamic.DynamicObject'
+   at CallSite.Target(Closure , CallSite , Object , String , String )
+   at System.Dynamic.UpdateDelegates.UpdateAndExecute3[T0,T1,T2,TRet](CallSite site, T0 arg0, T1 arg1, T2 arg2)
+   at MyClinic.Controllers.PatientController.Add(String id) in D:\MyProjects\MyClinic\myclinic\MyClinic\MyClinic\Controllers\PatientController.cs:line 119
+2016-08-20 12:11:54,673 [51] ERROR MyClinic.Controllers.PatientController - Microsoft.CSharp.RuntimeBinder.RuntimeBinderException: Cannot apply indexing with [] to an expression of type 'System.Dynamic.DynamicObject'
+   at CallSite.Target(Closure , CallSite , Object , String , String )
+   at MyClinic.Controllers.PatientController.Add(String id) in D:\MyProjects\MyClinic\myclinic\MyClinic\MyClinic\Controllers\PatientController.cs:line 119
+2016-10-04 13:32:06,603 [11] ERROR MyClinic.Core.BackupService - System.Data.SqlClient.SqlException (0x80131904): A transport-level error has occurred when receiving results from the server. (provider: TCP Provider, error: 0 - The network connection was aborted by the local system.) ---> System.ComponentModel.Win32Exception (0x80004005): The network connection was aborted by the local system
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParserStateObject.ReadSniError(TdsParserStateObject stateObj, UInt32 error)
+   at System.Data.SqlClient.TdsParserStateObject.ReadSniSyncOverAsync()
+   at System.Data.SqlClient.TdsParserStateObject.TryReadNetworkPacket()
+   at System.Data.SqlClient.TdsParserStateObject.TryPrepareBuffer()
+   at System.Data.SqlClient.TdsParserStateObject.TryReadByte(Byte& value)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, SqlDataReader ds)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean asyncWrite)
+   at System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(TaskCompletionSource`1 completion, String methodName, Boolean sendToPipe, Int32 timeout, Boolean asyncWrite)
+   at System.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+   at System.Data.Entity.Infrastructure.Interception.DbCommandDispatcher.<NonQuery>b__0(DbCommand t, DbCommandInterceptionContext`1 c)
+   at System.Data.Entity.Infrastructure.Interception.InternalDispatcher`1.Dispatch[TTarget,TInterceptionContext,TResult](TTarget target, Func`3 operation, TInterceptionContext interceptionContext, Action`3 executing, Action`3 executed)
+   at System.Data.Entity.Infrastructure.Interception.DbCommandDispatcher.NonQuery(DbCommand command, DbCommandInterceptionContext interceptionContext)
+   at System.Data.Entity.Internal.InterceptableDbCommand.ExecuteNonQuery()
+   at System.Data.Entity.Core.Objects.ObjectContext.<>c__DisplayClass22.<ExecuteStoreCommand>b__21()
+   at System.Data.Entity.Core.Objects.ObjectContext.ExecuteInTransaction[T](Func`1 func, IDbExecutionStrategy executionStrategy, Boolean startLocalTransaction, Boolean releaseConnectionOnSuccess)
+   at System.Data.Entity.Core.Objects.ObjectContext.<>c__DisplayClass22.<ExecuteStoreCommand>b__20()
+   at System.Data.Entity.SqlServer.DefaultSqlExecutionStrategy.Execute[TResult](Func`1 operation)
+   at System.Data.Entity.Core.Objects.ObjectContext.ExecuteStoreCommand(TransactionalBehavior transactionalBehavior, String commandText, Object[] parameters)
+   at System.Data.Entity.Internal.InternalContext.ExecuteSqlCommand(TransactionalBehavior transactionalBehavior, String sql, Object[] parameters)
+   at System.Data.Entity.Database.ExecuteSqlCommand(TransactionalBehavior transactionalBehavior, String sql, Object[] parameters)
+   at MyClinic.Core.BackupService.StartBackup(String backupPath, String mediaName, String name) in D:\MyProjects\MyClinic\myclinic\MyClinic.Core\Implement\BackupService.cs:line 32
+ClientConnectionId:440b9921-3d88-4aab-90b6-0f673659da67
+Error Number:1236,State:0,Class:20
+2016-10-13 14:02:24,981 [19] ERROR MyClinic.Core.PatientRepository - System.Data.Entity.Validation.DbEntityValidationException: Validation failed for one or more entities. See 'EntityValidationErrors' property for more details.
+   at System.Data.Entity.Internal.InternalContext.SaveChanges()
+   at System.Data.Entity.Internal.LazyInternalContext.SaveChanges()
+   at System.Data.Entity.DbContext.SaveChanges()
+   at MyClinic.Core.PatientRepository.Add(Patient patient) in D:\MyProjects\MyClinic\myclinic\MyClinic.Core\Implement\PatientRepository.cs:line 120
+2016-10-13 14:02:25,158 [19] ERROR MyClinic.Core.PatientRepository - System.Data.Entity.Validation.DbEntityValidationException: Validation failed for one or more entities. See 'EntityValidationErrors' property for more details.
+   at System.Data.Entity.Internal.InternalContext.SaveChanges()
+   at System.Data.Entity.Internal.LazyInternalContext.SaveChanges()
+   at System.Data.Entity.DbContext.SaveChanges()
+   at MyClinic.Core.PatientRepository.UpdateFieldChangedOnly(Patient originalPatient, Patient newPatient) in D:\MyProjects\MyClinic\myclinic\MyClinic.Core\Implement\PatientRepository.cs:line 134
+2016-10-13 14:09:27,169 [31] ERROR MyClinic.Core.PatientRepository - System.Data.Entity.Validation.DbEntityValidationException: Validation failed for one or more entities. See 'EntityValidationErrors' property for more details.
+   at System.Data.Entity.Internal.InternalContext.SaveChanges()
+   at System.Data.Entity.Internal.LazyInternalContext.SaveChanges()
+   at System.Data.Entity.DbContext.SaveChanges()
+   at MyClinic.Core.PatientRepository.Add(Patient patient) in D:\MyProjects\MyClinic\myclinic\MyClinic.Core\Implement\PatientRepository.cs:line 120
+2016-10-13 14:09:27,171 [31] ERROR MyClinic.Core.PatientRepository - System.Data.Entity.Validation.DbEntityValidationException: Validation failed for one or more entities. See 'EntityValidationErrors' property for more details.
+   at System.Data.Entity.Internal.InternalContext.SaveChanges()
+   at System.Data.Entity.Internal.LazyInternalContext.SaveChanges()
+   at System.Data.Entity.DbContext.SaveChanges()
+   at MyClinic.Core.PatientRepository.UpdateFieldChangedOnly(Patient originalPatient, Patient newPatient) in D:\MyProjects\MyClinic\myclinic\MyClinic.Core\Implement\PatientRepository.cs:line 134
+2016-10-19 14:52:59,546 [5] ERROR MyClinic.Controllers.LoginController - System.FormatException: The input is not a valid Base-64 string as it contains a non-base 64 character, more than two padding characters, or an illegal character among the padding characters. 
+   at System.Convert.FromBase64_Decode(Char* startInputPtr, Int32 inputLength, Byte* startDestPtr, Int32 destLength)
+   at System.Convert.FromBase64CharPtr(Char* inputPtr, Int32 inputLength)
+   at System.Convert.FromBase64String(String s)
+   at Utilities.Cryption.Decrypt(String cipherText, String passPhrase, String saltValue, String hashAlgorithm, Int32 passwordIterations, String initVector, Int32 keySize) in D:\MyProjects\MyClinic\myclinic\Utilities\Cryption.cs:line 202
+   at Utilities.Common.DecryptString(String encryptString) in D:\MyProjects\MyClinic\myclinic\Utilities\Common.cs:line 466
+   at MyClinic.Controllers.LoginController.Index() in D:\MyProjects\MyClinic\myclinic\MyClinic\MyClinic\Controllers\LoginController.cs:line 73
+2016-11-10 16:31:55,735 [5] ERROR MyClinic.Controllers.LoginController - System.Security.Cryptography.CryptographicException: Padding is invalid and cannot be removed.
+   at System.Security.Cryptography.RijndaelManagedTransform.DecryptData(Byte[] inputBuffer, Int32 inputOffset, Int32 inputCount, Byte[]& outputBuffer, Int32 outputOffset, PaddingMode paddingMode, Boolean fLast)
+   at System.Security.Cryptography.RijndaelManagedTransform.TransformFinalBlock(Byte[] inputBuffer, Int32 inputOffset, Int32 inputCount)
+   at System.Security.Cryptography.CryptoStream.Read(Byte[] buffer, Int32 offset, Int32 count)
+   at Utilities.Cryption.Decrypt(String cipherText, String passPhrase, String saltValue, String hashAlgorithm, Int32 passwordIterations, String initVector, Int32 keySize) in D:\MyProjects\MyClinic\myclinic\Utilities\Cryption.cs:line 247
+   at Utilities.Common.DecryptString(String encryptString) in D:\MyProjects\MyClinic\myclinic\Utilities\Common.cs:line 466
+   at MyClinic.Controllers.LoginController.Index() in D:\MyProjects\MyClinic\myclinic\MyClinic\MyClinic\Controllers\LoginController.cs:line 73
+2016-11-11 09:24:02,722 [6] ERROR MyClinic.Controllers.LoginController - System.Security.Cryptography.CryptographicException: Padding is invalid and cannot be removed.
+   at System.Security.Cryptography.RijndaelManagedTransform.DecryptData(Byte[] inputBuffer, Int32 inputOffset, Int32 inputCount, Byte[]& outputBuffer, Int32 outputOffset, PaddingMode paddingMode, Boolean fLast)
+   at System.Security.Cryptography.RijndaelManagedTransform.TransformFinalBlock(Byte[] inputBuffer, Int32 inputOffset, Int32 inputCount)
+   at System.Security.Cryptography.CryptoStream.Read(Byte[] buffer, Int32 offset, Int32 count)
+   at Utilities.Cryption.Decrypt(String cipherText, String passPhrase, String saltValue, String hashAlgorithm, Int32 passwordIterations, String initVector, Int32 keySize) in D:\MyProjects\MyClinic\myclinic\Utilities\Cryption.cs:line 247
+   at Utilities.Common.DecryptString(String encryptString) in D:\MyProjects\MyClinic\myclinic\Utilities\Common.cs:line 466
+   at MyClinic.Controllers.LoginController.Index() in D:\MyProjects\MyClinic\myclinic\MyClinic\MyClinic\Controllers\LoginController.cs:line 73
+2016-11-30 10:15:11,913 [6] ERROR MyClinic.Controllers.LoginController - System.Security.Cryptography.CryptographicException: Padding is invalid and cannot be removed.
+   at System.Security.Cryptography.RijndaelManagedTransform.DecryptData(Byte[] inputBuffer, Int32 inputOffset, Int32 inputCount, Byte[]& outputBuffer, Int32 outputOffset, PaddingMode paddingMode, Boolean fLast)
+   at System.Security.Cryptography.RijndaelManagedTransform.TransformFinalBlock(Byte[] inputBuffer, Int32 inputOffset, Int32 inputCount)
+   at System.Security.Cryptography.CryptoStream.Read(Byte[] buffer, Int32 offset, Int32 count)
+   at Utilities.Cryption.Decrypt(String cipherText, String passPhrase, String saltValue, String hashAlgorithm, Int32 passwordIterations, String initVector, Int32 keySize) in D:\MyProjects\MyClinic\myclinic\Utilities\Cryption.cs:line 247
+   at Utilities.Common.DecryptString(String encryptString) in D:\MyProjects\MyClinic\myclinic\Utilities\Common.cs:line 466
+   at MyClinic.Controllers.LoginController.Index() in D:\MyProjects\MyClinic\myclinic\MyClinic\MyClinic\Controllers\LoginController.cs:line 73
+2016-11-30 10:22:46,945 [11] ERROR MyClinic.Controllers.LoginController - System.Security.Cryptography.CryptographicException: Padding is invalid and cannot be removed.
+   at System.Security.Cryptography.RijndaelManagedTransform.DecryptData(Byte[] inputBuffer, Int32 inputOffset, Int32 inputCount, Byte[]& outputBuffer, Int32 outputOffset, PaddingMode paddingMode, Boolean fLast)
+   at System.Security.Cryptography.RijndaelManagedTransform.TransformFinalBlock(Byte[] inputBuffer, Int32 inputOffset, Int32 inputCount)
+   at System.Security.Cryptography.CryptoStream.Read(Byte[] buffer, Int32 offset, Int32 count)
+   at Utilities.Cryption.Decrypt(String cipherText, String passPhrase, String saltValue, String hashAlgorithm, Int32 passwordIterations, String initVector, Int32 keySize) in D:\MyProjects\MyClinic\myclinic\Utilities\Cryption.cs:line 247
+   at Utilities.Common.DecryptString(String encryptString) in D:\MyProjects\MyClinic\myclinic\Utilities\Common.cs:line 466
+   at MyClinic.Core.UserRepository.GetUserByUsernameAndPassword(String username, String password) in D:\MyProjects\MyClinic\myclinic\MyClinic.Core\Implement\UserRepository.cs:line 160
+   at MyClinic.Controllers.LoginController.Index(User user, Boolean Remember) in D:\MyProjects\MyClinic\myclinic\MyClinic\MyClinic\Controllers\LoginController.cs:line 180
+2016-11-30 10:23:13,075 [11] ERROR MyClinic.Controllers.LoginController - System.Security.Cryptography.CryptographicException: Padding is invalid and cannot be removed.
+   at System.Security.Cryptography.RijndaelManagedTransform.DecryptData(Byte[] inputBuffer, Int32 inputOffset, Int32 inputCount, Byte[]& outputBuffer, Int32 outputOffset, PaddingMode paddingMode, Boolean fLast)
+   at System.Security.Cryptography.RijndaelManagedTransform.TransformFinalBlock(Byte[] inputBuffer, Int32 inputOffset, Int32 inputCount)
+   at System.Security.Cryptography.CryptoStream.Read(Byte[] buffer, Int32 offset, Int32 count)
+   at Utilities.Cryption.Decrypt(String cipherText, String passPhrase, String saltValue, String hashAlgorithm, Int32 passwordIterations, String initVector, Int32 keySize) in D:\MyProjects\MyClinic\myclinic\Utilities\Cryption.cs:line 247
+   at Utilities.Common.DecryptString(String encryptString) in D:\MyProjects\MyClinic\myclinic\Utilities\Common.cs:line 466
+   at MyClinic.Core.UserRepository.GetUserByUsernameAndPassword(String username, String password) in D:\MyProjects\MyClinic\myclinic\MyClinic.Core\Implement\UserRepository.cs:line 160
+   at MyClinic.Controllers.LoginController.Index(User user, Boolean Remember) in D:\MyProjects\MyClinic\myclinic\MyClinic\MyClinic\Controllers\LoginController.cs:line 180
+2016-11-30 10:25:47,331 [22] ERROR MyClinic.Controllers.LoginController - System.Security.Cryptography.CryptographicException: Padding is invalid and cannot be removed.
+   at System.Security.Cryptography.RijndaelManagedTransform.DecryptData(Byte[] inputBuffer, Int32 inputOffset, Int32 inputCount, Byte[]& outputBuffer, Int32 outputOffset, PaddingMode paddingMode, Boolean fLast)
+   at System.Security.Cryptography.RijndaelManagedTransform.TransformFinalBlock(Byte[] inputBuffer, Int32 inputOffset, Int32 inputCount)
+   at System.Security.Cryptography.CryptoStream.Read(Byte[] buffer, Int32 offset, Int32 count)
+   at Utilities.Cryption.Decrypt(String cipherText, String passPhrase, String saltValue, String hashAlgorithm, Int32 passwordIterations, String initVector, Int32 keySize) in D:\MyProjects\MyClinic\myclinic\Utilities\Cryption.cs:line 247
+   at Utilities.Common.DecryptString(String encryptString) in D:\MyProjects\MyClinic\myclinic\Utilities\Common.cs:line 466
+   at MyClinic.Core.UserRepository.GetUserByUsernameAndPassword(String username, String password) in D:\MyProjects\MyClinic\myclinic\MyClinic.Core\Implement\UserRepository.cs:line 160
+   at MyClinic.Controllers.LoginController.Index(User user, Boolean Remember) in D:\MyProjects\MyClinic\myclinic\MyClinic\MyClinic\Controllers\LoginController.cs:line 180
+2016-11-30 10:28:23,012 [20] ERROR MyClinic.Controllers.LoginController - System.Security.Cryptography.CryptographicException: Padding is invalid and cannot be removed.
+   at System.Security.Cryptography.RijndaelManagedTransform.DecryptData(Byte[] inputBuffer, Int32 inputOffset, Int32 inputCount, Byte[]& outputBuffer, Int32 outputOffset, PaddingMode paddingMode, Boolean fLast)
+   at System.Security.Cryptography.RijndaelManagedTransform.TransformFinalBlock(Byte[] inputBuffer, Int32 inputOffset, Int32 inputCount)
+   at System.Security.Cryptography.CryptoStream.Read(Byte[] buffer, Int32 offset, Int32 count)
+   at Utilities.Cryption.Decrypt(String cipherText, String passPhrase, String saltValue, String hashAlgorithm, Int32 passwordIterations, String initVector, Int32 keySize) in D:\MyProjects\MyClinic\myclinic\Utilities\Cryption.cs:line 247
+   at Utilities.Common.DecryptString(String encryptString) in D:\MyProjects\MyClinic\myclinic\Utilities\Common.cs:line 466
+   at MyClinic.Core.UserRepository.GetUserByUsernameAndPassword(String username, String password) in D:\MyProjects\MyClinic\myclinic\MyClinic.Core\Implement\UserRepository.cs:line 160
+   at MyClinic.Controllers.LoginController.Index(User user, Boolean Remember) in D:\MyProjects\MyClinic\myclinic\MyClinic\MyClinic\Controllers\LoginController.cs:line 180
+2016-11-30 10:28:53,785 [21] ERROR MyClinic.Controllers.LoginController - System.Security.Cryptography.CryptographicException: Padding is invalid and cannot be removed.
+   at System.Security.Cryptography.RijndaelManagedTransform.DecryptData(Byte[] inputBuffer, Int32 inputOffset, Int32 inputCount, Byte[]& outputBuffer, Int32 outputOffset, PaddingMode paddingMode, Boolean fLast)
+   at System.Security.Cryptography.RijndaelManagedTransform.TransformFinalBlock(Byte[] inputBuffer, Int32 inputOffset, Int32 inputCount)
+   at System.Security.Cryptography.CryptoStream.Read(Byte[] buffer, Int32 offset, Int32 count)
+   at Utilities.Cryption.Decrypt(String cipherText, String passPhrase, String saltValue, String hashAlgorithm, Int32 passwordIterations, String initVector, Int32 keySize) in D:\MyProjects\MyClinic\myclinic\Utilities\Cryption.cs:line 247
+   at Utilities.Common.DecryptString(String encryptString) in D:\MyProjects\MyClinic\myclinic\Utilities\Common.cs:line 466
+   at MyClinic.Core.UserRepository.GetUserByUsernameAndPassword(String username, String password) in D:\MyProjects\MyClinic\myclinic\MyClinic.Core\Implement\UserRepository.cs:line 160
+   at MyClinic.Controllers.LoginController.Index(User user, Boolean Remember) in D:\MyProjects\MyClinic\myclinic\MyClinic\MyClinic\Controllers\LoginController.cs:line 180
+2016-11-30 10:29:11,038 [19] ERROR MyClinic.Controllers.LoginController - System.Security.Cryptography.CryptographicException: Padding is invalid and cannot be removed.
+   at System.Security.Cryptography.RijndaelManagedTransform.DecryptData(Byte[] inputBuffer, Int32 inputOffset, Int32 inputCount, Byte[]& outputBuffer, Int32 outputOffset, PaddingMode paddingMode, Boolean fLast)
+   at System.Security.Cryptography.RijndaelManagedTransform.TransformFinalBlock(Byte[] inputBuffer, Int32 inputOffset, Int32 inputCount)
+   at System.Security.Cryptography.CryptoStream.Read(Byte[] buffer, Int32 offset, Int32 count)
+   at Utilities.Cryption.Decrypt(String cipherText, String passPhrase, String saltValue, String hashAlgorithm, Int32 passwordIterations, String initVector, Int32 keySize) in D:\MyProjects\MyClinic\myclinic\Utilities\Cryption.cs:line 247
+   at Utilities.Common.DecryptString(String encryptString) in D:\MyProjects\MyClinic\myclinic\Utilities\Common.cs:line 466
+   at MyClinic.Core.UserRepository.GetUserByUsernameAndPassword(String username, String password) in D:\MyProjects\MyClinic\myclinic\MyClinic.Core\Implement\UserRepository.cs:line 160
+   at MyClinic.Controllers.LoginController.Index(User user, Boolean Remember) in D:\MyProjects\MyClinic\myclinic\MyClinic\MyClinic\Controllers\LoginController.cs:line 180
+2016-11-30 10:29:29,935 [21] ERROR MyClinic.Controllers.LoginController - System.Security.Cryptography.CryptographicException: Padding is invalid and cannot be removed.
+   at System.Security.Cryptography.RijndaelManagedTransform.DecryptData(Byte[] inputBuffer, Int32 inputOffset, Int32 inputCount, Byte[]& outputBuffer, Int32 outputOffset, PaddingMode paddingMode, Boolean fLast)
+   at System.Security.Cryptography.RijndaelManagedTransform.TransformFinalBlock(Byte[] inputBuffer, Int32 inputOffset, Int32 inputCount)
+   at System.Security.Cryptography.CryptoStream.Read(Byte[] buffer, Int32 offset, Int32 count)
+   at Utilities.Cryption.Decrypt(String cipherText, String passPhrase, String saltValue, String hashAlgorithm, Int32 passwordIterations, String initVector, Int32 keySize) in D:\MyProjects\MyClinic\myclinic\Utilities\Cryption.cs:line 247
+   at Utilities.Common.DecryptString(String encryptString) in D:\MyProjects\MyClinic\myclinic\Utilities\Common.cs:line 466
+   at MyClinic.Core.UserRepository.GetUserByUsernameAndPassword(String username, String password) in D:\MyProjects\MyClinic\myclinic\MyClinic.Core\Implement\UserRepository.cs:line 160
+   at MyClinic.Controllers.LoginController.Index(User user, Boolean Remember) in D:\MyProjects\MyClinic\myclinic\MyClinic\MyClinic\Controllers\LoginController.cs:line 180
+2016-11-30 10:30:49,151 [21] ERROR MyClinic.Controllers.LoginController - System.Security.Cryptography.CryptographicException: Padding is invalid and cannot be removed.
+   at System.Security.Cryptography.RijndaelManagedTransform.DecryptData(Byte[] inputBuffer, Int32 inputOffset, Int32 inputCount, Byte[]& outputBuffer, Int32 outputOffset, PaddingMode paddingMode, Boolean fLast)
+   at System.Security.Cryptography.RijndaelManagedTransform.TransformFinalBlock(Byte[] inputBuffer, Int32 inputOffset, Int32 inputCount)
+   at System.Security.Cryptography.CryptoStream.Read(Byte[] buffer, Int32 offset, Int32 count)
+   at Utilities.Cryption.Decrypt(String cipherText, String passPhrase, String saltValue, String hashAlgorithm, Int32 passwordIterations, String initVector, Int32 keySize) in D:\MyProjects\MyClinic\myclinic\Utilities\Cryption.cs:line 247
+   at Utilities.Common.DecryptString(String encryptString) in D:\MyProjects\MyClinic\myclinic\Utilities\Common.cs:line 466
+   at MyClinic.Core.UserRepository.GetUserByUsernameAndPassword(String username, String password) in D:\MyProjects\MyClinic\myclinic\MyClinic.Core\Implement\UserRepository.cs:line 160
+   at MyClinic.Controllers.LoginController.Index(User user, Boolean Remember) in D:\MyProjects\MyClinic\myclinic\MyClinic\MyClinic\Controllers\LoginController.cs:line 180
+2016-11-30 10:33:15,517 [27] ERROR MyClinic.Controllers.LoginController - System.Security.Cryptography.CryptographicException: Padding is invalid and cannot be removed.
+   at System.Security.Cryptography.RijndaelManagedTransform.DecryptData(Byte[] inputBuffer, Int32 inputOffset, Int32 inputCount, Byte[]& outputBuffer, Int32 outputOffset, PaddingMode paddingMode, Boolean fLast)
+   at System.Security.Cryptography.RijndaelManagedTransform.TransformFinalBlock(Byte[] inputBuffer, Int32 inputOffset, Int32 inputCount)
+   at System.Security.Cryptography.CryptoStream.Read(Byte[] buffer, Int32 offset, Int32 count)
+   at Utilities.Cryption.Decrypt(String cipherText, String passPhrase, String saltValue, String hashAlgorithm, Int32 passwordIterations, String initVector, Int32 keySize) in D:\MyProjects\MyClinic\myclinic\Utilities\Cryption.cs:line 247
+   at Utilities.Common.DecryptString(String encryptString) in D:\MyProjects\MyClinic\myclinic\Utilities\Common.cs:line 466
+   at MyClinic.Core.UserRepository.GetUserByUsernameAndPassword(String username, String password) in D:\MyProjects\MyClinic\myclinic\MyClinic.Core\Implement\UserRepository.cs:line 159
+   at MyClinic.Controllers.LoginController.Index(User user, Boolean Remember) in D:\MyProjects\MyClinic\myclinic\MyClinic\MyClinic\Controllers\LoginController.cs:line 180
+2016-11-30 10:53:44,308 [22] ERROR MyClinic.Controllers.LoginController - System.Security.Cryptography.CryptographicException: Padding is invalid and cannot be removed.
+   at System.Security.Cryptography.RijndaelManagedTransform.DecryptData(Byte[] inputBuffer, Int32 inputOffset, Int32 inputCount, Byte[]& outputBuffer, Int32 outputOffset, PaddingMode paddingMode, Boolean fLast)
+   at System.Security.Cryptography.RijndaelManagedTransform.TransformFinalBlock(Byte[] inputBuffer, Int32 inputOffset, Int32 inputCount)
+   at System.Security.Cryptography.CryptoStream.Read(Byte[] buffer, Int32 offset, Int32 count)
+   at Utilities.Cryption.Decrypt(String cipherText, String passPhrase, String saltValue, String hashAlgorithm, Int32 passwordIterations, String initVector, Int32 keySize) in D:\MyProjects\MyClinic\myclinic\Utilities\Cryption.cs:line 247
+   at Utilities.Common.DecryptString(String encryptString) in D:\MyProjects\MyClinic\myclinic\Utilities\Common.cs:line 466
+   at MyClinic.Core.UserRepository.GetUserByUsernameAndPassword(String username, String password) in D:\MyProjects\MyClinic\myclinic\MyClinic.Core\Implement\UserRepository.cs:line 160
+   at MyClinic.Controllers.LoginController.Index() in D:\MyProjects\MyClinic\myclinic\MyClinic\MyClinic\Controllers\LoginController.cs:line 76
+2016-12-01 15:00:26,669 [5] ERROR MyClinic.Controllers.LoginController - System.Security.Cryptography.CryptographicException: Padding is invalid and cannot be removed.
+   at System.Security.Cryptography.RijndaelManagedTransform.DecryptData(Byte[] inputBuffer, Int32 inputOffset, Int32 inputCount, Byte[]& outputBuffer, Int32 outputOffset, PaddingMode paddingMode, Boolean fLast)
+   at System.Security.Cryptography.RijndaelManagedTransform.TransformFinalBlock(Byte[] inputBuffer, Int32 inputOffset, Int32 inputCount)
+   at System.Security.Cryptography.CryptoStream.Read(Byte[] buffer, Int32 offset, Int32 count)
+   at Utilities.Cryption.Decrypt(String cipherText, String passPhrase, String saltValue, String hashAlgorithm, Int32 passwordIterations, String initVector, Int32 keySize) in D:\MyProjects\MyClinic\myclinic\Utilities\Cryption.cs:line 247
+   at Utilities.Common.DecryptString(String encryptString) in D:\MyProjects\MyClinic\myclinic\Utilities\Common.cs:line 466
+   at MyClinic.Core.UserRepository.GetUserByUsernameAndPassword(String username, String password) in D:\MyProjects\MyClinic\myclinic\MyClinic.Core\Implement\UserRepository.cs:line 160
+   at MyClinic.Controllers.LoginController.Index() in D:\MyProjects\MyClinic\myclinic\MyClinic\MyClinic\Controllers\LoginController.cs:line 76
+2016-12-01 15:00:54,289 [12] ERROR MyClinic.Controllers.LoginController - System.Security.Cryptography.CryptographicException: Padding is invalid and cannot be removed.
+   at System.Security.Cryptography.RijndaelManagedTransform.DecryptData(Byte[] inputBuffer, Int32 inputOffset, Int32 inputCount, Byte[]& outputBuffer, Int32 outputOffset, PaddingMode paddingMode, Boolean fLast)
+   at System.Security.Cryptography.RijndaelManagedTransform.TransformFinalBlock(Byte[] inputBuffer, Int32 inputOffset, Int32 inputCount)
+   at System.Security.Cryptography.CryptoStream.Read(Byte[] buffer, Int32 offset, Int32 count)
+   at Utilities.Cryption.Decrypt(String cipherText, String passPhrase, String saltValue, String hashAlgorithm, Int32 passwordIterations, String initVector, Int32 keySize) in D:\MyProjects\MyClinic\myclinic\Utilities\Cryption.cs:line 247
+   at Utilities.Common.DecryptString(String encryptString) in D:\MyProjects\MyClinic\myclinic\Utilities\Common.cs:line 466
+   at MyClinic.Core.UserRepository.GetUserByUsernameAndPassword(String username, String password) in D:\MyProjects\MyClinic\myclinic\MyClinic.Core\Implement\UserRepository.cs:line 160
+   at MyClinic.Controllers.LoginController.Index(User user, Boolean Remember) in D:\MyProjects\MyClinic\myclinic\MyClinic\MyClinic\Controllers\LoginController.cs:line 180
+2016-12-01 15:01:06,729 [5] ERROR MyClinic.Controllers.LoginController - System.Security.Cryptography.CryptographicException: Padding is invalid and cannot be removed.
+   at System.Security.Cryptography.RijndaelManagedTransform.DecryptData(Byte[] inputBuffer, Int32 inputOffset, Int32 inputCount, Byte[]& outputBuffer, Int32 outputOffset, PaddingMode paddingMode, Boolean fLast)
+   at System.Security.Cryptography.RijndaelManagedTransform.TransformFinalBlock(Byte[] inputBuffer, Int32 inputOffset, Int32 inputCount)
+   at System.Security.Cryptography.CryptoStream.Read(Byte[] buffer, Int32 offset, Int32 count)
+   at Utilities.Cryption.Decrypt(String cipherText, String passPhrase, String saltValue, String hashAlgorithm, Int32 passwordIterations, String initVector, Int32 keySize) in D:\MyProjects\MyClinic\myclinic\Utilities\Cryption.cs:line 247
+   at Utilities.Common.DecryptString(String encryptString) in D:\MyProjects\MyClinic\myclinic\Utilities\Common.cs:line 466
+   at MyClinic.Core.UserRepository.GetUserByUsernameAndPassword(String username, String password) in D:\MyProjects\MyClinic\myclinic\MyClinic.Core\Implement\UserRepository.cs:line 160
+   at MyClinic.Controllers.LoginController.Index(User user, Boolean Remember) in D:\MyProjects\MyClinic\myclinic\MyClinic\MyClinic\Controllers\LoginController.cs:line 180
+2016-12-01 15:11:52,898 [6] ERROR MyClinic.Controllers.LoginController - System.Security.Cryptography.CryptographicException: Padding is invalid and cannot be removed.
+   at System.Security.Cryptography.RijndaelManagedTransform.DecryptData(Byte[] inputBuffer, Int32 inputOffset, Int32 inputCount, Byte[]& outputBuffer, Int32 outputOffset, PaddingMode paddingMode, Boolean fLast)
+   at System.Security.Cryptography.RijndaelManagedTransform.TransformFinalBlock(Byte[] inputBuffer, Int32 inputOffset, Int32 inputCount)
+   at System.Security.Cryptography.CryptoStream.Read(Byte[] buffer, Int32 offset, Int32 count)
+   at Utilities.Cryption.Decrypt(String cipherText, String passPhrase, String saltValue, String hashAlgorithm, Int32 passwordIterations, String initVector, Int32 keySize) in D:\MyProjects\MyClinic\myclinic\Utilities\Cryption.cs:line 247
+   at Utilities.Common.DecryptString(String encryptString) in D:\MyProjects\MyClinic\myclinic\Utilities\Common.cs:line 466
+   at MyClinic.Controllers.LoginController.Index() in D:\MyProjects\MyClinic\myclinic\MyClinic\MyClinic\Controllers\LoginController.cs:line 73
+2016-12-13 10:44:14,283 [6] ERROR MyClinic.Controllers.LoginController - System.Security.Cryptography.CryptographicException: Padding is invalid and cannot be removed.
+   at System.Security.Cryptography.RijndaelManagedTransform.DecryptData(Byte[] inputBuffer, Int32 inputOffset, Int32 inputCount, Byte[]& outputBuffer, Int32 outputOffset, PaddingMode paddingMode, Boolean fLast)
+   at System.Security.Cryptography.RijndaelManagedTransform.TransformFinalBlock(Byte[] inputBuffer, Int32 inputOffset, Int32 inputCount)
+   at System.Security.Cryptography.CryptoStream.Read(Byte[] buffer, Int32 offset, Int32 count)
+   at Utilities.Cryption.Decrypt(String cipherText, String passPhrase, String saltValue, String hashAlgorithm, Int32 passwordIterations, String initVector, Int32 keySize) in D:\MyProjects\MyClinic\myclinic\Utilities\Cryption.cs:line 247
+   at Utilities.Common.DecryptString(String encryptString) in D:\MyProjects\MyClinic\myclinic\Utilities\Common.cs:line 466
+   at MyClinic.Controllers.LoginController.Index() in D:\MyProjects\MyClinic\myclinic\MyClinic\MyClinic\Controllers\LoginController.cs:line 73
+2016-12-13 10:46:14,241 [6] ERROR MyClinic.Controllers.LoginController - System.Security.Cryptography.CryptographicException: Padding is invalid and cannot be removed.
+   at System.Security.Cryptography.RijndaelManagedTransform.DecryptData(Byte[] inputBuffer, Int32 inputOffset, Int32 inputCount, Byte[]& outputBuffer, Int32 outputOffset, PaddingMode paddingMode, Boolean fLast)
+   at System.Security.Cryptography.RijndaelManagedTransform.TransformFinalBlock(Byte[] inputBuffer, Int32 inputOffset, Int32 inputCount)
+   at System.Security.Cryptography.CryptoStream.Read(Byte[] buffer, Int32 offset, Int32 count)
+   at Utilities.Cryption.Decrypt(String cipherText, String passPhrase, String saltValue, String hashAlgorithm, Int32 passwordIterations, String initVector, Int32 keySize) in D:\MyProjects\MyClinic\myclinic\Utilities\Cryption.cs:line 247
+   at Utilities.Common.DecryptString(String encryptString) in D:\MyProjects\MyClinic\myclinic\Utilities\Common.cs:line 466
+   at MyClinic.Core.UserRepository.GetUserByUsernameAndPassword(String username, String password) in D:\MyProjects\MyClinic\myclinic\MyClinic.Core\Implement\UserRepository.cs:line 160
+   at MyClinic.Controllers.LoginController.Index(User user, Boolean Remember) in D:\MyProjects\MyClinic\myclinic\MyClinic\MyClinic\Controllers\LoginController.cs:line 180
+2016-12-13 17:15:05,094 [6] ERROR MyClinic.Controllers.LoginController - System.Security.Cryptography.CryptographicException: Padding is invalid and cannot be removed.
+   at System.Security.Cryptography.RijndaelManagedTransform.DecryptData(Byte[] inputBuffer, Int32 inputOffset, Int32 inputCount, Byte[]& outputBuffer, Int32 outputOffset, PaddingMode paddingMode, Boolean fLast)
+   at System.Security.Cryptography.RijndaelManagedTransform.TransformFinalBlock(Byte[] inputBuffer, Int32 inputOffset, Int32 inputCount)
+   at System.Security.Cryptography.CryptoStream.Read(Byte[] buffer, Int32 offset, Int32 count)
+   at Utilities.Cryption.Decrypt(String cipherText, String passPhrase, String saltValue, String hashAlgorithm, Int32 passwordIterations, String initVector, Int32 keySize) in D:\MyProjects\MyClinic\myclinic\Utilities\Cryption.cs:line 247
+   at Utilities.Common.DecryptString(String encryptString) in D:\MyProjects\MyClinic\myclinic\Utilities\Common.cs:line 466
+   at MyClinic.Controllers.LoginController.Index() in D:\MyProjects\MyClinic\myclinic\MyClinic\MyClinic\Controllers\LoginController.cs:line 73
+2016-12-15 09:40:30,634 [6] ERROR MyClinic.Controllers.LoginController - System.Security.Cryptography.CryptographicException: Padding is invalid and cannot be removed.
+   at System.Security.Cryptography.RijndaelManagedTransform.DecryptData(Byte[] inputBuffer, Int32 inputOffset, Int32 inputCount, Byte[]& outputBuffer, Int32 outputOffset, PaddingMode paddingMode, Boolean fLast)
+   at System.Security.Cryptography.RijndaelManagedTransform.TransformFinalBlock(Byte[] inputBuffer, Int32 inputOffset, Int32 inputCount)
+   at System.Security.Cryptography.CryptoStream.Read(Byte[] buffer, Int32 offset, Int32 count)
+   at Utilities.Cryption.Decrypt(String cipherText, String passPhrase, String saltValue, String hashAlgorithm, Int32 passwordIterations, String initVector, Int32 keySize) in D:\MyProjects\MyClinic\myclinic\Utilities\Cryption.cs:line 247
+   at Utilities.Common.DecryptString(String encryptString) in D:\MyProjects\MyClinic\myclinic\Utilities\Common.cs:line 466
+   at MyClinic.Controllers.LoginController.Index() in D:\MyProjects\MyClinic\myclinic\MyClinic\MyClinic\Controllers\LoginController.cs:line 73
+2016-12-15 16:14:14,780 [6] ERROR MyClinic.Controllers.LoginController - System.Security.Cryptography.CryptographicException: Padding is invalid and cannot be removed.
+   at System.Security.Cryptography.RijndaelManagedTransform.DecryptData(Byte[] inputBuffer, Int32 inputOffset, Int32 inputCount, Byte[]& outputBuffer, Int32 outputOffset, PaddingMode paddingMode, Boolean fLast)
+   at System.Security.Cryptography.RijndaelManagedTransform.TransformFinalBlock(Byte[] inputBuffer, Int32 inputOffset, Int32 inputCount)
+   at System.Security.Cryptography.CryptoStream.Read(Byte[] buffer, Int32 offset, Int32 count)
+   at Utilities.Cryption.Decrypt(String cipherText, String passPhrase, String saltValue, String hashAlgorithm, Int32 passwordIterations, String initVector, Int32 keySize) in D:\MyProjects\MyClinic\myclinic\Utilities\Cryption.cs:line 247
+   at Utilities.Common.DecryptString(String encryptString) in D:\MyProjects\MyClinic\myclinic\Utilities\Common.cs:line 466
+   at MyClinic.Controllers.LoginController.Index() in D:\MyProjects\MyClinic\myclinic\MyClinic\MyClinic\Controllers\LoginController.cs:line 73
+2016-12-15 17:24:29,896 [95] ERROR MyClinic.Controllers.LoginController - System.Security.Cryptography.CryptographicException: Padding is invalid and cannot be removed.
+   at System.Security.Cryptography.RijndaelManagedTransform.DecryptData(Byte[] inputBuffer, Int32 inputOffset, Int32 inputCount, Byte[]& outputBuffer, Int32 outputOffset, PaddingMode paddingMode, Boolean fLast)
+   at System.Security.Cryptography.RijndaelManagedTransform.TransformFinalBlock(Byte[] inputBuffer, Int32 inputOffset, Int32 inputCount)
+   at System.Security.Cryptography.CryptoStream.Read(Byte[] buffer, Int32 offset, Int32 count)
+   at Utilities.Cryption.Decrypt(String cipherText, String passPhrase, String saltValue, String hashAlgorithm, Int32 passwordIterations, String initVector, Int32 keySize) in D:\MyProjects\MyClinic\myclinic\Utilities\Cryption.cs:line 247
+   at Utilities.Common.DecryptString(String encryptString) in D:\MyProjects\MyClinic\myclinic\Utilities\Common.cs:line 466
+   at MyClinic.Controllers.LoginController.Index() in D:\MyProjects\MyClinic\myclinic\MyClinic\MyClinic\Controllers\LoginController.cs:line 73
+2016-12-17 09:14:22,865 [6] ERROR MyClinic.Controllers.LoginController - System.Security.Cryptography.CryptographicException: Padding is invalid and cannot be removed.
+   at System.Security.Cryptography.RijndaelManagedTransform.DecryptData(Byte[] inputBuffer, Int32 inputOffset, Int32 inputCount, Byte[]& outputBuffer, Int32 outputOffset, PaddingMode paddingMode, Boolean fLast)
+   at System.Security.Cryptography.RijndaelManagedTransform.TransformFinalBlock(Byte[] inputBuffer, Int32 inputOffset, Int32 inputCount)
+   at System.Security.Cryptography.CryptoStream.Read(Byte[] buffer, Int32 offset, Int32 count)
+   at Utilities.Cryption.Decrypt(String cipherText, String passPhrase, String saltValue, String hashAlgorithm, Int32 passwordIterations, String initVector, Int32 keySize) in D:\MyProjects\MyClinic\myclinic\Utilities\Cryption.cs:line 247
+   at Utilities.Common.DecryptString(String encryptString) in D:\MyProjects\MyClinic\myclinic\Utilities\Common.cs:line 466
+   at MyClinic.Controllers.LoginController.Index() in D:\MyProjects\MyClinic\myclinic\MyClinic\MyClinic\Controllers\LoginController.cs:line 73
+2016-12-17 11:01:05,970 [6] ERROR MyClinic.Controllers.LoginController - System.Security.Cryptography.CryptographicException: Padding is invalid and cannot be removed.
+   at System.Security.Cryptography.RijndaelManagedTransform.DecryptData(Byte[] inputBuffer, Int32 inputOffset, Int32 inputCount, Byte[]& outputBuffer, Int32 outputOffset, PaddingMode paddingMode, Boolean fLast)
+   at System.Security.Cryptography.RijndaelManagedTransform.TransformFinalBlock(Byte[] inputBuffer, Int32 inputOffset, Int32 inputCount)
+   at System.Security.Cryptography.CryptoStream.Read(Byte[] buffer, Int32 offset, Int32 count)
+   at Utilities.Cryption.Decrypt(String cipherText, String passPhrase, String saltValue, String hashAlgorithm, Int32 passwordIterations, String initVector, Int32 keySize) in D:\MyProjects\MyClinic\myclinic\Utilities\Cryption.cs:line 247
+   at Utilities.Common.DecryptString(String encryptString) in D:\MyProjects\MyClinic\myclinic\Utilities\Common.cs:line 466
+   at MyClinic.Controllers.LoginController.Index() in D:\MyProjects\MyClinic\myclinic\MyClinic\MyClinic\Controllers\LoginController.cs:line 73
+2016-12-17 14:50:58,069 [5] ERROR MyClinic.Controllers.LoginController - System.Security.Cryptography.CryptographicException: Padding is invalid and cannot be removed.
+   at System.Security.Cryptography.RijndaelManagedTransform.DecryptData(Byte[] inputBuffer, Int32 inputOffset, Int32 inputCount, Byte[]& outputBuffer, Int32 outputOffset, PaddingMode paddingMode, Boolean fLast)
+   at System.Security.Cryptography.RijndaelManagedTransform.TransformFinalBlock(Byte[] inputBuffer, Int32 inputOffset, Int32 inputCount)
+   at System.Security.Cryptography.CryptoStream.Read(Byte[] buffer, Int32 offset, Int32 count)
+   at Utilities.Cryption.Decrypt(String cipherText, String passPhrase, String saltValue, String hashAlgorithm, Int32 passwordIterations, String initVector, Int32 keySize) in D:\MyProjects\MyClinic\myclinic\Utilities\Cryption.cs:line 247
+   at Utilities.Common.DecryptString(String encryptString) in D:\MyProjects\MyClinic\myclinic\Utilities\Common.cs:line 466
+   at MyClinic.Controllers.LoginController.Index() in D:\MyProjects\MyClinic\myclinic\MyClinic\MyClinic\Controllers\LoginController.cs:line 73
+2016-12-22 10:32:06,921 [6] ERROR MyClinic.Controllers.LoginController - System.Security.Cryptography.CryptographicException: Padding is invalid and cannot be removed.
+   at System.Security.Cryptography.RijndaelManagedTransform.DecryptData(Byte[] inputBuffer, Int32 inputOffset, Int32 inputCount, Byte[]& outputBuffer, Int32 outputOffset, PaddingMode paddingMode, Boolean fLast)
+   at System.Security.Cryptography.RijndaelManagedTransform.TransformFinalBlock(Byte[] inputBuffer, Int32 inputOffset, Int32 inputCount)
+   at System.Security.Cryptography.CryptoStream.Read(Byte[] buffer, Int32 offset, Int32 count)
+   at Utilities.Cryption.Decrypt(String cipherText, String passPhrase, String saltValue, String hashAlgorithm, Int32 passwordIterations, String initVector, Int32 keySize) in D:\MyProjects\MyClinic\myclinic\Utilities\Cryption.cs:line 247
+   at Utilities.Common.DecryptString(String encryptString) in D:\MyProjects\MyClinic\myclinic\Utilities\Common.cs:line 466
+   at MyClinic.Controllers.LoginController.Index() in D:\MyProjects\MyClinic\myclinic\MyClinic\MyClinic\Controllers\LoginController.cs:line 73
+2016-12-22 10:32:40,083 [5] ERROR MyClinic.Controllers.LoginController - System.Security.Cryptography.CryptographicException: Padding is invalid and cannot be removed.
+   at System.Security.Cryptography.RijndaelManagedTransform.DecryptData(Byte[] inputBuffer, Int32 inputOffset, Int32 inputCount, Byte[]& outputBuffer, Int32 outputOffset, PaddingMode paddingMode, Boolean fLast)
+   at System.Security.Cryptography.RijndaelManagedTransform.TransformFinalBlock(Byte[] inputBuffer, Int32 inputOffset, Int32 inputCount)
+   at System.Security.Cryptography.CryptoStream.Read(Byte[] buffer, Int32 offset, Int32 count)
+   at Utilities.Cryption.Decrypt(String cipherText, String passPhrase, String saltValue, String hashAlgorithm, Int32 passwordIterations, String initVector, Int32 keySize) in D:\MyProjects\MyClinic\myclinic\Utilities\Cryption.cs:line 247
+   at Utilities.Common.DecryptString(String encryptString) in D:\MyProjects\MyClinic\myclinic\Utilities\Common.cs:line 466
+   at MyClinic.Core.UserRepository.GetUserByUsernameAndPassword(String username, String password) in D:\MyProjects\MyClinic\myclinic\MyClinic.Core\Implement\UserRepository.cs:line 160
+   at MyClinic.Controllers.LoginController.Index(User user, Boolean Remember) in D:\MyProjects\MyClinic\myclinic\MyClinic\MyClinic\Controllers\LoginController.cs:line 180
+2016-12-22 10:32:49,131 [5] ERROR MyClinic.Controllers.LoginController - System.Security.Cryptography.CryptographicException: Padding is invalid and cannot be removed.
+   at System.Security.Cryptography.RijndaelManagedTransform.DecryptData(Byte[] inputBuffer, Int32 inputOffset, Int32 inputCount, Byte[]& outputBuffer, Int32 outputOffset, PaddingMode paddingMode, Boolean fLast)
+   at System.Security.Cryptography.RijndaelManagedTransform.TransformFinalBlock(Byte[] inputBuffer, Int32 inputOffset, Int32 inputCount)
+   at System.Security.Cryptography.CryptoStream.Read(Byte[] buffer, Int32 offset, Int32 count)
+   at Utilities.Cryption.Decrypt(String cipherText, String passPhrase, String saltValue, String hashAlgorithm, Int32 passwordIterations, String initVector, Int32 keySize) in D:\MyProjects\MyClinic\myclinic\Utilities\Cryption.cs:line 247
+   at Utilities.Common.DecryptString(String encryptString) in D:\MyProjects\MyClinic\myclinic\Utilities\Common.cs:line 466
+   at MyClinic.Core.UserRepository.GetUserByUsernameAndPassword(String username, String password) in D:\MyProjects\MyClinic\myclinic\MyClinic.Core\Implement\UserRepository.cs:line 160
+   at MyClinic.Controllers.LoginController.Index(User user, Boolean Remember) in D:\MyProjects\MyClinic\myclinic\MyClinic\MyClinic\Controllers\LoginController.cs:line 180
+2016-12-22 10:33:08,229 [6] ERROR MyClinic.Controllers.LoginController - System.Security.Cryptography.CryptographicException: Padding is invalid and cannot be removed.
+   at System.Security.Cryptography.RijndaelManagedTransform.DecryptData(Byte[] inputBuffer, Int32 inputOffset, Int32 inputCount, Byte[]& outputBuffer, Int32 outputOffset, PaddingMode paddingMode, Boolean fLast)
+   at System.Security.Cryptography.RijndaelManagedTransform.TransformFinalBlock(Byte[] inputBuffer, Int32 inputOffset, Int32 inputCount)
+   at System.Security.Cryptography.CryptoStream.Read(Byte[] buffer, Int32 offset, Int32 count)
+   at Utilities.Cryption.Decrypt(String cipherText, String passPhrase, String saltValue, String hashAlgorithm, Int32 passwordIterations, String initVector, Int32 keySize) in D:\MyProjects\MyClinic\myclinic\Utilities\Cryption.cs:line 247
+   at Utilities.Common.DecryptString(String encryptString) in D:\MyProjects\MyClinic\myclinic\Utilities\Common.cs:line 466
+   at MyClinic.Core.UserRepository.GetUserByUsernameAndPassword(String username, String password) in D:\MyProjects\MyClinic\myclinic\MyClinic.Core\Implement\UserRepository.cs:line 160
+   at MyClinic.Controllers.LoginController.Index(User user, Boolean Remember) in D:\MyProjects\MyClinic\myclinic\MyClinic\MyClinic\Controllers\LoginController.cs:line 180
+2016-12-22 13:24:24,699 [6] ERROR MyClinic.Controllers.LoginController - System.Security.Cryptography.CryptographicException: Padding is invalid and cannot be removed.
+   at System.Security.Cryptography.RijndaelManagedTransform.DecryptData(Byte[] inputBuffer, Int32 inputOffset, Int32 inputCount, Byte[]& outputBuffer, Int32 outputOffset, PaddingMode paddingMode, Boolean fLast)
+   at System.Security.Cryptography.RijndaelManagedTransform.TransformFinalBlock(Byte[] inputBuffer, Int32 inputOffset, Int32 inputCount)
+   at System.Security.Cryptography.CryptoStream.Read(Byte[] buffer, Int32 offset, Int32 count)
+   at Utilities.Cryption.Decrypt(String cipherText, String passPhrase, String saltValue, String hashAlgorithm, Int32 passwordIterations, String initVector, Int32 keySize) in D:\MyProjects\MyClinic\myclinic\Utilities\Cryption.cs:line 247
+   at Utilities.Common.DecryptString(String encryptString) in D:\MyProjects\MyClinic\myclinic\Utilities\Common.cs:line 466
+   at MyClinic.Controllers.LoginController.Index() in D:\MyProjects\MyClinic\myclinic\MyClinic\MyClinic\Controllers\LoginController.cs:line 73
+2016-12-22 13:24:30,158 [6] ERROR MyClinic.Controllers.LoginController - System.Security.Cryptography.CryptographicException: Padding is invalid and cannot be removed.
+   at System.Security.Cryptography.RijndaelManagedTransform.DecryptData(Byte[] inputBuffer, Int32 inputOffset, Int32 inputCount, Byte[]& outputBuffer, Int32 outputOffset, PaddingMode paddingMode, Boolean fLast)
+   at System.Security.Cryptography.RijndaelManagedTransform.TransformFinalBlock(Byte[] inputBuffer, Int32 inputOffset, Int32 inputCount)
+   at System.Security.Cryptography.CryptoStream.Read(Byte[] buffer, Int32 offset, Int32 count)
+   at Utilities.Cryption.Decrypt(String cipherText, String passPhrase, String saltValue, String hashAlgorithm, Int32 passwordIterations, String initVector, Int32 keySize) in D:\MyProjects\MyClinic\myclinic\Utilities\Cryption.cs:line 247
+   at Utilities.Common.DecryptString(String encryptString) in D:\MyProjects\MyClinic\myclinic\Utilities\Common.cs:line 466
+   at MyClinic.Controllers.LoginController.Index() in D:\MyProjects\MyClinic\myclinic\MyClinic\MyClinic\Controllers\LoginController.cs:line 73
+2016-12-22 13:24:31,274 [5] ERROR MyClinic.Controllers.LoginController - System.Security.Cryptography.CryptographicException: Padding is invalid and cannot be removed.
+   at System.Security.Cryptography.RijndaelManagedTransform.DecryptData(Byte[] inputBuffer, Int32 inputOffset, Int32 inputCount, Byte[]& outputBuffer, Int32 outputOffset, PaddingMode paddingMode, Boolean fLast)
+   at System.Security.Cryptography.RijndaelManagedTransform.TransformFinalBlock(Byte[] inputBuffer, Int32 inputOffset, Int32 inputCount)
+   at System.Security.Cryptography.CryptoStream.Read(Byte[] buffer, Int32 offset, Int32 count)
+   at Utilities.Cryption.Decrypt(String cipherText, String passPhrase, String saltValue, String hashAlgorithm, Int32 passwordIterations, String initVector, Int32 keySize) in D:\MyProjects\MyClinic\myclinic\Utilities\Cryption.cs:line 247
+   at Utilities.Common.DecryptString(String encryptString) in D:\MyProjects\MyClinic\myclinic\Utilities\Common.cs:line 466
+   at MyClinic.Controllers.LoginController.Index() in D:\MyProjects\MyClinic\myclinic\MyClinic\MyClinic\Controllers\LoginController.cs:line 73
+2016-12-23 11:04:08,255 [6] ERROR MyClinic.Controllers.LoginController - System.Security.Cryptography.CryptographicException: Padding is invalid and cannot be removed.
+   at System.Security.Cryptography.RijndaelManagedTransform.DecryptData(Byte[] inputBuffer, Int32 inputOffset, Int32 inputCount, Byte[]& outputBuffer, Int32 outputOffset, PaddingMode paddingMode, Boolean fLast)
+   at System.Security.Cryptography.RijndaelManagedTransform.TransformFinalBlock(Byte[] inputBuffer, Int32 inputOffset, Int32 inputCount)
+   at System.Security.Cryptography.CryptoStream.Read(Byte[] buffer, Int32 offset, Int32 count)
+   at Utilities.Cryption.Decrypt(String cipherText, String passPhrase, String saltValue, String hashAlgorithm, Int32 passwordIterations, String initVector, Int32 keySize) in D:\MyProjects\MyClinic\myclinic\Utilities\Cryption.cs:line 247
+   at Utilities.Common.DecryptString(String encryptString) in D:\MyProjects\MyClinic\myclinic\Utilities\Common.cs:line 466
+   at MyClinic.Controllers.LoginController.Index() in D:\MyProjects\MyClinic\myclinic\MyClinic\MyClinic\Controllers\LoginController.cs:line 73
+2016-12-23 11:17:21,626 [5] ERROR MyClinic.Controllers.LoginController - System.Security.Cryptography.CryptographicException: Padding is invalid and cannot be removed.
+   at System.Security.Cryptography.RijndaelManagedTransform.DecryptData(Byte[] inputBuffer, Int32 inputOffset, Int32 inputCount, Byte[]& outputBuffer, Int32 outputOffset, PaddingMode paddingMode, Boolean fLast)
+   at System.Security.Cryptography.RijndaelManagedTransform.TransformFinalBlock(Byte[] inputBuffer, Int32 inputOffset, Int32 inputCount)
+   at System.Security.Cryptography.CryptoStream.Read(Byte[] buffer, Int32 offset, Int32 count)
+   at Utilities.Cryption.Decrypt(String cipherText, String passPhrase, String saltValue, String hashAlgorithm, Int32 passwordIterations, String initVector, Int32 keySize) in D:\MyProjects\MyClinic\myclinic\Utilities\Cryption.cs:line 247
+   at Utilities.Common.DecryptString(String encryptString) in D:\MyProjects\MyClinic\myclinic\Utilities\Common.cs:line 466
+   at MyClinic.Controllers.LoginController.Index() in D:\MyProjects\MyClinic\myclinic\MyClinic\MyClinic\Controllers\LoginController.cs:line 73
+2016-12-23 14:27:39,087 [6] ERROR MyClinic.Controllers.LoginController - System.Security.Cryptography.CryptographicException: Padding is invalid and cannot be removed.
+   at System.Security.Cryptography.RijndaelManagedTransform.DecryptData(Byte[] inputBuffer, Int32 inputOffset, Int32 inputCount, Byte[]& outputBuffer, Int32 outputOffset, PaddingMode paddingMode, Boolean fLast)
+   at System.Security.Cryptography.RijndaelManagedTransform.TransformFinalBlock(Byte[] inputBuffer, Int32 inputOffset, Int32 inputCount)
+   at System.Security.Cryptography.CryptoStream.Read(Byte[] buffer, Int32 offset, Int32 count)
+   at Utilities.Cryption.Decrypt(String cipherText, String passPhrase, String saltValue, String hashAlgorithm, Int32 passwordIterations, String initVector, Int32 keySize) in D:\MyProjects\MyClinic\myclinic\Utilities\Cryption.cs:line 247
+   at Utilities.Common.DecryptString(String encryptString) in D:\MyProjects\MyClinic\myclinic\Utilities\Common.cs:line 466
+   at MyClinic.Controllers.LoginController.Index() in D:\MyProjects\MyClinic\myclinic\MyClinic\MyClinic\Controllers\LoginController.cs:line 73
+2016-12-23 17:01:03,624 [5] ERROR MyClinic.Controllers.LoginController - System.Security.Cryptography.CryptographicException: Padding is invalid and cannot be removed.
+   at System.Security.Cryptography.RijndaelManagedTransform.DecryptData(Byte[] inputBuffer, Int32 inputOffset, Int32 inputCount, Byte[]& outputBuffer, Int32 outputOffset, PaddingMode paddingMode, Boolean fLast)
+   at System.Security.Cryptography.RijndaelManagedTransform.TransformFinalBlock(Byte[] inputBuffer, Int32 inputOffset, Int32 inputCount)
+   at System.Security.Cryptography.CryptoStream.Read(Byte[] buffer, Int32 offset, Int32 count)
+   at Utilities.Cryption.Decrypt(String cipherText, String passPhrase, String saltValue, String hashAlgorithm, Int32 passwordIterations, String initVector, Int32 keySize) in D:\MyProjects\MyClinic\myclinic\Utilities\Cryption.cs:line 247
+   at Utilities.Common.DecryptString(String encryptString) in D:\MyProjects\MyClinic\myclinic\Utilities\Common.cs:line 466
+   at MyClinic.Controllers.LoginController.Index() in D:\MyProjects\MyClinic\myclinic\MyClinic\MyClinic\Controllers\LoginController.cs:line 73

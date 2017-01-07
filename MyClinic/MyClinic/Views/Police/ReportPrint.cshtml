@@ -1,0 +1,83 @@
+﻿@using Utilities;
+@using MyClinic.Resources
+@model MyClinic.Models.PoliceModels
+
+@{
+    ViewBag.Title = @Translator.PoliceReport;
+    var host = Utilities.Common.host;
+    String pageVersion = System.Configuration.ConfigurationManager.AppSettings["Source:Version"];
+    int intIndex = 0;
+}
+
+<link href="@Url.Content("~/Content/prints/style.report.css?v=" + pageVersion)" rel="stylesheet" type="text/css" />
+<div id="header">
+    <h1>@Translator.PoliceReport</h1>
+    <p class="srch-dte">@Translator.From <strong>@Common.GetSearchDateTimeFormate(Model.startDate)</strong> @Translator.To <strong>@Common.GetSearchDateTimeFormate(Model.endDate)</strong></p>
+    <div class="container">
+        <div class="row">
+            <div style="text-align: left; float:left;">@Translator.Result <strong>@Model.totalRecords</strong> @Translator.Records</div>
+            <div style="text-align: right; float:right;">@Common.GetCurrentFullDate()</div>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <table class="rpt-tbl">
+            <tr>
+                <th>@Translator.PawnerName</th>
+                <th>@Translator.Tel</th>
+                <th>@Translator.PawnItem</th>
+                <th>@Translator.PawnDesc</th>
+                <th>@Translator.Guarantor</th>
+                <th>@Translator.TicketNumber</th>
+                <th class="cntr">@Translator.PawnDate</th>
+                <th class="cntr last">@Translator.Status</th>
+            </tr>
+      
+            @foreach (var record in Model.lstRecords)
+            {
+                intIndex = intIndex + 1;
+                string clssR = "event";
+                if (intIndex % 2 == 0)
+                {
+                    clssR = "odd";
+                }
+
+                DateTime oldDate = record.ExpireDate;
+                DateTime newDate = DateTime.Now;
+                int differenceInDays = (oldDate - newDate).Days;
+                string strExpClss = "";
+                if (differenceInDays == 1)
+                {
+                    strExpClss = "next-exp";
+                }
+                else if (differenceInDays == 2)
+                {
+                    strExpClss = "near-exp";
+                }
+                else if (differenceInDays <= 0)
+                {
+                    strExpClss = "exp";
+                }
+                
+                <tr class="@clssR @strExpClss">
+                    <td class="wc">@Utilities.Common.GetValueDisplay(@record.PawnerName, String.Empty)</td>
+                    <td>@Utilities.Common.GetValueDisplay(record.Tel, String.Empty)</td>		
+                    <td>@Utilities.Common.GetValueDisplay(record.ItemName, String.Empty)</td>
+                    <td>@Utilities.Common.GetValueDisplay(record.ItemDetail, String.Empty)</td>
+                    <td>@Utilities.Common.GetValueDisplay(record.Guarantor, String.Empty)</td>
+                    <td>@Utilities.Common.GetValueDisplay(record.TransNumber, String.Empty)</td>
+                    <td class="cntr">@Utilities.Common.GetDateTimeFormate(record.PawnDate)</td>
+                    <td class="cntr status">@Utilities.Common.GetPawnStatus(record.TransStatus) </td>
+                </tr>
+            } 
+            <tr><td colspan="8"></td></tr>
+
+        </table>
+    </div>
+</div>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $print.loadPrint();
+    });
+</script>

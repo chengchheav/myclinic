@@ -1,0 +1,177 @@
+﻿@model MyClinic.Models.DiagnosisModels
+@using MyClinic.Resources;
+@using Utilities
+@{
+    String pageVersion = System.Configuration.ConfigurationManager.AppSettings["Source:Version"];
+    HtmlHelper.ClientValidationEnabled = false;
+    HtmlHelper.UnobtrusiveJavaScriptEnabled = false;
+    var host = Utilities.Common.host;
+    ViewBag.Title = Translator.EditDiagnosis;
+    string DiagnoseCycle = string.Empty;
+    string expiredDate = string.Empty;
+    if (Model.checkPost == false)
+    {
+        if (Model.dtodiagnosis.DiagnoseCycle > 0)
+        {
+            DiagnoseCycle = Model.dtodiagnosis.DiagnoseCycle.ToString();
+        }
+    }
+    var strValue = "1990-01-01";
+    DateTime objDate;
+    DateTime.TryParse(strValue, out objDate);
+    if (Model.dtodiagnosis.ExpiredDate != objDate)
+    {
+     expiredDate = Common.GetDatePickerDisplay(Model.dtodiagnosis.ExpiredDate);
+    }
+    var objTranslateSwitch = new TranslateSwitch();
+  }
+<div class="title">@Translator.EditDiagnosis</div>
+<link href="@Url.Content("~/Content/easy-autocomplete.min.css?v=")" rel="stylesheet" type="text/css" />
+<link href="@Url.Content("~/Content/themes/base/jquery.ui.all.css?v=")" rel="stylesheet" type="text/css" />
+<script src="@Url.Content("~/Scripts/jquery.easy-autocomplete.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/jquery.ui.datepicker.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/jquery.ui.core.js")" type="text/javascript"></script>
+<div class="frm-bx">
+    <div class="frm-info">
+        <p>@Translator.MessageForm <strong>@Translator.MessageFormBold</strong>. <strong>@Translator.Note:</strong> @Translator.MessageForm1</p>
+    </div>
+    @using (Html.BeginForm())
+    {
+        <div class="info-bx">
+            <fieldset>
+                <table class="two-ctr">
+                    @Html.Hidden("Id", Model.dtodiagnosis.Id)
+                    <tr>
+                        <td class="editor-label imp">
+                            <Label>@Translator.PatientName</Label>
+                        </td>
+                        <td class="editor-field" >
+                            @Html.TextBox("Patient_Name", Model.dtodiagnosis.Patient_Name, new { disabled = "true" }) 
+                            <div class="error">
+                                @Html.Raw(objTranslateSwitch.Get(Html.ValidationMessage("Patient_Name")))
+                            </div>
+                        </td>
+                        <td class="editor-label2">
+                            <div class="editor e-patient">
+                                <ul>
+                                    <li>
+                                        <a href="@Url.Action("Edit", "Patient", new { id = Model.dtodiagnosis.PatientId })" style="padding:0 20px;">
+                                            <img src="@host/Images/icons/new.png" />@Translator.EditPatient
+                                        </a>
+                                    </li>
+                                </ul> 
+                            </div>
+                        </td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td class="editor-label imp">
+                            <Label>@Translator.DiagnoseCycle</Label>
+                        </td>
+                        <td class="editor-field"  >
+                            @Html.TextBox("DiagnosisCycle", Model.dtodiagnosis.DiagnoseCycle, new { disabled = "true" }) 
+                            <input type="hidden" id="DiagnoseCycle" name="DiagnoseCycle" value="@Model.dtodiagnosis.DiagnoseCycle"/>
+                        </td>
+                        <!--<td class="editor-label2">
+                            <Label>@Translator.ExpireDate</Label>
+                        </td>
+                        <td class="editor-field" >
+                            <input type="text" id="exp"  value="@expiredDate" name="exp" class ="text-box single-line ch_date" />
+                            <input type="hidden" id="ExpiredDate" name="ExpiredDate" value="@Model.dtodiagnosis.ExpiredDate" />
+                        </td>-->
+                        <input type="hidden" id="ExpiredDate" name="ExpiredDate" value="@Model.dtodiagnosis.ExpiredDate" />
+                    </tr>
+                    <tr>
+                        <td class="editor-label imp">
+                            <Label>@Translator.DoctorName</Label>
+                        </td>
+                        <td class="editor-field">
+                            @Html.DropDownList("DiagnoseBy", Model.EmployeeLists.Select(item => new SelectListItem
+                              {
+                                  Value = item.Id.ToString(),
+                                  Text = item.Name.ToString(),
+                                  Selected = item.Id.ToString() == Model.dtodiagnosis.DiagnoseBy.ToString() ? true : false
+                              }), new { @class = "slc-ctl", tabindex="2" }) 
+
+                            <div class="error">
+                                @Html.Raw(objTranslateSwitch.Get(Html.ValidationMessage("DiagnoseBy")))
+                            </div>
+                        </td>
+                        
+                        <!--<td class="editor-label2 imp">
+                            <Label>@Translator.SymptomType</Label>
+                        </td>
+                        <td class="editor-field">
+                            @Html.DropDownList("SymptomType", Model.symptomTypes.Select(item => new SelectListItem
+                              {
+                                  Value = item.Id.ToString(),
+                                  Text = item.Type.ToString(),
+                                  Selected = item.Id.ToString() == Model.dtodiagnosis.Symptom_Id.ToString() ? true : false
+                              }),  new { @class = "slc-ctl" }) 
+                            <div class="error">
+                                @Html.Raw(objTranslateSwitch.Get(Html.ValidationMessage("SymptomType")))
+                            </div>
+                        </td>-->
+                        <input type="hidden" id="SymptomType" name="SymptomType" value="1" />
+                    </tr>
+                    <!--<tr>
+                        <td class="editor-label imp">
+                            <Label>@Translator.Disease</Label>
+                        </td>
+                        <td>
+                             @Html.TextBox("Disease_Name", Model.dtodiagnosis.Disease_Name, new { disabled = "true" }) 
+                            <div class="error">
+                                @Html.Raw(objTranslateSwitch.Get(Html.ValidationMessage("Disease_Name")))
+                            </div>
+
+                        </td>
+                    </tr>-->
+                    <tr>
+                        <td class="editor-label imp">
+                            <Label>@Translator.Disease</Label>
+                        </td>
+
+                        <td class="editor-field" >
+                            @Html.TextBox("Disease_Name", Model.dtodiagnosis.Disease_Name, new { tabindex="4" }) 
+                            <div class="error">
+                                @Html.Raw(objTranslateSwitch.Get(Html.ValidationMessage("Disease_Name")))
+                            </div>
+                            @Html.Hidden("DiseaseId", Model.dtodiagnosis.DiseaseId)
+                        </td>
+                        <td colspan="2"></td>
+                    </tr>
+                    <tr>
+                        <td class="editor-label1 ">
+                            <label>@Translator.Symptom</label>
+                        </td>
+                        <td class="editor-field" colspan="3" style="padding-bottom: 20px">
+                            @Html.TextArea("Symptom",Model.dtodiagnosis.Symptom, new { @class = "form-control area" })
+                            <div class="error">
+                                @Html.Raw(objTranslateSwitch.Get(Html.ValidationMessage("Symptom")))
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="4">
+                            <input id="btnSubmit" class="myLabel" type="submit" value="@Translator.Save"/>
+                        </td>
+                    </tr> 
+                </table>
+            </fieldset>
+       </div>
+    }
+</div>
+<script src="@Url.Content("~/Scripts/script.auto.js?v=" + pageVersion)" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/script.keyChecking.js?v=" + pageVersion)" type="text/javascript"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $transaction.initOnlyNumber("#DiagnoseCycle");
+        $transaction.initDatePickerAndSet("#exp", "#ExpiredDate");
+        $transaction.initDefindActionId("1");
+        $transaction.initChangeClassMenu("diagnosis", "diagnosis-selected");
+        $auto.initSearchDisease('@Url.Action("GetDiseaseName", "Disease")');
+
+        $key.initKeypress('Disease_Name', 'DiseaseId');
+    });
+</script>

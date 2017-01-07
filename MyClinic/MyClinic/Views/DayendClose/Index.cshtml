@@ -1,0 +1,69 @@
+﻿@using Utilities;
+@using MyClinic.Resources
+@model MyClinic.Models.DayendCloseModels
+@{
+    ViewBag.Title = Translator.DayendClose;
+    var host = Utilities.Common.host;
+    String pageVersion = System.Configuration.ConfigurationManager.AppSettings["Source:Version"];
+    var totalPermitEdit = System.Configuration.ConfigurationManager.AppSettings["Permit:EditPawn"];
+    var objCurDate = DateTime.Today;
+    string currentDate = Common.GetDatePickerDisplay(objCurDate);
+}
+
+<div class="title">@Translator.DayendClose</div>
+<div id="content-msg">
+    <div class="box-msg">
+        <table>
+            <tr>
+                <td colspan="2">
+                    <p style="font-weight:700;text-align:center;font-size:20px;text-shadow: 0.5px 0.5px rgb(189, 182, 182);">@Translator.DayendClosingFor @currentDate.</p>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input style="margin-right:10px;" onclick="$Common.setRedirectPage('@Url.Action("Index", "Home")');" class="myLabel" type="button" value="@Translator.ReturnToHome"/>
+                </td>
+                    <td>
+                    @if (!Model.IsClosed)
+                    {
+                        <input onclick="$dialogAlert.confirmDayendClose('','','@Translator.DoYouWishToRunTheDayendCloseOf  @currentDate ?','@Url.Action("Run", "DayendClose")');" class="myLabel" type="button" value="@Translator.Run"/>
+                    }
+                    else
+                    {
+                        <input onclick="$dialogAlert.confirmDayendClose('','','@Translator.DoYouWishToRollbackTheDayendCloseOf  @currentDate ?','@Url.Action("Rollback", "DayendClose")');" class="myLabel" type="button" value="@Translator.Rollback"/>
+                    }
+                    </td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<link href="@Url.Content("~/Content/style.report.css?v=" + pageVersion)" rel="stylesheet" type="text/css" />
+<script src="@Url.Content("~/Scripts/script.manage.js?v=" + pageVersion)" type="text/javascript"></script>
+<div id="content" class="rpt-view">
+    <div class="action">
+        <div class="editor" id="lst-ctr-srch" data-action="@Url.Action("AjdayendClose", "Report")">
+            <ul>
+                <li class="ttl-ctr">@Translator.Type:</li>
+                <li>
+                    <select id="ticketType" class="slc-ctr">
+                        <option value="-1">@Translator.TicketType</option>
+                        <option value="1">@Translator.Normal</option>
+                        <option value="2">@Translator.Special</option>
+                     </select>
+                </li>
+                <li class="ttl-ctr"><a style="padding:0px;"><input type="button" class="btn-stl" id="search-button" value="@Translator.Search" onclick="$manage.SearchManageRecords();" /></a></li>
+           </ul>
+           <input type="hidden" id="strDate" class="txt-ctr" name="strDate" value="@Model.strDate"/>
+        </div>
+    </div>
+    <div class="clear"></div>
+    <div id="lstContainer" class="tbl">
+        @{Html.RenderPartial("Partials/ListDayendClose");}  
+    </div>
+</div>
+<script type="text/javascript">
+    $transaction.initDefindActionId("1");
+    $transaction.initChangeClassMenu("icon-dayend", "icon-dayend-selected");
+    $manage.setDetailRecordUrl('@Url.Action("Detail", "DayendClose")');
+</script>

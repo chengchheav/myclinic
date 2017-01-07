@@ -1,0 +1,19 @@
+﻿@{
+    ViewBag.Title = "Info";
+}
+
+<div class="middle-screen" style="top:20%;">
+    <table>
+        <tr>                    
+            <td colspan="2">
+                <img src="/images/error.png" style="width:200px;" />
+                <p style="text-align:center;">Please contact to system provider for help .</p>
+            </td>
+        </tr>
+        <tr>
+            <td align="center">
+                <input style="margin-left:67px;" onclick="$Common.setRedirectPage('@Url.Action("Index", "Home")');" class="myLabel" type="button" value="Return To Home"/>
+            </td>
+        </tr>
+    </table>
+</div>

@@ -1,0 +1,12 @@
+D:\MyProjects\MyClinic\myclinic\MyClinic.Infrastructure\bin\Debug\MyClinic.Infrastructure.dll.config
+D:\MyProjects\MyClinic\myclinic\MyClinic.Infrastructure\bin\Debug\MyClinic.Infrastructure.dll
+D:\MyProjects\MyClinic\myclinic\MyClinic.Infrastructure\bin\Debug\MyClinic.Infrastructure.pdb
+D:\MyProjects\MyClinic\myclinic\MyClinic.Infrastructure\bin\Debug\EntityFramework.dll
+D:\MyProjects\MyClinic\myclinic\MyClinic.Infrastructure\bin\Debug\EntityFramework.SqlServer.dll
+D:\MyProjects\MyClinic\myclinic\MyClinic.Infrastructure\bin\Debug\Utilities.dll
+D:\MyProjects\MyClinic\myclinic\MyClinic.Infrastructure\bin\Debug\Utilities.pdb
+D:\MyProjects\MyClinic\myclinic\MyClinic.Infrastructure\bin\Debug\EntityFramework.xml
+D:\MyProjects\MyClinic\myclinic\MyClinic.Infrastructure\bin\Debug\EntityFramework.SqlServer.xml
+D:\MyProjects\MyClinic\myclinic\MyClinic.Infrastructure\obj\Debug\MyClinic.Infrastructure.csprojResolveAssemblyReference.cache
+D:\MyProjects\MyClinic\myclinic\MyClinic.Infrastructure\obj\Debug\MyClinic.Infrastructure.dll
+D:\MyProjects\MyClinic\myclinic\MyClinic.Infrastructure\obj\Debug\MyClinic.Infrastructure.pdb

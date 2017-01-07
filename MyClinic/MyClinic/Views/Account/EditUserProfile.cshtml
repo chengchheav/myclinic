@@ -1,0 +1,123 @@
+﻿@model MyClinic.Models.UserModels
+@using Utilities
+@{
+    
+    ViewBag.Title = "Update Profile";
+    var imgPath = Model.user.Image;
+    HtmlHelper.ClientValidationEnabled = false;
+    HtmlHelper.UnobtrusiveJavaScriptEnabled = false;
+}
+<div class="title">Update Profile</div>
+<div class="frm-bx">
+    <div class="frm-info">
+        <p>Please input your value for form before you click on <strong>button add</strong>. <strong>Note:</strong> The bold of title is required.</p>
+    </div>
+    @using (Html.BeginForm("EditUserProfile", "Account", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        <div class="info-bx" style="width: 40%;">
+            <fieldset>
+                <table>
+                    <tr>
+                        <td class="editor-label imp">
+                            @Html.LabelFor(model => model.userEdit.Name)
+                        </td>
+                        <td class="editor-field">
+                            @Html.TextBox("Name", Model.user.Name) 
+                            <div class="error">
+                                @Html.ValidationMessage("Name")
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="editor-label imp">
+                            @Html.LabelFor(model => model.user.UserName)
+                        </td>
+                        <td class="editor-field">
+                            @Html.TextBox("UserName", Model.user.UserName)
+                            <div class="error">
+                                @Html.ValidationMessage("UserName")
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="editor-label imp">
+                            @Html.LabelFor(model => Model.user.Password)
+                        </td>
+                        <td class="editor-field">
+                            @Html.Password("Password")
+                            <div class="error">
+                                @Html.ValidationMessage("Password")
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="editor-label imp">
+                            @Html.LabelFor(model => Model.userEdit.ConfirmPassword)
+                        </td>
+                        <td class="editor-field">
+                            @Html.Password("ConfirmPassword")
+                            <div class="error">
+                                @Html.ValidationMessage("ConfirmPassword")
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="editor-label imp">
+                            @Html.LabelFor(model => model.user.Email)
+                        </td>
+                        <td class="editor-field">
+                            @Html.TextBox("Email", Model.user.Email)
+                            <div class="error">
+                                @Html.ValidationMessage("Email")
+                            </div>
+                        </td>
+                    </tr>
+                
+                    <tr>
+                        <td colspan="2">
+                            <input id="btnSubmit" class="myLabel" type="submit" value="Save"/>
+                        </td>
+                        <td colspan="2"></td>
+                    </tr> 
+                </table>
+            </fieldset>
+        </div>
+        <div class="mda-bx">
+            <div class="image-upload">
+                @Html.TextBox("Image", "", new { id = "PhotoFileBase", type = "file", accept = "image/*", @style = "width: 0px;height:0px;" })
+                <div id="imgPhoto" class="bx-pt">
+                    <img id="image" src="@Model.userEdit.ImageStream"/>
+                </div>
+                <input type=hidden name="ImageStream" id="ImageStream" value="@Model.userEdit.ImageStream"/>
+            </div>
+        </div>
+    }
+</div>
+<script type="text/javascript">
+    function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                var Img = $('img').attr('src', e.target.result);
+                $("div#imgPhoto").find("#image").css("display", "none");
+                $("div#imgPhoto").html(Img);
+                $("div#imgPhoto").find("img").css("width", "100%");
+                $("div#imgPhoto").find("img").css("height", "100%");
+                $("div#imgPhoto").find("img").css("object-fit", "cover");
+                $("#ImageStream").val(e.target.result);
+            }
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+        $("#PhotoFileBase").change(function () {
+            readURL(this);
+        });
+        $("#imgPhoto").click(function () {
+            $("#PhotoFileBase").trigger("click");
+        });
+</script>
+<script type="text/javascript">
+    $transaction.initDefindActionId("1");
+    $transaction.initChangeClassMenu("icon-u-m", "icon-u-m-selected");
+</script>

@@ -1,0 +1,70 @@
+﻿@using MyClinic.Resources;
+@{
+    String iconFavicon = System.Configuration.ConfigurationManager.AppSettings["Icon:Url"];
+    String pageVersion = System.Configuration.ConfigurationManager.AppSettings["Source:Version"];
+    iconFavicon = iconFavicon + "?v=" + pageVersion;
+    var link = Utilities.Common.GetLanguageChangeUrl(Request.Url.Segments);
+    var lang = Utilities.Common.GetLanguage(Request.Url.Segments);
+    var langPage = "en";
+    var clssSwitch = "";
+    if (lang.Equals("en"))
+    {
+        clssSwitch = "fen";
+        langPage = "en";
+    }
+    else
+    {
+        clssSwitch = "fkh";
+        langPage = "km";
+    }
+    
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>@ViewBag.Title</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="SHORTCUT ICON" href= "@iconFavicon" type="image/x-icon" />
+    <link href="@Url.Content("~/Content/Site.css?v=" + pageVersion)" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/layout.css?v=" + pageVersion)" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/responsive.css?v=" + pageVersion)" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/style.fonts.css?v=" + pageVersion)" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/bootstrap/css/bootstrap.min.css?v=" + pageVersion)" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/style.fonts.css?v=" + pageVersion)" rel="stylesheet" type="text/css" />
+    <script src="@Url.Content("~/Scripts/jquery-1.12.1.min.js?v=" + pageVersion)" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/modernizr-1.7.min.js?v=" + pageVersion)" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/jscript.common.js?v=" + pageVersion)" type="text/javascript"></script>
+    <script type="text/javascript">
+        @{ 
+            string controller_name = this.ViewContext.RouteData.Values["controller"].ToString();            
+            var host = Utilities.Common.host;
+        }           
+        var host = '@host';        
+        var controller = '@controller_name';     
+        
+    </script>
+</head>
+<body lang="@langPage">
+    <div class="page" style="transform: inherit;">
+        <header>
+            @Html.Partial("Partials/_HeaderSitePartial")
+        </header>
+        <section id="main">
+            <div class="container-fluid">
+                @RenderBody()
+            </div>
+        </section>
+        <footer>
+            <div class="container-fluid">
+                @Html.Partial("Partials/_FooterSitePartial")
+            </div>
+        </footer>
+    </div>
+    <script src="@Url.Content("~/Content/bootstrap/js/bootstrap.min.js?v=" + pageVersion)" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/jscript.enum.js?v=" + pageVersion)" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/jscript.common.js?v=" + pageVersion)" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/jscript.dialog.js?v=" + pageVersion)" type="text/javascript"></script>
+</body>
+</html>

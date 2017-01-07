@@ -1,0 +1,91 @@
+﻿@using Utilities;
+@using MyClinic.Resources
+@model MyClinic.Models.DayendCloseModels
+
+@{
+    ViewBag.Title = @Translator.DayendCloseTransactionReport;
+    var host = Utilities.Common.host;
+    String pageVersion = System.Configuration.ConfigurationManager.AppSettings["Source:Version"];
+    int intIndex = 0;
+    decimal ItemAmount = 0;
+    decimal InterestEarned = 0;
+    decimal RedeemSome = 0;
+}
+
+<link href="@Url.Content("~/Content/prints/style.report.css?v=" + pageVersion)" rel="stylesheet" type="text/css" />
+<div id="header">
+    <h1>@Translator.DayendCloseTransactionReport</h1>
+    <p class="srch-dte"><strong>@Common.GetSearchDateTimeFormate(Model.strDate)</strong></p>
+    <div class="container">
+        <div class="row">
+            <div style="text-align: left; float:left;">@Translator.Result <strong>@Model.totalRecords</strong> @Translator.Records</div>
+            <div style="text-align: right; float:right;">@Common.GetCurrentFullDate()</div>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <table class="rpt-tbl">
+            <tr>
+                <th class="frt-rcd">@Translator.Id</th>
+                <th>@Translator.Name</th>
+                <th>@Translator.Sex</th>
+                <th>@Translator.Tel</th>
+                <th>@Translator.CategoryName</th>
+                <th>@Translator.PawnItem</th>
+                <th>@Translator.ItemNumber</th>
+                <th>@Translator.TicketNumber</th>
+                <th>@Translator.ViaTicket</th>
+                <th>@Translator.PawnDate</th>
+                <th>@Translator.ExpireDate</th>
+                <th>@Translator.ItemAmount</th>
+                <th>@Translator.RedeemSome</th>
+                <th>@Translator.InterestEarned</th>
+                <th class="cntr last">@Translator.Status</th>
+            </tr>
+      
+            @foreach (var record in Model.lstPawnTransaction)
+            {
+                intIndex = intIndex + 1;
+                string clssR = "event";
+                if (intIndex % 2 == 0)
+                {
+                    clssR = "odd";
+                }
+                ItemAmount = ItemAmount + record.ItemAmount;
+                InterestEarned = InterestEarned + record.InterestEarned;
+                RedeemSome = RedeemSome + record.RedeemSome;
+                
+                <tr class="@clssR">
+                    <td class="frt-rcd">@record.Id</td>
+                    <td>@Utilities.Common.GetValueDisplay(@record.PawnerName, String.Empty)</td>
+                    <td>@Utilities.Common.GetGender(record.Gender)</td>
+                    <td>@Utilities.Common.GetValueDisplay(record.Tel, String.Empty)</td>	
+                    <td>@Utilities.Common.GetValueDisplay(record.CategoryName, String.Empty)</td>	
+                    <td>@Utilities.Common.GetValueDisplay(record.ItemName, String.Empty)</td>
+                    <td>@Utilities.Common.GetValueDisplay(record.ItemNumber, String.Empty)</td>
+                    <td class="cntr">@Utilities.Common.GetValueDisplay(record.TicketNumber, String.Empty)</td>
+                    <td class="cntr">@Utilities.Common.GetValueDisplay(record.ViaTicketNumber, String.Empty)</td>
+                    <td class="cntr">@Utilities.Common.GetDateTimeFormate(record.PawnDate)</td>
+                    <td class="cntr">@Utilities.Common.GetDateTimeFormate(record.ExpireDate)</td>
+                    <td class="rgh">@Utilities.Common.GetCurrencyFormate(record.ItemAmount)</td>
+                    <td class="rgh">@Utilities.Common.GetCurrencyFormate(record.RedeemSome)</td>
+                    <td class="rgh">@Utilities.Common.GetCurrencyFormate(record.InterestEarned)</td>
+                    <td class="cntr last">@Utilities.Common.GetPawnStatus(record.Status) </td>
+                </tr>
+            } 
+
+            <tr class="sub-val">
+                <td colspan="11"></td> 
+                <td class="rgh main-val">@Utilities.Common.GetCurrencyFormate(ItemAmount)</td>
+                <td class="rgh main-val">@Utilities.Common.GetCurrencyFormate(RedeemSome)</td>
+                <td colspan="2"></td>
+            </tr>
+        </table>
+    </div>
+</div>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $print.loadPrint();
+    });
+</script>

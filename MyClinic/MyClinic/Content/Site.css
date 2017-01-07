@@ -1,0 +1,1164 @@
+﻿/*Nav*/
+.icon-home{
+    width: inherit;
+    height: inherit;
+    background: transparent url("../Images/icons/icon-home.png") no-repeat scroll 10% 40%;
+    text-indent: 40px;
+}
+
+.icon-home-selected{
+    width: inherit;
+    height: inherit;
+    background-color:transparent;
+    background-image: linear-gradient(to right, rgb(124, 197, 118) -1%, rgb(124, 197, 118) 3%, rgba(81, 81, 81, 0.6) 0%, rgba(81, 81, 81, 0.64) 100%),url("../Images/icons/icon-home.png");
+    background-repeat:no-repeat;
+    background-attachment:scroll;
+    background-position:10%;
+    text-indent: 40px;
+}
+
+.icon-dayend{
+    width: inherit;
+    height: inherit;
+    background: transparent url("../Images/icons/icon-dayend.png") no-repeat scroll 10% 40%;
+    text-indent: 40px;
+}
+.icon-dayend-selected{
+    width: inherit;
+    height: inherit;
+    background-color:transparent;
+    background-image: linear-gradient(to right, rgb(124, 197, 118) -1%, rgb(124, 197, 118) 3%, rgba(81, 81, 81, 0.6) 0%, rgba(81, 81, 81, 0.64) 100%),url("../Images/icons/icon-dayend.png");
+    background-repeat:no-repeat;
+    background-attachment:scroll;
+    background-position:10%;
+    text-indent: 40px;
+}
+
+.icon-valuer{
+    width: inherit;
+    height: inherit;
+    background: transparent url("../Images/icons/icon-valuer.png") no-repeat scroll 10% 40%;
+    text-indent: 40px;
+}
+.icon-valuer-selected{
+    width: inherit;
+    height: inherit;
+    background-color:transparent;
+    background-image: linear-gradient(to right, rgb(124, 197, 118) -1%, rgb(124, 197, 118) 3%, rgba(81, 81, 81, 0.6) 0%, rgba(81, 81, 81, 0.64) 100%),url("../Images/icons/icon-valuer.png");
+    background-repeat:no-repeat;
+    background-attachment:scroll;
+    background-position:10%;
+    text-indent: 40px;
+}
+.icon-u-m{
+    width: inherit;
+    height: inherit;
+    background: transparent url("../Images/icons/icon-u-m.png") no-repeat scroll 10% 40%;
+    text-indent: 40px;
+}
+
+.icon-u-m-selected{
+    width: inherit;
+    height: inherit;
+    background-color:transparent;
+    background-image: linear-gradient(to right, rgb(124, 197, 118) -1%, rgb(124, 197, 118) 3%, rgba(81, 81, 81, 0.6) 0%, rgba(81, 81, 81, 0.64) 100%),url("../Images/icons/icon-u-m.png");
+    background-repeat:no-repeat;
+    background-attachment:scroll;
+    background-position:10%;
+    text-indent: 40px;
+}
+
+.icon-pawner-m{
+    width: inherit;
+    height: inherit;
+    background: transparent url("../Images/icons/icon-p-m.png") no-repeat scroll 10% 40%;
+    text-indent: 40px;
+}
+
+.icon-pawner-m-selected{
+    width: inherit;
+    height: inherit;
+    background-color:transparent;
+    background-image: linear-gradient(to right, rgb(124, 197, 118) -1%, rgb(124, 197, 118) 3%, rgba(81, 81, 81, 0.6) 0%, rgba(81, 81, 81, 0.64) 100%),url("../Images/icons/icon-p-m.png");
+    background-repeat:no-repeat;
+    background-attachment:scroll;
+    background-position:10%;
+    text-indent: 40px;
+}
+
+.icon-pawn-m{
+    width: inherit;
+    height: inherit;
+    background: transparent url("../Images/icons/pawn_icon.png") no-repeat scroll 10% 40%;
+    text-indent: 40px;
+}
+
+.icon-pawn-m-selected{
+    width: inherit;
+    height: inherit;
+    background-color:transparent;
+    background-image: linear-gradient(to right, rgb(124, 197, 118) -1%, rgb(124, 197, 118) 3%, rgba(81, 81, 81, 0.6) 0%, rgba(81, 81, 81, 0.64) 100%),url("../Images/icons/pawn_icon.png");
+    background-repeat:no-repeat;
+    background-attachment:scroll;
+    background-position:10%;
+    text-indent: 40px;
+}
+
+.icon-i-m{
+    width: inherit;
+    height: inherit;
+    background: transparent url("../Images/icons/item_icon.png") no-repeat scroll 10% 40%;
+    text-indent: 40px;
+}
+
+.icon-i-m-selected{
+    width: inherit;
+    height: inherit;
+    background-color:transparent;
+    background-image: linear-gradient(to right, rgb(124, 197, 118) -1%, rgb(124, 197, 118) 3%, rgba(81, 81, 81, 0.6) 0%, rgba(81, 81, 81, 0.64) 100%),url("../Images/icons/item_icon.png");
+    background-repeat:no-repeat;
+    background-attachment:scroll;
+    background-position:10%;
+    text-indent: 40px;
+}
+
+.icon-ic-m{
+    width: inherit;
+    height: inherit;
+    background: transparent url("../Images/icons/itemCategory_icon.png") no-repeat scroll 10% 40%;
+    text-indent: 40px;
+}
+
+.icon-ic-m-selected{
+    width: inherit;
+    height: inherit;
+    background-color:transparent;
+    background-image: linear-gradient(to right, rgb(124, 197, 118) -1%, rgb(124, 197, 118) 3%, rgba(81, 81, 81, 0.6) 0%, rgba(81, 81, 81, 0.64) 100%),url("../Images/icons/itemCategory_icon.png");
+    background-repeat:no-repeat;
+    background-attachment:scroll;
+    background-position:10%;
+    text-indent: 40px;
+}
+
+.icon-l-m{
+    width: inherit;
+    height: inherit;
+    background: transparent url("../Images/icons/log_icon.png") no-repeat scroll 10% 40%;
+    text-indent: 40px;
+}
+.icon-l-m-selected{
+    width: inherit;
+    height: inherit;
+    background-color:transparent;
+    background-image: linear-gradient(to right, rgb(124, 197, 118) -1%, rgb(124, 197, 118) 3%, rgba(81, 81, 81, 0.6) 0%, rgba(81, 81, 81, 0.64) 100%), url("../Images/icons/log_icon.png") ;
+    background-repeat:no-repeat;
+    background-attachment:scroll;
+    background-position:10%;
+    text-indent: 40px;
+}
+
+.icon-backup{
+    width: inherit;
+    height: inherit;
+    background: transparent url("../Images/icons/backup.png") no-repeat scroll 10% 40%;
+    text-indent: 40px;
+}
+.icon-backup-selected{
+    width: inherit;
+    height: inherit;
+    background-color:transparent;
+    background-image: linear-gradient(to right, rgb(124, 197, 118) -1%, rgb(124, 197, 118) 3%, rgba(81, 81, 81, 0.6) 0%, rgba(81, 81, 81, 0.64) 100%), url("../Images/icons/backup.png") ;
+    background-repeat:no-repeat;
+    background-attachment:scroll;
+    background-position:10%;
+    text-indent: 40px;
+}
+
+.icon-report{
+    width: inherit;
+    height: inherit;
+    background: transparent url("../Images/icons/icon-report.png") no-repeat scroll 10% 40%;
+    text-indent: 40px;
+}
+.icon-report-selected{
+    width: inherit;
+    height: inherit;
+    background-color:transparent;
+    background-image: linear-gradient(to right, rgb(124, 197, 118) -1%, rgb(124, 197, 118) 3%, rgba(81, 81, 81, 0.6) 0%, rgba(81, 81, 81, 0.64) 100%), url("../Images/icons/icon-report.png") ;
+    background-repeat:no-repeat;
+    background-attachment:scroll;
+    background-position:10%;
+    text-indent: 40px;
+}
+
+.icon-subReport{
+    width: inherit;
+    height: inherit;
+    background: transparent url("../Images/icons/sub_report.png") no-repeat scroll 10% 40%;
+    text-indent: 40px;
+}
+.icon-l-subReport-selected{
+    width: inherit;
+    height: inherit;
+    background-color:transparent;
+    background-image: linear-gradient(to right, rgb(124, 197, 118) -1%, rgb(124, 197, 118) 3%, rgba(81, 81, 81, 0.6) 0%, rgba(81, 81, 81, 0.64) 100%), url("../Images/icons/sub_report.png") ;
+    background-repeat:no-repeat;
+    background-attachment:scroll;
+    background-position:10%;
+    text-indent: 40px;
+}
+
+.icon-setting{
+    width: inherit;
+    height: inherit;
+    background: transparent url("../Images/icons/icon-setting.png") no-repeat scroll 10% 40%;
+    text-indent: 40px;
+}
+
+.icon-setting-selected{
+    width: inherit;
+    height: inherit;
+    background-color:transparent;
+    background-image: linear-gradient(to right, rgb(124, 197, 118) -1%, rgb(124, 197, 118) 3%, rgba(81, 81, 81, 0.6) 0%, rgba(81, 81, 81, 0.64) 100%), url("../Images/icons/icon-setting.png") ;
+    background-repeat:no-repeat;
+    background-attachment:scroll;
+    background-position:10%;
+    text-indent: 40px;
+}
+
+.medicine
+{
+    width: inherit;
+    height: inherit;
+    background: transparent url("../Images/icons/medicine.png") no-repeat scroll 10% 40%;
+    text-indent: 40px;  
+}
+.medicine-selected
+{
+    width: inherit;
+    height: inherit;
+    background-color:transparent;
+    background-image: linear-gradient(to right, rgb(124, 197, 118) -1%, rgb(124, 197, 118) 3%, rgba(81, 81, 81, 0.6) 0%, rgba(81, 81, 81, 0.64) 100%), url("../Images/icons/medicine.png") ;
+    background-repeat:no-repeat;
+    background-attachment:scroll;
+    background-position:10%;
+    text-indent: 40px;   
+}
+
+.employee
+{
+    width: inherit;
+    height: inherit;
+    background: transparent url("../Images/icons/employee.png") no-repeat scroll 10% 40%;
+    text-indent: 40px;  
+}
+.employee-selected
+{
+    width: inherit;
+    height: inherit;
+    background-color:transparent;
+    background-image: linear-gradient(to right, rgb(124, 197, 118) -1%, rgb(124, 197, 118) 3%, rgba(81, 81, 81, 0.6) 0%, rgba(81, 81, 81, 0.64) 100%), url("../Images/icons/employee.png") ;
+    background-repeat:no-repeat;
+    background-attachment:scroll;
+    background-position:10%;
+    text-indent: 40px;   
+}
+
+.diagnosis
+{
+    width: inherit;
+    height: inherit;
+    background: transparent url("../Images/icons/diagnosis.png") no-repeat scroll 10% 40%;
+    text-indent: 40px;  
+}
+.diagnosis-selected
+{
+    width: inherit;
+    height: inherit;
+    background-color:transparent;
+    background-image: linear-gradient(to right, rgb(124, 197, 118) -1%, rgb(124, 197, 118) 3%, rgba(81, 81, 81, 0.6) 0%, rgba(81, 81, 81, 0.64) 100%), url("../Images/icons/diagnosis.png") ;
+    background-repeat:no-repeat;
+    background-attachment:scroll;
+    background-position:10%;
+    text-indent: 40px;   
+}
+
+.patient
+{
+    width: inherit;
+    height: inherit;
+    background: transparent url("../Images/icons/patient.png") no-repeat scroll 10% 40%;
+    text-indent: 40px;  
+}
+.patient-selected
+{
+    width: inherit;
+    height: inherit;
+    background-color:transparent;
+    background-image: linear-gradient(to right, rgb(124, 197, 118) -1%, rgb(124, 197, 118) 3%, rgba(81, 81, 81, 0.6) 0%, rgba(81, 81, 81, 0.64) 100%), url("../Images/icons/patient.png") ;
+    background-repeat:no-repeat;
+    background-attachment:scroll;
+    background-position:10%;
+    text-indent: 40px;   
+}
+
+.disease
+{
+    width: inherit;
+    height: inherit;
+    background: transparent url("../Images/icons/disease.png") no-repeat scroll 10% 40%;
+    text-indent: 40px;  
+}
+.disease-selected
+{
+    width: inherit;
+    height: inherit;
+    background-color:transparent;
+    background-image: linear-gradient(to right, rgb(124, 197, 118) -1%, rgb(124, 197, 118) 3%, rgba(81, 81, 81, 0.6) 0%, rgba(81, 81, 81, 0.64) 100%), url("../Images/icons/disease.png") ;
+    background-repeat:no-repeat;
+    background-attachment:scroll;
+    background-position:10%;
+    text-indent: 40px;   
+}
+
+.icon-test{
+    width: inherit;
+    height: inherit;
+    background: transparent url("../Images/icons/icon-u-m.png")  no-repeat scroll 10% 40%;
+    text-indent: 40px;
+}
+
+.h-info{
+    /*width: 414px;
+    float: right;*/
+}
+.h-info ul{
+    padding: 0;
+    margin: 0;
+}
+.h-info ul li{
+    list-style: outside none none;
+    float: left;
+}
+.h-info ul li a{
+    text-decoration: none;
+    font-size: 12px;
+    padding: 0px 10px 0px 25px;
+    line-height: 16px;
+    color: rgb(85, 85, 85);
+    cursor: pointer;
+}
+.h-green
+{
+    /*width: 18px;*/
+    height: 13px;
+    background: url("../Images/icons/icon-u-l.png") no-repeat scroll 0% 0%;
+}
+.h-green:hover span{
+    color: #7cc576;
+}
+.h-red{
+    width: 12px;
+    height: 13px;
+    background: url("../Images/icons/icon-logout.png") no-repeat scroll 0% 0%;
+}
+.h-red:hover{
+    color: #ff0000;
+}
+*:focus {outline: none !important;}
+
+input[type="checkbox"]:focus{outline: none;}
+
+.title{
+    margin: 40px 0px 0px;
+    font-size: 16px;
+    font-weight: 400;
+    width: 100%;
+    line-height: 40px;
+    background: #fff;
+    color: rgb(85, 85, 85);
+    text-indent: 20px;
+}
+/*.title-2
+{
+    width: 100%;
+    padding-left: 10px;
+    font-weight: bold;
+    background-color: White;
+    height: 45px;
+    font-size: 21px;   
+    padding-top:7px; 
+}*/
+
+/*Editor*/
+.editor{
+    float:left;
+}
+.editor ul{
+    padding: 0px;
+    margin: 0px;
+}
+.editor ul li{
+    list-style: outside none none;
+    display: inline-block;
+    background: rgb(255, 255, 255) none repeat scroll 0% 0%;
+    border-radius: 2px;
+    margin: 0px 5px 0px 0px;
+}
+.editor ul li a{
+    text-decoration: none;
+    padding: 0px 15px;
+    font-size: 14px;
+    cursor: pointer;
+}
+.editor ul li a img{
+    margin: -3px 0px 0px -5px;
+    padding: 0px 5px 0px 0px;
+}
+.editor ul li:hover
+{
+    /*box-shadow:0px 0px 0px 1px #7cc576;*/
+}
+.editor ul li a input[type="search"] {
+    border: 0px;
+    padding: 0px;
+    margin: 0px;
+    color: #999;
+}
+.editor ul li a input[type="search"]:focus{
+    color: #555;
+}
+
+/*Table*/
+.tbl th#specail, td#specail
+{
+    }
+.tbl th, td {
+    /*text-align: center;*/
+    line-height: 50px;
+}
+
+.tbl{
+    border-radius: 4px;
+    box-shadow: 0px 0px 4px 0px #999;
+    overflow: hidden;
+    width: 100%;
+    position:relative;
+}
+
+.tbl th, .tbl td{
+   border: 0px none;
+   line-height: 50px;
+   border: 1px solid #dedede;
+   padding: 0px 15px;
+}
+.rpt-tbl th
+{
+    height:40px;
+    line-height:22px;
+    padding:0px;
+}
+.tbl tr:hover:first-child{
+    box-shadow: none;
+}
+
+.tbl tr{
+    background:#eee;
+}
+.tbl>tr:nth-child(odd){    
+    background: #fff;
+}
+.tbl tr:hover{
+    box-shadow:inset 4px 0px 0px 0px #333;
+}
+.tbl tr td:first-child{
+    padding: 0px 0px 0px 23px; 
+}
+
+.action{
+    width:100%;
+    min-height: 22px;
+    position: relative;
+    margin: 20px 0px 20px;
+}
+
+.bx-pt span
+{
+    background-image: url("/Images/close.png");
+    background-size: 100%;
+    background-repeat: no-repeat;
+    float:right;
+    width:19px;
+    height:19px;
+    display:none;  
+    position: absolute;
+    margin-left: 169px; 
+}
+
+.bx-pt:hover span
+{
+    display:block;    
+}
+
+/*Pagination*/
+.Pagination{
+    float: right;
+}
+.Pagination ul{
+    padding: 0px;
+    margin: 0px 0px;
+}
+.Pagination ul li{
+    list-style: outside none none;
+    display: inline-block;
+    background: #ddd;
+    border-radius: 2px;
+}
+.Pagination ul li:hover{
+    color:#fff !important;
+    background: #333;
+}
+
+.Pagination ul li:hover a span
+{
+    color:#fff !important;
+}
+
+.Pagination ul li a{
+    text-decoration: none;
+    padding: 5px 10px;
+}
+.Pagination ul li a:hover{
+    color:#fff !important;
+}
+
+/*From Login*/
+.form-login{
+    width: 300px;
+    min-height: 300px;
+    background: #eee;
+    margin: 0px auto 0px;
+    border-radius: 6px;
+    box-shadow: 0px 3px 3px -1px #333;
+}
+.form-login h2{
+    text-align: center;
+    font-size: 20px;
+    line-height: 60px;
+}
+input[type="submit"] { text-align: center; } 
+
+.form-login .form{
+    width: 100%;
+    padding: 0px 10px;
+}
+.form-login .form ul{
+    padding: 0px;
+    margin: 0px;
+}
+.form-login .form ul li{
+    list-style: none;
+    padding: 0px;
+}
+.form-login .form ul li img{
+    margin: 0px 0px -50px 10px;
+}
+.form-login .form ul li input{
+    border: 0px none;
+    border-bottom: 1px solid #aaa;
+    width: 100%;
+    line-height: 35px;
+    background: rgba(255, 255, 255, 0);
+    color: #333;
+    text-indent: 40px;
+}
+.form-login .form ul li button{
+    background: #333;
+    border: 0px;
+    color: #fff;
+    line-height: 40px;
+    width: 100%;
+    text-align: center;
+    border-radius: 4px;
+    margin: 50px 0px 0px;
+}
+.form-login .form ul li button:hover{
+    background: #444;
+}
+
+.developed{
+    width: 370px;
+    height: 80px;
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+}
+.developed img{
+    float: left;
+    margin: 10px 30px 0px 10px;
+}
+.developed ul{
+    padding: 0px;
+    margin: 10px 0px 0px 0px;
+}
+.developed ul li{
+    font-size: 12px;
+    list-style: none;
+    font-weight: 400;
+    line-height:normal;
+}
+
+/*Profile*/
+.Profile-add{
+    width: 490px;
+    min-height: 100px;
+    background: #fff;
+    border-radius: 4px;
+    box-shadow: 0px 0px 4px 0px #999;
+    overflow: hidden;
+    float: left;
+    margin: 0px 0px 40px 0px;
+}
+.Profile-add table tr td{
+    border: 1px solid #eee;
+    width: 25%;
+}
+.Profile-add table tr td span{
+    padding-left: 60px;
+    width: 100%;
+    float: left;
+    text-align: left;
+}
+.Profile-add table tr td img{
+    margin: 30px 0px;
+}
+.Profile-add table tr td input{
+    width: 100%;
+    height: 100%;
+    backgound: #eee;
+    border: 0px;
+    font-weight:400;
+    font-size: 14px;
+}
+.Profile-add table tr td input[type="password"]{
+    width: 100%;
+    height: 100%;
+    padding: 0px 10px;
+}
+.Profile-add table tr td select{
+    border: 0px;
+    font-weight: 400;
+}
+.Profile-add table tr td select option{
+    height: 52px;
+    background: #7CC576 none repeat scroll 0% 0%;
+    color: #333;
+    border: 0px none;
+    text-indent: 10px;
+    padding-top: 16px;
+    cursor: pointer;
+}
+.Profile-add select option:checked,
+.Profile-add select option:hover {
+    box-shadow: 0 0 10px 100px #000 inset;
+    border: 0px;
+}
+
+.Profile-add table tr td textarea{
+    border: 0px none;
+    line-height: 28px;
+    height: 295px;
+    padding: 10px 0px 0px 0px;    
+}
+
+label.myLabel input[type="file"] {
+    position: fixed;
+    top: -1000px;
+}
+.myLabel {
+    border: 0px;
+    border-radius: 4px;    
+    background-color: #7CC576;
+    display: inline-block;
+    float: left;
+    line-height: 40px;
+    width: 138px;
+}
+.myLabel:hover {
+    background-color: #8AD384;
+}
+.myLabel:active {
+    background: #CCF;
+}
+.myLabel :invalid + span {
+    color: #fff;
+    padding: 0px 20px;
+    text-align: center;
+}
+.myLabel :valid + span {
+    color: #fff;
+    padding: 0px 20px;
+    text-align: center;
+}
+
+
+/*Login out style*/
+.clear{
+	clear: both;
+}
+.tab{
+	width: 100%;
+	height: 30px;
+	/*background: #5479cf;*/
+	position: absolute;
+	top: 0;
+	overflow: hidden;
+}
+.select{
+	width: 100px;
+    padding: 10px 10px 0px;
+	float: left;
+	line-height: 24px;
+	cursor: pointer;
+	/*background: #999;*/
+	font-size: 12px;
+}
+.select:hover{
+    color: #F00;
+}
+.off{
+    width: 12px;
+    height: 13px;
+    background: transparent url("../Images/icons/icon-logout.png") no-repeat scroll 0% 0%;
+}
+.dis{
+	width: initial; 
+	float: none; 
+	background: none;
+}
+.tab-up{
+	/*height: 30px;*/
+	/*background: blue;*/
+}
+.tab-down{
+	height: 100px;
+	/*background: red;*/
+}
+
+.wrap2{
+    width: 22.4%;
+    margin: 20px 0px 0px;
+    background: #333 none repeat scroll 0% 0%;
+    text-align: center;
+    position: relative;
+    border-radius: 4px;
+}
+.wrap2 .arrow{
+	width: 15px;
+	height: 15px;
+	background-color: #333;
+	position: absolute;
+	top: -7px;
+	transform: rotate(45deg);
+	left: 45px;
+}
+.wrap2 .dropdown{
+	color: #FFF;
+	padding: 2px 20px;
+    margin: 0px;
+    cursor: pointer;
+}
+.info
+{
+    border:1px solid #54A94E;
+    border-radius:3px;
+    padding-left:10px;
+    margin-bottom:17px;
+}
+.itr_box
+{
+    width: 100%;
+    float: Left;
+    background-image: url("../Images/percentages.png");
+    background-repeat: no-repeat;
+    background-position: right 30%;
+    background-size: 14px;
+}
+.ch_date
+{
+    background-image:url('/Images/calendar.gif') !important;
+    background-position: 96% 50% !important;
+    background-repeat: no-repeat !important;    
+}
+/*Style For DatePicker*/
+#ui-datepicker-div .ui-datepicker-calendar th, #ui-datepicker-div .ui-datepicker-calendar td
+{
+    line-height:22px;    
+}
+
+#p-form th , #p-form td
+{
+    line-height:30px;
+    padding-bottom:15px;
+}
+delete-button
+{
+    background-color: #7CC576;
+    border: 1px solid #7CC576;
+    border-radius: 3px;
+    width: 74px;
+    height: 32px;    
+}
+.ui-dialog-buttonpane .ui-dialog-buttonset button
+{
+    background-color: #7CC576;
+    border: 1px solid #7CC576;
+    border-radius: 3px;
+    width: 74px;
+    height: 32px;
+    margin-left:5px; 
+    color:White;   
+}
+.ui-dialog-titlebar span
+{
+    color:#49A142;
+}
+.bx-num
+{
+    height:30px;
+    border-radius:3px;
+    border:1px solid #cccccc;
+    padding:8px;    
+    vertical-align: top;
+    width: 100%;
+}
+.bx-ir
+{
+    width:154px;
+    background-color:#7CC576;
+    color:White;
+    border:1px solid #7CC576;
+    border-radius:2px;
+}
+.bx-search{
+    width:100px;
+    background-color:#7CC576;
+    color:White;
+    border:1px solid #7CC576;
+    border-radius:2px;
+}
+
+.container .filter input{
+    height: 30px;
+    padding: 5px;
+    width: 250px;
+    background: #FFFFFF;
+	border-radius:4px;
+	margin-bottom:15px;
+}
+
+.container .frame iframe{
+	border:1px solid #f1f1f1;
+	border-radius:4px;
+}
+
+.frame
+{
+    width: auto;
+    height: 600px;
+}
+
+.mainpage{
+	margin: 20px;
+}
+
+.mainpage ul li a
+{
+   text-shadow: 0.5px 0.5px rgb(189, 182, 182);
+}
+
+.report_header{
+	background: #ffffff none repeat scroll 0 0;
+    font-size: 22px;
+    font-weight: bold;
+    padding-top: 10px;
+	line-height: 40px;
+    margin: 40px 0 0 0;
+    text-indent: 20px;
+	color: rgb(85, 85, 85);
+}
+#main #cnt-cnt .mainpage ul {
+    list-style-image: url('../Images/icons/report.gif');
+}
+#main .container-fluid .validation-summary-errors ul li 
+{
+    list-style-type:none;    
+}
+a:link {
+    text-decoration: none !important;
+}
+
+li a {
+    display: inline-block;
+    text-align: left;
+    padding: 5px 0px;   
+}
+li a:hover {    
+	color:#666 !important;
+}
+#main #cnt-cnt .bx-img
+{
+    float:left; 
+    width: auto;
+    margin-left: 2%;
+    margin-top:18px;
+}
+.number-pagin
+{
+    float: left;
+    line-height: 12px;
+    margin-left: 18px;    
+}
+#lstContainer table tr:first-child
+{
+    width:3%
+}
+.easy-autocomplete-container ul li, .easy-autocomplete-container ul .eac-category
+{
+    line-height:25px !important;
+}
+#main #cnt-cnt #tb-dec
+{   
+    margin:20px auto;
+}
+#dtl Label,
+#dtl-item Label
+{
+    margin-bottom:0px !important;    
+}
+#main .frm-bx .validation-summary-errors ul li
+{
+    color:Red;    
+}
+#main .form-login .validation-summary-errors ul
+{
+    padding: 0px 4px;
+    text-align: center;
+    margin: 0 auto;
+    width: 100%;
+}
+.middle-screen
+{
+  position: absolute;
+  top: 40%;
+  left: 36%;
+  
+    /*display: table;
+    margin: 0 auto;
+    position: relative;*/
+    
+}
+.bx-action
+{
+    width:auto;
+    height:auto;
+    border:1px solid #6cde79;
+    background:white;
+    color:Black;
+    text-align:left;
+    border-radius:3px;
+    display:none;
+    z-index:2;
+    margin-top:1px;
+    position: absolute;
+    box-shadow: 0 1px 1px 2px #ccc;
+    line-height:1;
+}
+.t1
+{
+    right:145px;
+    top:-150%;
+    
+}
+.bx-action ul
+{
+    list-style-type:none; 
+    padding:5px 5px 0 5px;
+    margin-bottom:1px;   
+}
+#lstContainer table tr td:last-child .bx-action ul li a
+{
+    text-decoration:none !important; 
+}
+#lstContainer table tr td:last-child .bx-action ul li
+{
+    width:100%;
+    cursor:pointer;    
+}
+#lstContainer table tr td:last-child .bx-action ul li:hover ,#lstContainer table tr td:last-child .bx-action ul lia:hover
+{
+    width:100%;
+    background-color: #7CC576;   
+    color:White !important;
+}
+.txt-popup
+{
+    float: left; 
+    color: rgb(62, 144, 26); 
+    margin-top:10px; 
+}
+.txt-Ex
+{
+    width: 36%;
+    margin-left: 13px;
+       
+}
+body[lang="km"] .txt-Ex
+{
+    width: 39%;
+    margin-left: 9px;
+       
+}
+.txt-Ex1
+{
+    width: 34%;
+    margin-right: 75px;
+       
+}
+body[lang="km"] .txt-Ex1 
+{
+    width: 38%;
+    margin-right: 24px;
+}
+
+.txt-Ex2
+{
+    /*width: 18%;*/
+    margin-right: 13px;
+       
+}
+.txt-Ex2 strong
+{
+    color:Red;      
+}
+.txtRW
+{
+    width: 50%;
+    margin-right:10px;
+}
+
+body[lang="km"] .txtRW
+{
+    width: 42%;
+}
+
+.txtI
+{
+      width: 36%; 
+      margin-left: 14px;  
+}
+body[lang="km"] .txtI
+{
+    width: 39%;
+    margin-left: 6px; 
+}
+select::-ms-expand {
+    display: none;
+}
+.d-ac
+{
+    width:80px;
+    background-color:#7CC576;
+    color:White;
+    border:1px solid #7CC576;
+    border-radius:2px;
+    -webkit-appearance: none;
+    -moz-appearance:none;
+    cursor:pointer;
+    padding-left: 13px;
+}
+.d-ac2
+{
+    background-color:#7CC576;
+    color:White !important;
+    border:1px solid #7CC576;
+    border-radius:2px;
+    cursor:pointer;
+    padding: 4px 20px;
+    text-decoration: none !important;
+}
+.d-ac2:hover
+{
+    background-color: #98d294;
+}
+
+
+select {
+  position: relative;
+}
+.al
+{
+    text-align:-webkit-left;
+    text-align:-moz-left;
+    background: #f6f4f4;
+    color:#716e6e;
+    padding:1px;
+}
+.dropdown-menu
+{
+    left:-215px !important;
+    top:9% !important;    
+}
+.ta-popup
+{
+    margin-top:15px;
+    padding:5px;  
+    resize:none;
+}
+.aj-login ul
+{
+    list-style-type:none;
+    float:left;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    margin-left: 33%;  
+    text-align:center
+}
+.msg-err{
+    text-align:center;
+    font-weight: 700;
+    font-size: 15px;
+    line-height: 50px;
+}
+body[lang="en"] .lang
+{
+    text-align:center;
+    margin-left:248px;
+    margin-top: 114px;
+    margin-bottom:-12px;
+    }
+body[lang="km"] .lang
+{
+    text-align:center;
+    margin-left:208px;
+    margin-top: 114px;
+    margin-bottom:-12px;
+    }
+.middle-screen1 {
+    left: 30%;
+    position: absolute;
+    top: 40%;
+}
+body[lang="km"] .e-patient ul
+{
+    width:162px !important;    
+}
+
+body[lang="km"] .edp
+{
+    width:176px;    
+}
+.rpt-view .date
+{
+    width:130px;    
+}

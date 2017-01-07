@@ -1,0 +1,183 @@
+﻿.rpt-tbl
+{
+    width: 100%;   
+    font-size:10px;
+    line-height: 18px;
+}
+
+.rpt-view table.rpt-tbl tr th
+{
+    padding: 0px 2px;
+    line-height: 35px;
+}
+
+.rpt-view .paging .red,
+.rpt-view table.rpt-tbl tr td {
+    font-size: 10px !important;
+    line-height: 18px !important;
+    padding: 2px !important;
+}
+
+.rpt-view table.rpt-tbl tr th.frt-rcd,
+.rpt-view table.rpt-tbl tr td.frt-rcd
+{
+    padding-left: 10px !important;
+}
+
+.rpt-view table.rpt-tbl tr .rgh
+{
+    text-align: right;   
+}
+
+.rpt-view table.rpt-tbl tr .lft
+{
+    text-align: left;   
+} 
+
+.rpt-view table.rpt-tbl tr .cntr
+{
+    text-align: center;   
+}
+
+.rpt-view table.rpt-tbl tr .bld
+{
+    text-align: right;   
+}
+
+.rpt-tbl .order
+{
+    width: 5px !important;
+}
+
+.rpt-tbl .frt-rcd
+{
+    padding-left:5px !important; 
+}
+
+.rpt-view .ttl-ctr
+{
+    background: none;
+    margin-right: 0px;   
+    font-weight: bold;
+}
+.ui-datepicker .ui-datepicker-title select,
+.ui-datepicker .ui-datepicker-month
+{
+    height: 20px;
+    line-height: 20px;
+    padding-left: 2px;
+    float:left;
+    font-size:12px !important;
+    line-height:25px !important;
+    margin-right: 2px;
+}
+
+.ui-datepicker-year
+{
+    float:left;  
+    font-size:12px;
+    line-height:25px; 
+}
+
+.rpt-view .editor ul li
+{
+    float:left;
+    line-height: 30px;   
+}
+
+.btn-stl{
+    min-width:100px;
+    background-color:#7CC576;
+    color:White;
+    border:1px solid #7CC576;
+    border-radius:2px;    
+    margin-right: 5px;
+}
+
+/*Remain 1 days*/
+table.rpt-tbl .next-exp
+{
+    background-color:#F7F7D0;
+    color: #000;
+} 
+
+/*Remain 2 days*/
+table.rpt-tbl .near-exp
+{
+    background-color: #E3F7D0;
+    color: #000;
+} 
+/*Remain 0 days*/
+table.rpt-tbl .exp
+{
+    background-color: #FAC0C4;
+    color: #000;
+}
+
+.rpt-tbl tr.odd {
+    background: #eeeeee;
+}
+table.lnk tbody tr:hover.lnk td,
+table.rpt-tbl tr td.lnk:hover
+{
+    color:#7cc576;   
+    cursor: pointer;
+}
+
+
+.rpt-view table.rpt-tbl tr td.main-val
+{
+    background-color: #7cc576;
+    color: #ffffff;
+    font-size: 14px !important;
+    font-weight: bold;
+    padding: 5px !important;
+}
+
+.rpt-tbl .sub-val td.main-ttl
+{
+    font-size: 14px !important;
+    line-height: 18px;   
+    font-weight: bold;
+}
+
+.rpt-tbl .sub-val td.main-val
+{
+    background-color: #7cc576;
+    font-size: 14px !important;
+    line-height: 18px;   
+    font-weight: bold;
+    padding: 5px !important;
+}
+
+.rpt-tbl .sub-val td.last
+{
+    padding-right: 5px;   
+}
+
+.rpt-tbl .ttl-rcd th
+{
+    color:#000;   
+    border-right: 1px solid #eee;
+}
+
+.rpt-tbl tr th
+{
+    text-align: center;
+}
+
+#header .srch-dte
+{
+    text-align: center;
+    font-size: 12px;   
+}
+
+.lst-btn 
+{
+    float:left;
+    margin-bottom: 10px;
+}
+.lst-btn input
+{
+    margin-right: 5px;    
+}

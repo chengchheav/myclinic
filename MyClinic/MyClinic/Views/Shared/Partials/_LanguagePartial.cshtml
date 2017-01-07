@@ -1,0 +1,18 @@
+﻿@using Utilities;
+@{ 
+    var lang=Utilities.Common.GetLanguage(Request.Url.Segments);
+    var link=Utilities.Common.GetLanguageChangeUrl(Request.Url.Segments);
+    if (lang.Equals("en"))
+    {
+        <label style="cursor:pointer;" class="fkh">ប្តូរជា</label>
+        <a href="@link" style="padding: 0px 7px;"><img width="25px" height="25px" src="/Content/img/kh.png" /></a>
+    }
+    else
+    {
+        <label style="cursor:pointer;" class="fen">Switch to</label>
+        <a href="@link" style="padding: 0px 7px;"><img width="25px" height="25px" src="/Content/img/en.png" /></a>
+    }    
+    Response.Cookies.Get("default_Lang").Value = lang;
+    Response.Cookies.Get("default_Lang").Expires = DateTime.Now.AddYears(1);
+
+}

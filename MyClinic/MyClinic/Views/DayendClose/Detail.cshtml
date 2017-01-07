@@ -1,0 +1,40 @@
+﻿@model MyClinic.Models.DayendCloseModels
+@using Utilities
+@using MyClinic.Resources
+@{
+    ViewBag.Title = Translator.DayendCloseTransactionReport;
+    var host            = Utilities.Common.host;
+    String pageVersion = System.Configuration.ConfigurationManager.AppSettings["Source:Version"];
+    String partialPath = "Partials/ListDetail";
+    if (Model.strStatus == "Renew")
+    {
+        partialPath = "Partials/ListDetailRedeemSome";
+    }
+}
+<!----- Title ----->
+<link href="@Url.Content("~/Content/style.report.css?v=" + pageVersion)" rel="stylesheet" type="text/css" />
+<link href="@Url.Content("~/Content/themes/base/jquery.ui.all.css?v=" + pageVersion)" rel="stylesheet" type="text/css" />
+<div class="title">@Translator.DayendCloseTransactionReport</div>
+<div id="content" class="rpt-view">
+    <div class="action">
+        <div class="editor" id="lst-ctr-srch">
+            <ul>
+                <li class="ttl-ctr"><a style="padding:0px;" target="_blank"><input onclick="$manage.detailRecordManageRecords('@Model.intCat', '@Model.strDate', '@Model.strStatus', '@Model.ticketType', '1', '@Url.Action("DetailAll", "DayendClose")', '0');" type="button" class="btn-stl" id="detail-button" value="@Translator.DetailAll"/></a></li>
+                <li class="ttl-ctr"><a style="padding:0px;" target="_blank"><input onclick="$print.detailRecordManageRecords('@Model.intCat', '@Model.strDate', '@Model.strStatus', '@Model.ticketType', '0', '@Url.Action("DetailPrint", "DayendClose")');" type="button" class="btn-stl" id="print-button" value="@Translator.Print"/></a></li>
+                <li class="ttl-ctr"><a style="padding:0px;" target="_blank"><input onclick="$manage.detailRecordManageRecords('@Model.intCat', '@Model.strDate', '@Model.strStatus', '@Model.ticketType', '0', '@Url.Action("DetailCsv", "DayendClose")');" type="button" class="btn-stl" id="csv-button" value="@Translator.Csv"/></a></li>
+           </ul>
+        </div>
+    </div>
+    <div class="clear"></div>
+    <div id="lstContainer" class="tbl">
+        @{Html.RenderPartial(partialPath);}    
+    </div>
+</div>
+<script src="@Url.Content("~/Scripts/script.manage.js?v=" + pageVersion)" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/script.print.js")" type="text/javascript"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $transaction.initDefindActionId("1");
+        $transaction.initChangeClassMenu("icon-report", "icon-report-selected");
+    });
+</script>

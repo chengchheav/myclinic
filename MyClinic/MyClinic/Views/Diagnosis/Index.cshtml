@@ -1,0 +1,49 @@
+﻿@model MyClinic.Models.DiagnosisModels
+@using MyClinic.Resources;
+@{
+    ViewBag.Title = Translator.DiagnosisManagement;
+    var pageUtilities = Model.pageUtilities;
+    var host = Utilities.Common.host;
+    string keyword = "";
+    if (Session["keyword"] != ""){
+        keyword = Session["keyword"].ToString();
+    }
+}
+<!----- Title ----->
+<div class="title">@Translator.DiagnosisManagement</div>
+<div id="content">
+    <div class="action">
+        <div class="editor">
+            <ul>
+                <li><a href="@Url.Action("Add", "Diagnosis")"><img src="@host/Images/icons/new.png" />@Translator.New</a></li>
+                <li>
+                    <select id="cmbSearchBy">
+                        <option value="Name">@Translator.PatientName</option>
+                        <option value="DiagnoseBy">@Translator.DoctorName</option>
+                        <option value="Symptom">@Translator.Symptom</option>
+                     </select>
+                </li>
+                <li><a><input type="search" id="searchKeyWord" placeholder="@Translator.Search..." onkeypress="$common.searchEnter(event);"/></a></li>
+                <li style="background:none;"><a style="padding:0px;"><input style="width:100px;background-color:#7CC576;color:White;border:1px solid #7CC576;border-radius:2px;" type="button" id="search-button" value="@Translator.Search" onclick="$common.searchClick();" /></a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="clear"></div>
+
+    <div id="lstContainer" class="tbl">
+        @{Html.RenderPartial("Partial/List");}
+            
+    </div>
+</div>
+<script src="@Url.Content("~/Scripts/script.print.js")" type="text/javascript"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $transaction.initDefindActionId("1");
+        $transaction.initChangeClassMenu("diagnosis", "diagnosis-selected");
+        if('@keyword' != '') {
+            $('#searchKeyWord').val('@keyword');
+            $('#search-button').trigger('click'); 
+        }
+    });
+</script>

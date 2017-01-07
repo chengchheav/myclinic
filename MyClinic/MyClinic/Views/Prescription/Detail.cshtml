@@ -1,0 +1,102 @@
+﻿@using Utilities;
+@using MyClinic.Resources;
+@model MyClinic.Models.PrintPrescriptionModels
+@{
+    ViewBag.Title = Translator.Detail;
+    var host = Utilities.Common.host;
+    String pageVersion = System.Configuration.ConfigurationManager.AppSettings["Source:Version"];
+    int intIndex = 0;
+}
+<link href="@Url.Content("~/Content/style.prescription.report.css?v=" + pageVersion)" rel="stylesheet" type="text/css" /> 
+<div class="title">@Translator.DetailPrescription</div>
+<div class="detail-html">
+    <div class="inner">
+        <div style="float:left;" id="dtl" class="pndtl">
+            <table>
+                <tr>
+                    <td class="ttl">
+                        <label>@Translator.PatentName</label>
+                    </td>
+                    <td class="vle" style="width:25%;">
+                        <p>@Model.dtoDiagnosis.Patient_Name</p>
+                    </td>
+                    <td class="ttl">
+                        <label>@Translator.Sex</label>
+                    </td>
+                    <td class="vle" >
+                        <p>@Common.GetGender(Model.dtoDiagnosis.Patient_Sex)</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="ttl">
+                        <label>@Translator.DiagnosisDescription</label>
+                    </td>
+                    <td class="vle" colspan="3">
+                        <p>@Model.dtoDiagnosis.Disease_Name</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="4">
+                        <table id="list-report">
+                            <thead>
+                                <tr>
+                                   <th style="width:5%;">@Translator.RecordNo</th>
+                                    <th style="width:23%;">@Translator.Medicine</th>
+                                    <th style="width:8%;">@Translator.Qty</th>
+                                    <!--<th style="width:10%;">@Translator.MedicineType</th>-->
+                                    <th style="width:12%;">@Translator.Usage</th>
+                                    <th style="width:8%;">@Translator.Morning</th>
+                                    <th style="width:8%;">@Translator.Noon</th>
+                                    <th style="width:8%;">@Translator.Night</th>
+                                    <th style="width:22%;">@Translator.Other</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            @foreach (var record in Model.medicineRecords)
+                            {
+                                intIndex = intIndex + 1;
+                                string clssR = "odd";
+                                if (intIndex % 2 == 0)
+                                {
+                                    clssR = "event";
+                                }
+
+                                <tr class="@clssR">
+                                    <td><p style="text-align:center;">@intIndex</p></td>
+                                    <td class="wc"><p>@Utilities.Common.GetValueDisplay(record.Med_Name, String.Empty)</p></td>
+                                    <td><p style="text-align:center;">@Utilities.Common.GetValueDisplay(record.Qty, String.Empty)</p></td>		
+                                    <!--<td><p>@Utilities.Common.GetValueDisplay(record.MedicineType, String.Empty)</p></td>-->
+                                    <td><p>@Utilities.Common.GetValueDisplay(record.Use_Name, String.Empty)</p></td>
+                                    <td><p style="text-align:center;">@Utilities.Common.GetValueDisplay(record.Morning, String.Empty)</p></td>
+                                    <td><p style="text-align:center;">@Utilities.Common.GetValueDisplay(record.Noon, String.Empty)</p></td>
+                                    <td><p style="text-align:center;">@Utilities.Common.GetValueDisplay(record.Night, String.Empty)</p></td>
+                                    <td><p>@Utilities.Common.GetValueDisplay(record.Remark, String.Empty)</p></td>
+                                </tr>
+                            }
+                            </tbody>
+                        </table>
+                    </td>
+                </tr>
+                <tr class="rlst-btn">
+                    <td colspan="4">
+                        <input onclick="$Common.setRedirectPage('@Url.Action("Edit", "Prescription", new { Id = Model.dtoDiagnosis.Id })');" class="myLabel" type="button" value="@Translator.Edit"/>
+                        <input onclick="$Common.setRedirectPage('@Url.Action("Index", "Diagnosis")');" class="myLabel" type="button" value="@Translator.BackToList"/>
+                        <input onclick="$print.onlyPrint('@Url.Action("Print", "Prescription", new { Id = Model.dtoDiagnosis.Id })');" id="print-button" class="myLabel" type="button" value="@Translator.Print"/>
+                    </td>
+                </tr>
+            </table>
+         </div>
+    </div> 
+</div>
+<script src="@Url.Content("~/Scripts/script.print.js")" type="text/javascript"></script>
+<script type="text/javascript">
+    $(document).keypress(function (e) {
+        if (e.which == 13) {
+            $('#print-button').trigger('click');
+        }
+    });
+    $(document).ready(function () {
+        $transaction.initDefindActionId("1");
+        $transaction.initChangeClassMenu("diagnosis", "diagnosis-selected");
+    });
+</script>

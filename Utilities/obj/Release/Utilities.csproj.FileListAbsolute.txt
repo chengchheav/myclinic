@@ -1,0 +1,5 @@
+D:\MyProjects\MyClinic\myclinic\Utilities\bin\Release\Utilities.dll
+D:\MyProjects\MyClinic\myclinic\Utilities\bin\Release\Utilities.pdb
+D:\MyProjects\MyClinic\myclinic\Utilities\obj\Release\Utilities.dll
+D:\MyProjects\MyClinic\myclinic\Utilities\obj\Release\Utilities.pdb
+D:\MyProjects\MyClinic\myclinic\Utilities\obj\Release\Utilities.csprojResolveAssemblyReference.cache

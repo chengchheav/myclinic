@@ -1,0 +1,251 @@
+﻿@model MyClinic.Models.UserModels
+@using MyClinic.Resources;
+@using Utilities
+@{
+    HtmlHelper.ClientValidationEnabled = false;
+    HtmlHelper.UnobtrusiveJavaScriptEnabled = false;
+    var host = Utilities.Common.host;
+    ViewBag.Title = Translator.AddUser;
+    var objSession = Session["user"] as MyClinic.Infrastructure.SessUser;
+    var userType="";
+    if(Model.checkPost == false){
+        if(objSession.UserType.Contains("SPU"))
+        {
+            userType = userType + "<input type='checkbox' id='RPV' name='RPV' value='RPV'><span style='font-weight:700;padding:0 3px;'>Report User</span>";
+            userType = userType + "<input type='checkbox' id='USR' name='USR' value='USR'><span style='font-weight:700;padding:0 3px;'>User</span>";
+        
+        }
+        else{
+            userType = userType + "<input type='checkbox' id='ADM' name='ADM' value='ADM'><span style='font-weight:700;padding:0 3px;'>Admin</span>";
+            userType = userType + "<input type='checkbox' id='SPU' name='SPU' value='SPU'><span style='font-weight:700;padding:0 3px;'>Super User</span>";
+            userType = userType + "<input type='checkbox' id='RPV' name='RPV' value='RPV'><span style='font-weight:700;padding:0 3px;'>Report User</span>";
+            userType = userType + "<input type='checkbox' id='USR' name='USR' value='USR'><span style='font-weight:700;padding:0 3px;'>User</span>";
+            userType = userType + "<input type='checkbox' id='FUR' name='FUR' value='FUR'><span style='font-weight:700;padding:0 3px;'>Front Office User</span>";
+        }
+    }else{
+        
+        if (String.IsNullOrEmpty(Model.userAdd.UserType))
+        {
+            Model.userAdd.UserType = "";
+        }
+        
+        if (objSession.UserType.Contains("SPU"))
+        {
+            if (Model.userAdd.UserType.Contains("RPV"))
+            {
+                userType = userType + "<input type='checkbox' id='RPV' name='RPV' value='RPV' checked><span style='font-weight:700;padding:0 3px;'>Report User</span>";
+            }else{
+                userType = userType + "<input type='checkbox' id='RPV' name='RPV' value='RPV'><span style='font-weight:700;padding:0 3px;'>Report User</span>";
+            }
+
+            if (Model.userAdd.UserType.Contains("USR"))
+            {
+                userType = userType + "<input type='checkbox' id='USR' name='USR' value='USR' checked><span style='font-weight:700;padding:0 3px;'>User</span>";
+            }else{
+                userType = userType + "<input type='checkbox' id='USR' name='USR' value='USR'><span style='font-weight:700;padding:0 3px;'>User</span>";
+            }
+            if (Model.userAdd.UserType.Contains("FUR"))
+            {
+                userType = userType + "<input type='checkbox' id='FUR' name='FUR' value='FUR' checked><span style='font-weight:700;padding:0 3px;'>User</span>";
+            }
+            else{
+                userType = userType + "<input type='checkbox' id='FUR' name='FUR' value='FUR'><span style='font-weight:700;padding:0 3px;'>User</span>";
+            }
+        }
+        else
+        {
+            if (Model.userAdd.UserType.Contains("ADM"))
+            {
+                userType = userType + "<input type='checkbox' id='ADM' name='ADM' value='ADM' checked><span style='font-weight:700;padding:0 3px;'>Admin</span>";
+            }
+            else
+            {
+                userType = userType + "<input type='checkbox' id='ADM' name='ADM' value='ADM'><span style='font-weight:700;padding:0 3px;'>Admin</span>";
+            }
+
+            if (Model.userAdd.UserType.Contains("SPU"))
+            {
+                userType = userType + "<input type='checkbox' id='SPU' name='SPU' value='SPU' checked><span style='font-weight:700;padding:0 3px;'>Super User</span>";
+            }
+            else
+            {
+                userType = userType + "<input type='checkbox' id='SPU' name='SPU' value='SPU'><span style='font-weight:700;padding:0 3px;'>Super User</span>";
+            }
+           
+            if (Model.userAdd.UserType.Contains("RPV"))
+            {
+                userType = userType + "<input type='checkbox' id='RPV' name='RPV' value='RPV' checked><span style='font-weight:700;padding:0 3px;'>Report User</span>";
+            }
+            else
+            {
+                userType = userType + "<input type='checkbox' id='RPV' name='RPV' value='RPV'><span style='font-weight:700;padding:0 3px;'>Report User</span>";
+            }
+
+            if (Model.userAdd.UserType.Contains("USR"))
+            {
+                userType = userType + "<input type='checkbox' id='USR' name='USR' value='USR' checked><span style='font-weight:700;padding:0 3px;'>User</span>";
+            }
+            else
+            {
+                userType = userType + "<input type='checkbox' id='USR' name='USR' value='USR'><span style='font-weight:700;padding:0 3px;'>User</span>";
+            }
+            if (Model.userAdd.UserType.Contains("FUR"))
+            {
+                userType = userType + "<input type='checkbox' id='FUR' name='FUR' value='FUR' checked><span style='font-weight:700;padding:0 3px;'>User</span>";
+            }
+            else{
+                userType = userType + "<input type='checkbox' id='FUR' name='FUR' value='FUR'><span style='font-weight:700;padding:0 3px;'>User</span>";
+            }
+        }
+    }
+    var objTranslateSwitch = new TranslateSwitch();
+}
+
+<div class="title">@Translator.AddUser</div>
+<div class="frm-bx">
+    <div class="frm-info">
+        <p>@Translator.MessageForm <strong>@Translator.MessageFormBold</strong>. <strong>@Translator.Note:</strong> @Translator.MessageForm1</p>
+    </div>
+    @using (Html.BeginForm("Add", "User", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        <div class="info-bx" style="width: 40%;">
+            <fieldset>
+                <table>
+                    <tr>
+                        <td class="editor-label imp">
+                            <Label>@Translator.Name</Label>
+                        </td>
+                        <td class="editor-field" >
+                            @Html.TextBox("Name") 
+                            <div class="error">
+                                @Html.Raw(objTranslateSwitch.Get(Html.ValidationMessage("Name")))
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="editor-label imp">
+                            <Label>@Translator.UserName</Label>
+                        </td>
+                        <td class="editor-field" >
+                            @Html.TextBox("UserName")
+                            <div class="error">
+                                @Html.Raw(objTranslateSwitch.Get(Html.ValidationMessage("UserName")))
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="editor-label imp">
+                            <Label>@Translator.Password</Label>
+                        </td>
+                        <td class="editor-field" >
+                            @Html.Password("Password")
+                            <div class="error">
+                                @Html.Raw(objTranslateSwitch.Get(Html.ValidationMessage("Password")))
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="editor-label imp">
+                            <Label>@Translator.ConfirmPassword</Label>
+                        </td>
+                        <td class="editor-field" >
+                            @Html.Password("ConfirmPassword")
+                            <div class="error">
+                                @Html.Raw(objTranslateSwitch.Get(Html.ValidationMessage("ConfirmPassword")))
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="editor-label">
+                            <Label>@Translator.Email</Label>
+                        </td>
+                        <td class="editor-field">
+                            @Html.TextBox("Email")
+                            <div class="error">
+                                @Html.Raw(objTranslateSwitch.Get(Html.ValidationMessage("Email")))
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="editor-label">
+                            <Label>@Translator.Tel</Label>
+                        </td>
+                        <td class="editor-field">
+                            @Html.TextBox("Tel")
+                            <div class="error">
+                                @Html.Raw(objTranslateSwitch.Get(Html.ValidationMessage("Tel")))
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="editor-label">
+                            <Label>@Translator.UserType</Label>
+                        </td>
+                        <td class="editor-field" id="ust">
+                           
+                            @Html.Raw(userType)
+
+                           <div class="error">
+                                @Html.Raw(objTranslateSwitch.Get(Html.ValidationMessage("userType")))
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="editor-label">
+                            <Label>@Translator.IsActived</Label>
+                        </td>
+                        <td class="editor-field">
+                            @if (Model.userAdd.IsActived == 1)
+                            {
+                                <input type="checkbox" id="IsActived" name="IsActived" value="1" checked/>
+                            }
+                            else
+                            {
+                                <input type="checkbox" id="IsActived" name="IsActived" value="1"/>
+                            }
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <input id="btnSubmit" class="myLabel" type="submit" value="@Translator.Add"/>
+                        </td>
+                    </tr> 
+                </table>
+            </fieldset>
+       </div>
+        <div class="mda-bx">
+            <div class="image-upload">
+                @Html.TextBox("Image", "", new { id = "PhotoFileBase", type = "file", accept = "image/*", @style = "width: 0px;height:0px;" })
+                <div id="imgPhoto" class="bx-pt">
+                    @{
+                        string urlImage = Model.userAdd.ImageStream;
+                        if (String.IsNullOrEmpty(urlImage))
+                        {
+                            urlImage = "/Uploads/default.jpg";
+                        }
+                    }
+                    <img id="image" onError="$image.setDefaultImg(this);" src="@urlImage"/>
+                </div>
+                @if (Model.checkPost == false)
+                {
+                    <input type=hidden name="ImageStream" id="ImageStream" value=""/>
+                }
+                else
+                { 
+                    <input type=hidden name="ImageStream" id="ImageStream" value="@Model.userAdd.ImageStream"/>
+                }
+            </div>
+        </div>
+    }
+</div>
+<script src="@Url.Content("~/Scripts/script.image.js")" type="text/javascript"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $image.initUpload();
+        $transaction.initDefindActionId("1");
+        $transaction.initChangeClassMenu("icon-u-m", "icon-u-m-selected");
+        $image.strDefaultImage = "/Uploads/default.jpg";
+        $Common.initProtectSpaceKey("#UserName");
+    });
+</script>
+

@@ -1,0 +1,64 @@
+﻿@using Utilities;
+@using MyClinic.Resources;
+@model MyClinic.Models.PrescriptionModels
+
+@{
+    var pageUtilities = Model.pageUtilities;
+    var orderField = pageUtilities.orderBy;
+    var order = pageUtilities.order;
+    var host = Utilities.Common.host;
+    var intIndex = 1;
+}
+
+
+<table class="rpt-tbl">
+    <tr style="background:#FFF;">
+        <th>@Html.Raw(Sorting.GetSortOrder(Translator.PatientName, "Name", orderField, order))</th>
+        <th>@Html.Raw(Sorting.GetSortOrder(Translator.Medicine, "Med_Name", orderField, order))</th>
+        <th>@Html.Raw(Sorting.GetSortOrder(Translator.Qty, "Qty", orderField, order))</th>
+        <th>@Html.Raw(Sorting.GetSortOrder(Translator.MedicineType, "MedicineType", orderField, order))</th>
+        <th>@Html.Raw(Sorting.GetSortOrder(Translator.Morning, "Morning", orderField, order))</th>
+        <th>@Html.Raw(Sorting.GetSortOrder(Translator.Noon, "Noon", orderField, order))</th>
+        <th>@Html.Raw(Sorting.GetSortOrder(Translator.Night, "Night", orderField, order))</th>		
+        <th></th>
+    </tr>
+      
+    @foreach (var record in Model.vRecords)
+    {
+        var strClass = "op" + @record.Id;
+        intIndex = intIndex + 1;
+        string clssR = "event";
+        if (intIndex % 2 == 0)
+        {
+            clssR = "odd";
+        }
+    <tr id="@record.Id" class="@clssR">	
+        <td style="text-align:left">@record.Name</td>	
+        <td>@record.Med_Name</td>
+        <td style="text-align:center">@record.Qty</td>
+        <td>@record.MedicineType</td>
+        <td style="text-align:center">@record.Morning</td>
+        <td style="text-align:center">@record.Noon</td>
+        <td style="text-align:center">@record.Night</td>
+        <!--<td>
+            @Html.ActionLink(Translator.Edit, "Edit", new { id = record.Id }) | 
+            @Html.ActionLink(Translator.Detail, "Detail", new { id = record.Id }) |
+            <a  onclick="$dialogAlert.confirmDelete('','','@Translator.MsgConfirmDeletePerscription @record.Med_Name ?','@Url.Action("DeleteConfirmed", "Prescription", new { id = record.Id })');">@Translator.Delete</a>
+        </td>-->
+        <td>
+            <select id="sh" -moz-dir="rtl" class="d-ac showAction" data-value="@record.Id" data-name="@record.Name" onchange="$popup.initSetValueSelectAndPopUpAction(this,'@strClass');">
+                <option value="-1" class="al @strClass" style="display:none;">@Translator.Action</option>
+                <option value="3" class="al">@Translator.Edit</option>
+                <option value="23" class="al">@Translator.Detail</option>
+                <option value="24" class="al">@Translator.Delete</option>
+            </select>
+        </td>
+    </tr>
+    }
+
+</table>
+
+<div class="action">
+    @Html.Raw(pageUtilities.listHeader)
+    @Html.Raw(pageUtilities.listFooter)
+</div>

@@ -1,0 +1,15 @@
+D:\MyProjects\MyClinic\myclinic\MyClinic.Core\bin\Debug\MyClinic.Core.dll.config
+D:\MyProjects\MyClinic\myclinic\MyClinic.Core\bin\Debug\MyClinic.Core.dll
+D:\MyProjects\MyClinic\myclinic\MyClinic.Core\bin\Debug\MyClinic.Core.pdb
+D:\MyProjects\MyClinic\myclinic\MyClinic.Core\bin\Debug\EntityFramework.dll
+D:\MyProjects\MyClinic\myclinic\MyClinic.Core\bin\Debug\EntityFramework.SqlServer.dll
+D:\MyProjects\MyClinic\myclinic\MyClinic.Core\bin\Debug\log4net.dll
+D:\MyProjects\MyClinic\myclinic\MyClinic.Core\bin\Debug\MyClinic.Infrastructure.dll
+D:\MyProjects\MyClinic\myclinic\MyClinic.Core\bin\Debug\Utilities.dll
+D:\MyProjects\MyClinic\myclinic\MyClinic.Core\bin\Debug\MyClinic.Infrastructure.pdb
+D:\MyProjects\MyClinic\myclinic\MyClinic.Core\bin\Debug\Utilities.pdb
+D:\MyProjects\MyClinic\myclinic\MyClinic.Core\bin\Debug\EntityFramework.xml
+D:\MyProjects\MyClinic\myclinic\MyClinic.Core\bin\Debug\EntityFramework.SqlServer.xml
+D:\MyProjects\MyClinic\myclinic\MyClinic.Core\obj\Debug\MyClinic.Core.csprojResolveAssemblyReference.cache
+D:\MyProjects\MyClinic\myclinic\MyClinic.Core\obj\Debug\MyClinic.Core.dll
+D:\MyProjects\MyClinic\myclinic\MyClinic.Core\obj\Debug\MyClinic.Core.pdb

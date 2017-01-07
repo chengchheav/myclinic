@@ -1,0 +1,40 @@
+﻿@using MyClinic.Resources
+@using MyClinic.Controllers
+@using Utilities;
+@{
+    ViewBag.Title = Translator.Home;
+    var host = Utilities.Common.host;    
+    List<int> intList= new List<int>();
+}
+<link href="@Url.Content("~/Content/roogrog_slide.css")" rel="stylesheet" type="text/css" />
+
+<div class="fadein" style="width:100%;height:800px;">    
+    @for(int i = 0; i < 13; i++)
+    {
+        var randomId = Common.GetUniqueRandomNumber(1,14,intList);
+        var strImg ="<img src=\"../Images/SliderImage/slide" + randomId + ".jpg\" />\r\n";
+        @Html.Raw(strImg)
+    }    
+</div>
+
+<script  type="text/javascript">
+    $(document).ready(function () {
+        //Slider Helper
+        var h = window.innerHeight + 61;    
+        $("body").css({ "overflow": "hidden" });    
+        $('.fadein').css({ "height": h + "px" });
+        $(function () {
+            $('.fadein img:gt(0)').hide();
+            setInterval(function () {
+                $('.fadein :first-child').fadeOut(1500).next('img').fadeIn(1500).end().appendTo('.fadein'); 
+            }, 5000);
+        });
+    });
+</script> 
+<script type="text/javascript">
+    $(document).ready(function () {
+        $transaction.initDefindActionId("1");
+        $transaction.initChangeClassMenu("icon-home", "icon-home-selected");
+    });
+</script>
+

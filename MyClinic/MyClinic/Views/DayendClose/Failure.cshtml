@@ -1,0 +1,32 @@
+﻿@using Utilities;
+@using MyClinic.Resources
+@model MyClinic.Models.DayendCloseModels
+
+@{
+    ViewBag.Title = @Translator.DayendClose;
+    var host = Utilities.Common.host;
+}
+
+<div class="title">@Translator.FailureDayendClose</div>
+<div class="detail-html">
+    <div class="inner">
+            <table>
+                <tr>
+                    <td class="tableData" colspan="4">
+                        <p>@Translator.DayendClosingFor @Common.GetDateTimeFormate(Model.dayendClose)</p>
+                    </td>
+                </tr>
+                <tr class="rlst-btn">
+                     <td colspan="4">
+                        <input onclick="$dialogAlert.confirmDayendClose('','','Are you sure want to close date @Common.GetDateTimeFormate(Model.dayendClose)','@Url.Action("Run", "DayendClose")');" class="myLabel" type="button" value="@Translator.RunAgain"/>
+                        <input onclick="$Common.setRedirectPage('@Url.Action("Index", "Home")');" class="myLabel" type="button" value="@Translator.ReturnToHome"/>
+                     </td>
+                </tr>
+            </table>
+   
+    </div>
+</div>
+<script type="text/javascript">
+    $transaction.initDefindActionId("1");
+    $transaction.initChangeClassMenu("icon-i-m", "icon-i-m-selected");
+</script>

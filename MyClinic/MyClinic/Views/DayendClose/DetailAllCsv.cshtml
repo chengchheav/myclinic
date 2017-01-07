@@ -1,0 +1,228 @@
+﻿@using Utilities;
+@using MyClinic.Resources
+@model MyClinic.Models.DayendCloseModels
+@{
+    ViewBag.Title = Translator.DayendCloseTransactionReport;
+    int intIndex = 0;
+    decimal ItemAmount = 0;
+    decimal InterestEarned = 0;
+    decimal RedeemSome = 0; 
+}
+<div class="header">
+    <h1 style="text-align: center;">@Translator.DayendCloseAllTransactionReport</h1>
+    <p style="text-align: center;"><strong>@Common.GetSearchDateTimeFormate(Model.strDate)</strong></p>
+    <table>
+        <tbody>
+            <tr>
+                <td colspan="7" style="text-align: left;"></td>
+                <td colspan="7" style="text-align: right;">@Common.GetCurrentFullDate()</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<div class="body">
+    <h3>@Translator.NewGrantTransactionReport</h3>
+    <table>
+        <thead>
+            <tr style="background: #eeeeee;border: 1px solid #ddd;">
+                <th style="text-align: center;">@Translator.Id</th>
+                <th style="text-align: center;">@Translator.Name</th>
+                <th style="text-align: center;">@Translator.Sex</th>
+                <th style="text-align: center;">@Translator.Tel</th>
+                <th style="text-align: center;">@Translator.CategoryName</th>
+                <th style="text-align: center;">@Translator.PawnItem</th>
+                <th style="text-align: center;">@Translator.ItemNumber</th>
+                <th style="text-align: center;">@Translator.TicketNumber</th>
+                <th style="text-align: center;">@Translator.ViaTicket</th>
+                <th style="text-align: center;">@Translator.PawnDate</th>
+                <th style="text-align: center;">@Translator.ExpireDate</th>
+                <th style="text-align: center;">@Translator.ItemAmount</th>
+                <th style="text-align: center;">@Translator.InterestEarned</th>
+                <th style="text-align: center;">@Translator.Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var record in Model.lstPawnTransaction)
+            {
+                if (record.TransStatus == 1)
+                {
+                    intIndex = intIndex + 1;
+                    var strExpClss = "background-color:#ffffff;";
+                    if (intIndex % 2 == 0)
+                    {
+                        strExpClss = "background-color:#eeeeee;";
+                    }
+                    ItemAmount = ItemAmount + record.ItemAmount;
+                    InterestEarned = InterestEarned + record.InterestEarned;
+                    RedeemSome = RedeemSome + record.RedeemSome;
+                    
+                    <tr style="@strExpClss border: 1px solid #ddd;">
+                        <td>@record.Id</td>
+                        <td>@Utilities.Common.GetValueDisplay(@record.PawnerName, String.Empty)</td>
+                        <td>@Utilities.Common.GetGender(record.Gender)</td>
+                        <td>@Utilities.Common.GetValueDisplay(record.Tel, String.Empty)</td>	
+                        <td>@Utilities.Common.GetValueDisplay(record.CategoryName, String.Empty)</td>	
+                        <td>@Utilities.Common.GetValueDisplay(record.ItemName, String.Empty)</td>
+                        <td>@Utilities.Common.GetValueDisplay(record.ItemNumber, String.Empty)</td>
+                        <td style="text-align: center;">@Utilities.Common.GetValueDisplay(record.TicketNumber, String.Empty)</td>
+                        <td style="text-align: center;">@Utilities.Common.GetValueDisplay(record.ViaTicketNumber, String.Empty)</td>
+                        <td style="text-align: center;">@Utilities.Common.GetDateTimeFormate(record.PawnDate)</td>
+                        <td style="text-align: center;">@Utilities.Common.GetDateTimeFormate(record.ExpireDate)</td>
+                        <td style="text-align: right;">@Utilities.Common.GetCurrencyFormate(record.ItemAmount)</td>
+                        <td style="text-align: right;">@Utilities.Common.GetCurrencyFormate(record.InterestEarned)</td>
+                        <td style="text-align: center;">@Utilities.Common.GetPawnStatus(record.Status) </td>
+                    </tr>
+                }
+            } 
+
+            @if (Model.strStatus == "InterestEarned")
+            {
+                <tr class="sub-val"><td colspan="12"></td><td style="text-align: right;border: 1px solid #ddd;">@Utilities.Common.GetCurrencyFormate(InterestEarned)</td><td></td></tr>      
+            }
+            else { 
+                <tr class="sub-val"><td colspan="11"></td> <td style="text-align: right;background-color:#eeeeee;border: 1px solid #ddd;">@Utilities.Common.GetCurrencyFormate(ItemAmount)</td><td colspan="2"></td></tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+@{
+    intIndex = 0;
+    ItemAmount = 0;
+    InterestEarned = 0;   
+}
+<div class="body">
+    <h3>@Translator.RedeemTransactionReport</h3>
+    <table>
+        <thead>
+            <tr style="background: #eeeeee;border: 1px solid #ddd;">
+                <th style="text-align: center;">@Translator.Id</th>
+                <th style="text-align: center;">@Translator.Name</th>
+                <th style="text-align: center;">@Translator.Sex</th>
+                <th style="text-align: center;">@Translator.Tel</th>
+                <th style="text-align: center;">@Translator.CategoryName</th>
+                <th style="text-align: center;">@Translator.PawnItem</th>
+                <th style="text-align: center;">@Translator.ItemNumber</th>
+                <th style="text-align: center;">@Translator.TicketNumber</th>
+                <th style="text-align: center;">@Translator.ViaTicket</th>
+                <th style="text-align: center;">@Translator.PawnDate</th>
+                <th style="text-align: center;">@Translator.ExpireDate</th>
+                <th style="text-align: center;">@Translator.ItemAmount</th>
+                <th style="text-align: center;">@Translator.InterestEarned</th>
+                <th style="text-align: center;">@Translator.Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var record in Model.lstPawnTransaction)
+            {
+                if (record.TransStatus == 3)
+                {
+                    intIndex = intIndex + 1;
+                    var strExpClss = "background-color:#ffffff;";
+                    if (intIndex % 2 == 0)
+                    {
+                        strExpClss = "background-color:#eeeeee;";
+                    }
+                    ItemAmount = ItemAmount + record.ItemAmount;
+                    InterestEarned = InterestEarned + record.InterestEarned;
+                    <tr style="@strExpClss border: 1px solid #ddd;">
+                        <td>@record.Id</td>
+                        <td>@Utilities.Common.GetValueDisplay(@record.PawnerName, String.Empty)</td>
+                        <td>@Utilities.Common.GetGender(record.Gender)</td>
+                        <td>@Utilities.Common.GetValueDisplay(record.Tel, String.Empty)</td>	
+                        <td>@Utilities.Common.GetValueDisplay(record.CategoryName, String.Empty)</td>	
+                        <td>@Utilities.Common.GetValueDisplay(record.ItemName, String.Empty)</td>
+                        <td>@Utilities.Common.GetValueDisplay(record.ItemNumber, String.Empty)</td>
+                        <td style="text-align: center;">@Utilities.Common.GetValueDisplay(record.TicketNumber, String.Empty)</td>
+                        <td style="text-align: center;">@Utilities.Common.GetValueDisplay(record.ViaTicketNumber, String.Empty)</td>
+                        <td style="text-align: center;">@Utilities.Common.GetDateTimeFormate(record.PawnDate)</td>
+                        <td style="text-align: center;">@Utilities.Common.GetDateTimeFormate(record.ExpireDate)</td>
+                        <td style="text-align: right;">@Utilities.Common.GetCurrencyFormate(record.ItemAmount)</td>
+                        <td style="text-align: right;">@Utilities.Common.GetCurrencyFormate(record.InterestEarned)</td>
+                        <td style="text-align: center;">@Utilities.Common.GetPawnStatus(record.Status) </td>
+                    </tr>
+                }
+            } 
+
+            @if (Model.strStatus == "InterestEarned")
+            {
+                <tr class="sub-val"><td colspan="12"></td><td style="text-align: right;border: 1px solid #ddd;">@Utilities.Common.GetCurrencyFormate(InterestEarned)</td><td></td></tr>      
+            }
+            else { 
+                <tr class="sub-val"><td colspan="11"></td> <td style="text-align: right;background-color:#eeeeee;border: 1px solid #ddd;">@Utilities.Common.GetCurrencyFormate(ItemAmount)</td><td colspan="2"></td></tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+@{
+    intIndex = 0;
+    ItemAmount = 0;
+    InterestEarned = 0;   
+}
+<div class="body">
+    <h3>@Translator.RenewTransactionReport</h3>
+    <table>
+        <thead>
+            <tr style="background: #eeeeee;border: 1px solid #ddd;">
+                <th style="text-align: center;">@Translator.Id</th>
+                <th style="text-align: center;">@Translator.Name</th>
+                <th style="text-align: center;">@Translator.Sex</th>
+                <th style="text-align: center;">@Translator.Tel</th>
+                <th style="text-align: center;">@Translator.CategoryName</th>
+                <th style="text-align: center;">@Translator.PawnItem</th>
+                <th style="text-align: center;">@Translator.ItemNumber</th>
+                <th style="text-align: center;">@Translator.TicketNumber</th>
+                <th style="text-align: center;">@Translator.ViaTicket</th>
+                <th style="text-align: center;">@Translator.PawnDate</th>
+                <th style="text-align: center;">@Translator.ExpireDate</th>
+                <th style="text-align: center;">@Translator.ItemAmount</th>
+                <th style="text-align: center;">@Translator.RedeemSome</th>
+                <th style="text-align: center;">@Translator.InterestEarned</th>
+                <th style="text-align: center;">@Translator.Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var record in Model.lstPawnTransaction)
+            {
+                if (record.TransStatus == 2)
+                {
+                    intIndex = intIndex + 1;
+                    var strExpClss = "background-color:#ffffff;";
+                    if (intIndex % 2 == 0)
+                    {
+                        strExpClss = "background-color:#eeeeee;";
+                    }
+                    ItemAmount = ItemAmount + record.ItemAmount;
+                    InterestEarned = InterestEarned + record.InterestEarned;
+                    RedeemSome = RedeemSome + record.RedeemSome;
+                    
+                    <tr style="@strExpClss border: 1px solid #ddd;">
+                        <td>@record.Id</td>
+                        <td>@Utilities.Common.GetValueDisplay(@record.PawnerName, String.Empty)</td>
+                        <td>@Utilities.Common.GetGender(record.Gender)</td>
+                        <td>@Utilities.Common.GetValueDisplay(record.Tel, String.Empty)</td>	
+                        <td>@Utilities.Common.GetValueDisplay(record.CategoryName, String.Empty)</td>	
+                        <td>@Utilities.Common.GetValueDisplay(record.ItemName, String.Empty)</td>
+                        <td>@Utilities.Common.GetValueDisplay(record.ItemNumber, String.Empty)</td>
+                        <td style="text-align: center;">@Utilities.Common.GetValueDisplay(record.TicketNumber, String.Empty)</td>
+                        <td style="text-align: center;">@Utilities.Common.GetValueDisplay(record.ViaTicketNumber, String.Empty)</td>
+                        <td style="text-align: center;">@Utilities.Common.GetDateTimeFormate(record.PawnDate)</td>
+                        <td style="text-align: center;">@Utilities.Common.GetDateTimeFormate(record.ExpireDate)</td>
+                        <td style="text-align: right;">@Utilities.Common.GetCurrencyFormate(record.ItemAmount)</td>
+                        <td style="text-align: right;">@Utilities.Common.GetCurrencyFormate(record.RedeemSome)</td>
+                        <td style="text-align: right;">@Utilities.Common.GetCurrencyFormate(record.InterestEarned)</td>
+                        <td style="text-align: center;">@Utilities.Common.GetPawnStatus(record.Status) </td>
+                    </tr>
+                }
+            } 
+
+            <tr class="sub-val">
+                <td colspan="11"></td> 
+                <td style="text-align: right;background-color:#eeeeee;border: 1px solid #ddd;">@Utilities.Common.GetCurrencyFormate(ItemAmount)</td>
+                <td style="text-align: right;background-color:#eeeeee;border: 1px solid #ddd;">@Utilities.Common.GetCurrencyFormate(RedeemSome)</td>
+                <td colspan="2"></td>
+            </tr>
+        </tbody>
+    </table>
+</div>

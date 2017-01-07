@@ -1,0 +1,10 @@
+﻿@{
+    var objSession = Session["user"] as MyClinic.Infrastructure.SessUser;
+    var result = 1;
+}
+@if (objSession ==null)
+{
+    result = 0;
+}
+
+@result

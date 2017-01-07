@@ -1,0 +1,76 @@
+﻿@using Utilities;
+@model MyClinic.Models.DailyFinancialModels
+
+@{
+    ViewBag.Title = "Daily Financial Report";
+    var host = Utilities.Common.host;
+    String pageVersion = System.Configuration.ConfigurationManager.AppSettings["Source:Version"];
+    int intIndex = 0;
+}
+
+<link href="@Url.Content("~/Content/prints/style.report.css?v=" + pageVersion)" rel="stylesheet" type="text/css" />
+<div id="header">
+    <h1>Daily Financial Report</h1>
+    <div class="container">
+        <div class="row">
+            <div style="text-align: left; float:left;">Result <strong>@Model.totalRecords</strong> Records</div>
+            <div style="text-align: right; float:right;">@Common.GetCurrentFullDate()</div>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <table class="rpt-tbl">
+            <tr>
+                <th>Pawner Name</th>
+                <th>Tel</th>
+                <th>Pawn Item</th>
+                <th>Guarantor</th>
+                <th>Valuer Name</th>
+                <th class="cntr">Pawn Date</th>
+                <th class="cntr">Expire Date</th>
+                <th class="cntr last">Status</th>
+            </tr>
+      
+            @foreach (var record in Model.lstRecords)
+            {
+                intIndex = intIndex + 1;
+                string clssR = "odd";
+                if (intIndex % 2 == 0)
+                {
+                    clssR = "event";
+                }
+
+                DateTime oldDate = record.ExpireDate;
+                DateTime newDate = DateTime.Now;
+                int differenceInDays = (oldDate - newDate).Days;
+                string strExpClss = "";
+                if (differenceInDays == 1)
+                {
+                    strExpClss = "next-exp";
+                }
+                else if (differenceInDays == 2)
+                {
+                    strExpClss = "near-exp";
+                }
+                else if (differenceInDays <= 0)
+                {
+                    strExpClss = "exp";
+                }
+                
+                <tr class="@clssR @strExpClss">
+                    <td>@Utilities.Common.GetValueDisplay(@record.PawnerName, String.Empty)</td>
+                    <td>@Utilities.Common.GetValueDisplay(record.Tel, String.Empty)</td>	
+                    <td>@Utilities.Common.GetValueDisplay(record.ItemName, String.Empty)</td>
+                    <td>@Utilities.Common.GetValueDisplay(record.Guarantor, String.Empty)</td>
+                    <td>@Utilities.Common.GetValueDisplay(record.ValuerName, String.Empty)</td>
+                    <td class="cntr">@Utilities.Common.GetDateTimeFormate(record.PawnDate)</td>
+                    <td class="cntr">@Utilities.Common.GetDateTimeFormate(record.ExpireDate)</td>
+                    <td class="cntr last">@Utilities.Common.GetPawnStatus(record.Status) </td>
+                </tr>
+            } 
+            <tr><td colspan="14"></td></tr>
+
+        </table>
+    </div>
+</div>

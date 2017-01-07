@@ -1,0 +1,113 @@
+﻿@using Utilities;
+@model MyClinic.Models.EmployeeModels
+@using MyClinic.Resources;
+@{
+    Random rnd = new Random();
+    var imgPath = Model.dtoemployee.Image;
+    ViewBag.Title = Translator.EmployeeDetail;
+    var host = Utilities.Common.host;
+
+    var objDateBirth = Model.dtoemployee.Dob;
+    string dateBirth = "N/A";
+    var strValue = "1990-01-01";
+    DateTime objDate;
+    DateTime.TryParse(strValue, out objDate);
+    if (Model.dtoemployee.Dob != objDate)
+    {
+        dateBirth = Common.GetDatePickerDisplay(objDateBirth);
+    }
+}
+
+<div class="title">@Translator.EmployeeDetail</div>
+<div class="detail-html">
+    <div class="inner">
+        <div style="float:left;" id="dtl" class="pndtl">
+            <table>
+                <tr>
+                    <td class="editor-label">
+                        @Translator.Name
+                    </td>
+                    <td class="editor-field" >:
+                        @Html.DisplayFor(model => Model.dtoemployee.Name)
+                    </td>
+                    <td class="editor-label2">
+                        @Translator.Sex
+                    </td>
+                    <td class="editor-field" >:
+                        @(Model.dtoemployee.Sex =="M" ? Translator.Male :Translator.Female)
+                    </td>
+                </tr>
+                <tr>
+                    <td class="editor-label">
+                        @Translator.Position
+                    </td>
+                    <td class="editor-field" >:
+                        @Html.DisplayFor(model => Model.dtoemployee.PositionName)
+                    </td>
+                    <td class="editor-label2">
+                        @Translator.DateOfBirth
+                    </td>
+                    <td class="editor-field" >:
+                        @dateBirth
+                    </td>
+                </tr>
+                <tr>
+                    <td class="editor-label">
+                        @Translator.Email
+                    </td>
+                    <td class="editor-field" >:
+                        @Html.DisplayFor(model => Model.dtoemployee.Email)
+                    </td>
+                    <td class="editor-label2">
+                        @Translator.Status
+                    </td>
+                    <td class="editor-field" >:
+                        @(Model.dtoemployee.Status == 1 ? Translator.Active:Translator.Inactive)
+                    </td>
+                </tr>
+                <tr>
+                    <td class="editor-label">
+                         @Translator.Tel
+                    </td>
+                    <td class="editor-field" colspan="3">:
+                       @Html.DisplayFor(model => Model.dtoemployee.Tel)
+                    </td>
+                </tr>
+                <tr>
+                    <td class="editor-label">
+                        @Translator.Skill
+                    </td>
+                    <td class="editor-field" >:
+                        @Html.DisplayFor(model => Model.dtoemployee.Skill)
+                    </td>
+                </tr>
+                <tr>
+                    <td class="editor-label" style="vertical-align:top;">
+                        @Translator.Address
+                    </td>
+                    <td class="editor-field"  colspan="3">:
+                        @Html.DisplayFor(model => Model.dtoemployee.Address)
+                    </td>
+                </tr>
+                <tr class="rlst-btn">
+                        <td colspan="4">
+                        <input onclick="$Common.setRedirectPage('@Url.Action("Edit", "Employee", new { Id = Model.dtoemployee.Id })');" class="myLabel" type="button" value="@Translator.Edit"/>
+                        <input onclick="$Common.setRedirectPage('@Url.Action("Index", "Employee")');" class="myLabel" type="button" value="@Translator.BackToList"/>
+                        </td>
+                </tr>
+            </table>
+         </div>
+    </div>
+    <div class="bx-img">
+        @Html.TextBox("Image", "", new { id = "PhotoFileBase", type = "file", accept = "image/*", @style = "width: 0px;height:0px;" })
+        <div id="imgPhoto" class="bx-pt">
+            <img style="width:100%;height:100%;object-fit: cover;" src="@imgPath"/>
+        </div>
+    </div> 
+</div>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $transaction.initDefindActionId("1");
+        $transaction.initChangeClassMenu("employee", "employee-selected");
+    });
+</script>

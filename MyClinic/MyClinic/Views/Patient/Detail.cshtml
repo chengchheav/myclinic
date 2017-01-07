@@ -1,0 +1,165 @@
+﻿@model MyClinic.Models.PatientModels
+@using MyClinic.Resources;
+@using Utilities;
+@{
+    Random rnd = new Random();
+    var imgPath = Model.patient.Image;
+    ViewBag.Title = Translator.PatientDetail;
+    var age = "";
+    var objSession = Session["user"] as MyClinic.Infrastructure.SessUser;
+           
+    var today = DateTime.Today;
+    var dateDiff = today - Model.patient.Dob;
+    int Age = 0;
+
+    if (dateDiff.TotalDays < 30)
+    {
+        age = dateDiff.TotalDays.ToString() + " " + Translator.Day;
+    }
+    else if (dateDiff.TotalDays >= 30 && dateDiff.TotalDays < 365)
+    {
+        Age = (int)dateDiff.TotalDays / 30;
+        age = Age.ToString() + " " + Translator.Month;
+    }
+    else
+    {
+        Age = (int)dateDiff.TotalDays / 365;
+        age = Age + " " + Translator.Year;
+    }
+    
+}
+<div class="title">@Translator.PatientDetail</div>
+<div style="margin-left:25px;" id="dtl"​ class="detail-html">
+        <div style="float:left;">
+            <fieldset>
+                <table >
+                    <tr>
+                        <td class="editor-label">
+                            <Label>@Translator.Name</Label>
+                        </td>
+                        <td class="editor-field"  style="padding-left:10px;">:
+                            @Html.DisplayFor(model => model.patient.Name)
+                        </td>
+                        <td class="editor-label">
+                            <Label>@Translator.Sex</Label>
+                        </td>
+                        <td class="editor-field" style="padding-left:10px;">:
+                            @(Model.patient.Sex == "M" ? Translator.Male : Translator.Female)
+                        
+                        </td>
+                    </tr>
+                    <tr>
+                         <td class="editor-label">
+                            <Label>@Translator.Age</Label>
+                        </td>
+                        <td class="editor-field">:
+                            @age
+                        </td>
+                        <td class="editor-label">
+                            <Label>@Translator.Tel</Label>
+                        </td>
+                        <td class="editor-field" style="padding-left:10px;">:
+                            @Html.DisplayFor(model => model.patient.Tel)
+                        </td>
+                    </tr>
+                    <tr>
+                         <td class="editor-label">
+                            <Label>@Translator.DateOfBirth</Label>
+                        </td>
+                        <td class="editor-field">:
+                            @Common.GetDateTimeFormate(Model.patient.Dob)
+                        </td>
+                        <!--<td class="editor-label">
+                            <Label>@Translator.Email</Label>
+                        </td>
+                        <td class="editor-field" style="padding-left:10px;">:
+                            @Html.DisplayFor(model => model.patient.Email)
+                        </td>-->
+                    </tr>
+                    <tr>
+                         <td class="editor-label">
+                            <Label>@Translator.Status</Label>
+                        </td>
+                        <td class="editor-field">:
+                            @(Model.patient.Status == 1 ? Translator.Active : Translator.Inactive)
+                        </td>
+                        <td class="editor-label">
+                        </td>
+                        <td class="editor-field" style="padding-left:10px;">
+                        </td>
+                    </tr>
+                </table>
+            </fieldset>
+        </div>
+        <div class="bx-img">
+            @Html.TextBox("Image", "", new { id = "PhotoFileBase", type = "file", accept = "image/*", @style = "width: 0px;height:0px;" })
+            <div id="imgPhoto" class="bx-pt">
+                <img style="width:100%;height:100%;object-fit: cover;" src="@imgPath"/>
+            </div>
+        </div>
+        <div class="lst-btn">
+            <div class="inner">
+                @{
+                    if (!objSession.UserType.Contains("FUR"))
+                    {
+                        <input onclick="$Common.setRedirectPage('@Url.Action("Edit", "Patient", new { Id = Model.patient.Id })');" class="myLabel" type="button" value="@Translator.Edit"/>
+                    }
+                }
+                <input onclick="$Common.setRedirectPage('@Url.Action("Index", "Patient")');" class="myLabel" type="button" value="@Translator.BackToList"/>
+            </div>
+        </div>
+</div>
+@{
+    int intIndex = 0;    
+}
+<!--List For Prescription-->
+<div class="clear"></div>
+<div class="title">@Translator.PatientHistory</div>
+<div class="detail-html">
+    <div class="tbl" style="margin:25px 0px 50px 0px; float: left;">
+        <table style="width:100%" class="rpt-tbl">
+            <tr style="background-color:#fff;" >
+                <th style="width:5%">@Translator.Id</th>
+				<th style="width:13%">@Translator.DoctorName</th>
+				<th style="width:20%">@Translator.DiseaseName</th>
+                <th style="width:25%">@Translator.Symptom</th>
+                <th style="width:10%">@Translator.Severity</th>
+				<th style="width:13%">@Translator.Visit</th>
+				<th style="width:14%" colspan="2">@Translator.VisitAgain</th>
+            </tr>
+      
+            @foreach (var record in Model.listDiagnosis)
+            {
+                 intIndex = intIndex + 1;
+                string clssR = "event";
+                if (intIndex % 2 == 0)
+                {
+                    clssR = "odd";
+                }
+                var nextVisitDate = Utilities.Common.GetDateTimeFormate(record.ExpiredDate);
+                if (record.ExpiredDate.Year == 1990)
+                {
+                    nextVisitDate = "";
+                }
+            <tr id=@record.Id class="@clssR">
+                <td class="no">@intIndex</td>
+				<td class="tll">@record.Diagnose_Name</td>
+                <td>@record.Disease_Name</td>
+                <td>@record.Symptom</td>
+				<td style="text-align:center;">@record.Symptom_Type</td>
+				<td class="cntr">@Utilities.Common.GetDateTimeFormateWithTimeAndMinute(record.DiagnoseDate)</td>
+                <td class="cntr">@nextVisitDate</td>
+                <td class="act">
+                    <a class="btnsm" href="@Url.Action("Detail", "Diagnosis", new { id = record.Id })">@Translator.Detail</a>
+                </td>   
+            </tr>
+            }
+        </table>
+    </div>
+</div>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $transaction.initDefindActionId("1");
+        $transaction.initChangeClassMenu("patient", "patient-selected");
+    });
+</script>

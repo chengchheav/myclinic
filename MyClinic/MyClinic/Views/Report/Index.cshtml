@@ -1,0 +1,22 @@
+﻿@using MyClinic.Resources;
+@using Utilities
+@{    
+    ViewBag.Title = Translator.Report;
+    var host = Utilities.Common.host;
+}
+<div class="report_header">@Translator.Report</div>
+<div class="mainpage">
+	<ul>
+        <li><a href="@Url.Action("Report", "DailyOperation")" target="_blank">@Translator.DailyOperationReport</a></li>
+        <!--<li><a href="@Url.Action("Report", "MonthlyOperation")" target="_blank">@Translator.MonthlyOperationReport</a></li>-->
+        <li><a href="@Url.Action("Report", "DoctorOperation")" target="_blank">@Translator.DoctorOperationReport</a></li>
+		<li><a href="@Url.Action("Index", "AuditLog")" target="_blank">@Translator.AuditLogReport</a></li>	
+        <!--<li><a href="@Url.Action("DayendClose", "Report")" target="_blank">@Translator.DayendCloseReport</a></li>-->
+
+        <li><a href="@Url.Action("Report", "DiseaseOperation")" target="_blank">@Translator.DiseaseSummaryReport</a></li>	
+	</ul>
+</div>
+<script type="text/javascript">
+    $transaction.initDefindActionId("1");
+    $transaction.initChangeClassMenu("icon-report", "icon-report-selected");
+</script>

@@ -1,0 +1,96 @@
+﻿@model MyClinic.Models.PaginationModels      
+
+@{
+    ViewBag.Title = "Home Page";
+    Model.users.Count();
+    var host = Utilities.Common.host;
+    
+}
+<!----- Title ----->
+<div class="title">Example Record</div>
+<div id="content">
+<div class="action">
+    <div class="editor">
+        <ul>
+            <li><a><img src="@host/Images/icons/new.png" />New</a></li>
+            <li><a>Insert</a></li>
+            <li><a>Save</a></li>
+            <li><a>Delete</a></li>
+            <li><a><input type="search" placeholder="Search..." /></a></li>
+        </ul>
+    </div>
+
+    <div class="Pagination">
+    @if (Model.Pager.EndPage > 1)
+    {
+        <ul>
+            @if (Model.Pager.CurrentPage > 1)
+            {
+                <li><a href="@host/Example/Index?page=@(Model.Pager.CurrentPage - 1)">Previous</a></li>
+            }
+            @for (var page = Model.Pager.StartPage; page <= Model.Pager.EndPage; page++)
+            {
+                <li><a href="@host/Example/Index?page=@page">@page</a></li>
+            
+            }
+            @if (Model.Pager.CurrentPage < Model.Pager.TotalPages)
+            {
+                <li><a href="@host/Example/Index?page=@(Model.Pager.CurrentPage + 1)">Next</a></li>
+            }
+        </ul>
+    }
+    </div>
+</div>
+
+<div class="clear"></div>
+
+<div class="tbl">
+    <table style="width:100%">
+      <tr>
+        <th></th>
+        <th>Id</th>
+        <th>Name</th>
+        <th>UserName</th>	
+        <th>Email</th>
+      </tr>
+      
+      @foreach (var user in Model.users)
+      {
+      <tr>
+        <td>
+            <input type="checkbox" class = "chcktbl" />
+        </td>
+        <td>@user.Id</td>
+        <td>@Html.Raw(user.Name)</td>
+        <td>@Html.Raw(user.UserName)</td>
+        <td>@Html.Raw(user.Email)</td>
+      </tr>
+      }
+
+    </table>
+</div>
+
+<div class="action">
+    <div class="Pagination">
+        @if (Model.Pager.EndPage > 1)
+        {
+            <ul>
+                @if (Model.Pager.CurrentPage > 1)
+                {
+                    <li><a href="@host/Example/Index?page=@(Model.Pager.CurrentPage - 1)">Previous</a></li>
+                }
+                @for (var page = Model.Pager.StartPage; page <= Model.Pager.EndPage; page++)
+                {
+                    <li><a href="@host/Example/Index?page=@page">@page</a></li>
+            
+                }
+                @if (Model.Pager.CurrentPage < Model.Pager.TotalPages)
+                {
+                    <li><a href="@host/Example/Index?page=@(Model.Pager.CurrentPage + 1)">Next</a></li>
+                }
+            </ul>
+        }
+    </div>
+</div>
+
+</div>

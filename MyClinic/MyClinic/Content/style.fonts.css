@@ -1,0 +1,49 @@
+﻿@font-face {
+    font-family: 'Hanuman';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Hanuman'), url(/Content/fonts/YE3SaZyNHZda4wWQ3s_XcQ.woff) format('woff');
+}
+.langEN{
+    font-family:Futura, "Century Gothic", AppleGothic, sans-serif;
+}
+.langKH{
+    font-family: 'Hanuman';
+    src: local('Hanuman'), url(/css/YE3SaZyNHZda4wWQ3s_XcQ.woff) format('woff');
+}
+.fkh {
+    font-family: "Hanuman",sans-serif;
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+}
+
+.fen {
+    font-family: "Helvetica","Futura","Century Gothic",AppleGothic,sans-serif;
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+}
+body{
+	font-family: "Helvetica","Futura","Century Gothic",AppleGothic,sans-serif;
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+	
+}
+
+body[lang="en"],
+body[lang="en"] .ui-widget,
+body[lang="en"] .ui-widget button
+{
+    font-family: "Helvetica","Futura","Century Gothic",AppleGothic,sans-serif;
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+}
+
+body[lang="km"],
+body[lang="km"] .ui-widget,
+body[lang="km"] .ui-widget button
+{
+    font-family: "Hanuman",sans-serif;
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+}
+

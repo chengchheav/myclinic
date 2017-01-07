@@ -1,0 +1,27 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Nov 6, 2015, 4:57:10 PM
+    Author     : ly.sopheak
+*/
+/************************************************************************************
+smaller than 650
+*************************************************************************************/
+@import url("responsive/style-320.css") screen and (max-width:320px);
+/************************************************************************************
+smaller than 650
+*************************************************************************************/
+@import url("responsive/style-321-480.css") screen and (min-width:321px) and (max-width:480px);
+
+/************************************************************************************
+smaller than 650
+*************************************************************************************/
+@import url("responsive/style-481-980.css") screen and (min-width:481px) and  (max-width: 980px);
+
+/************************************************************************************
+smaller than 1600
+*************************************************************************************/
+@import url("responsive/style-981.css") screen and (min-width:981px);

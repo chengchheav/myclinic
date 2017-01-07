@@ -1,0 +1,105 @@
+﻿@model MyClinic.Models.MedicineModels
+@using MyClinic.Resources; 
+@using Utilities;
+@{
+    ViewBag.Title = Translator.EditMedicine;
+    var host = Utilities.Common.host;
+    var objTranslateSwitch = new TranslateSwitch();
+}
+
+
+<div class="title">@Translator.EditMedicine</div>
+<div class="frm-bx">
+    <div class="frm-info">
+        <p>@Translator.MessageForm <strong>@Translator.MessageFormBold</strong>. <strong>@Translator.Note:</strong> @Translator.MessageForm1</p>
+    </div>
+   @using (Html.BeginForm())
+   { 
+        @Html.ValidationSummary(true) 
+        <div style="width:500px;">
+            <fieldset>
+                 @Html.Hidden("Id",Model.medicine.Id)
+                <table>
+                     <tr>
+                        <td class="editor-label imp">
+                            <Label>@Translator.Name</Label>
+                        </td>
+                        <td class="editor-field">
+                            @Html.TextBox("Name",Model.medicine.Name) 
+                            <div class="error">
+                                @Html.Raw(objTranslateSwitch.Get(Html.ValidationMessage("Name")))
+                            </div>
+                        </td>
+                        <td ></td>
+                    </tr>
+                    <tr>
+                        <td class="editor-label1 imp">
+                            <Label>@Translator.Type</Label>
+                        </td>
+                        <td class="editor-field" >
+                            @Html.DropDownList("MedicineTypeId", Model.medicineTypeRecords.Select(item => new SelectListItem
+                           {
+                               Value = item.Id.ToString(),
+                               Text = item.Type,
+                               Selected = Model.medicine.MedicineTypeId == item.Id ? true : false
+                           }), "--- "+ Translator.SelectOne +" ---", new { @class = "slc-ctl" })
+                            <div class="error">
+                                @Html.Raw(objTranslateSwitch.Get(Html.ValidationMessage("MedicineTypeId")))
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="editor-label1 imp">
+                            <Label>@Translator.UnitId</Label>
+                        </td>
+                        <td class="editor-field" >
+                            @Html.DropDownList("UnitId", Model.unitRecords.Select(item => new SelectListItem
+                           {
+                               Value = item.Id.ToString(),
+                               Text = item.Unit,
+                               Selected = Model.medicine.UnitId == item.Id ? true : false
+                           }), "--- "+ Translator.SelectOne +" ---", new { @class = "slc-ctl" })
+                            <div class="error">
+                                @Html.Raw(objTranslateSwitch.Get(Html.ValidationMessage("MedicineTypeId")))
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="editor-label">
+                           <Label> @Translator.Status</Label>
+                        </td>
+                        <td class="editor-field"  >
+                            @Html.DropDownList("Status", new List<SelectListItem>
+                            {
+                                new SelectListItem { Text = Translator.Active, Value = "1",Selected=(@Model.medicine.Status == 1 ? true:false)},
+                                new SelectListItem { Text = Translator.Inactive, Value = "0",Selected=(@Model.medicine.Status == 0 ? true:false)}
+                            })
+                        </td>
+                        <td ></td>
+                    </tr>
+                    <tr>
+                        <td class="editor-label">
+                            <Label>@Translator.Description</Label>
+                        </td>
+                        <td class="editor-field" colspan="2">
+                           @Html.TextArea("Description",Model.medicine.Description, new { @class = "form-control", @cols = 35, @rows = 6 })
+                           <div class="error">
+                                @Html.Raw(objTranslateSwitch.Get(Html.ValidationMessage("Description")))
+                            </div>
+                        </td>
+                        <td></td>
+                    </tr>
+
+                    <tr><td colspan="4"><input id="btnSubmit" class="myLabel" type="submit" value="@Translator.Save"/></td>
+                </tr> 
+                </table>
+            </fieldset>
+        </div>
+    }
+</div>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $transaction.initDefindActionId("1");
+        $transaction.initChangeClassMenu("medicine", "medicine-selected");
+    });
+</script>

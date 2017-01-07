@@ -1,0 +1,38 @@
+﻿@model MyClinic.Models.DiseaseModels
+@using MyClinic.Resources;
+@{
+    ViewBag.Title =​Translator.DiseaseManagement;
+    var pageUtilities = Model.pageUtilities;
+    var host = Utilities.Common.host;
+}
+<!----- Title ----->
+<div class="title">@Translator.DiseaseManagement</div>
+<div id="content">
+    <div class="action">
+        <div class="editor">
+            <ul>
+                <li><a href="@Url.Action("Add", "Disease")"><img src="@host/Images/icons/new.png" />@Translator.New</a></li>
+                <li>
+                    <select id="cmbSearchBy">
+                        <option value="Name">@Translator.Name</option>
+                     </select>
+                </li>
+                <li><a><input type="search" id="searchKeyWord" placeholder="@Translator.Search..." onkeypress="$common.searchEnter(event);"/></a></li>
+                <li style="background:none;"><a style="padding:0px;"><input style="width:100px;background-color:#7CC576;color:White;border:1px solid #7CC576;border-radius:2px;" type="button" id="search-button" value="@Translator.Search" onclick="$common.searchClick();" /></a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="clear"></div>
+
+    <div id="lstContainer" class="tbl">
+        @{Html.RenderPartial("Partial/List");}
+            
+    </div>
+</div>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $transaction.initDefindActionId("1");
+        $transaction.initChangeClassMenu("disease", "disease-selected");
+    });
+</script>

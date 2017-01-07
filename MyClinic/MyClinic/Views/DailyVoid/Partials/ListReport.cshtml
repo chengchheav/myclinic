@@ -1,0 +1,59 @@
+﻿@model MyClinic.Models.DailyVoidModels
+@using MyClinic.Resources
+@using Utilities
+
+@{
+    string orderField = Model.orderField;
+    string order = Model.order;
+    var host = Utilities.Common.host;
+    int intIndex = 0;
+    decimal TotalItemAmount = 0;
+    decimal TotalInterestEarned = 0;
+}          
+<div class="info-rslt">@Translator.Result @Model.totalRecords @Translator.Records</div>
+<table class="rpt-tbl">
+    <tr class="hdr">
+        <th>@Html.Raw(Sorting.GetSortOrderManageRecord(Translator.Name, "PawnerName", orderField, order))</th>
+        <th>@Html.Raw(Sorting.GetSortOrderManageRecord(Translator.ItemCategory, "CategoryName", orderField, order))</th>
+        <th>@Html.Raw(Sorting.GetSortOrderManageRecord(Translator.PawnItem, "ItemName", orderField, order))</th>
+        <th class="cntr">@Html.Raw(Sorting.GetSortOrderManageRecord(Translator.TicketNumber, "TransNumber", orderField, order))</th>
+        <th class="cntr">@Html.Raw(Sorting.GetSortOrderManageRecord(Translator.ViaTicket, "ViaTransNumber", orderField, order))</th>
+        <th class="cntr">@Html.Raw(Sorting.GetSortOrderManageRecord(Translator.PawnDate, "PawnDate", orderField, order))</th>
+        <th class="cntr">@Html.Raw(Sorting.GetSortOrderManageRecord(Translator.ExpireDate, "ExpireDate", orderField, order))</th>
+        <th class="cntr">@Html.Raw(Sorting.GetSortOrderManageRecord(Translator.TransDate, "TransDate", orderField, order))</th>
+        <th class="rgh">@Html.Raw(Sorting.GetSortOrderManageRecord(Translator.ItemAmount, "ItemAmount", orderField, order))</th>
+        <th class="rgh">@Html.Raw(Sorting.GetSortOrderManageRecord(Translator.InterestEarned, "InterestEarned", orderField, order))</th>
+        <th class="last">@Html.Raw(Sorting.GetSortOrderManageRecord(Translator.Reason, "Reason", orderField, order))</th>
+    </tr>
+      
+    @foreach (var record in Model.lstRecords)
+    {
+        intIndex = intIndex + 1;
+        string clssR = "odd";
+        if(intIndex % 2 == 0){
+            clssR = "event";
+        }
+        TotalItemAmount = TotalItemAmount + record.ItemAmount;
+        TotalInterestEarned = TotalInterestEarned + record.InterestEarned;
+        
+        <tr class="@clssR">
+            <td>@Utilities.Common.GetValueDisplay(@record.PawnerName, String.Empty)</td>
+            <td>@Utilities.Common.GetValueDisplay(record.CategoryName, String.Empty)</td>	
+            <td>@Utilities.Common.GetValueDisplay(record.ItemName, String.Empty)</td>
+            <td class="cntr">@Utilities.Common.GetValueDisplay(record.TransNumber, String.Empty)</td>
+            <td class="cntr">@Utilities.Common.GetValueDisplay(record.ViaTransNumber, String.Empty)</td>
+            <td class="cntr">@Utilities.Common.GetDateTimeFormate(record.PawnDate)</td>
+            <td class="cntr">@Utilities.Common.GetDateTimeFormate(record.ExpireDate)</td>
+            <td class="cntr">@Utilities.Common.GetDateTimeFormate(record.TransDate)</td>
+            <td class="rgh">@Utilities.Common.GetCurrencyFormate(record.ItemAmount)</td>
+            <td class="rgh">@Utilities.Common.GetCurrencyFormate(record.InterestEarned)</td>
+            <td class="last">@Utilities.Common.GetValueDisplay(record.Reason, String.Empty)</td>
+        </tr>
+    }
+    <tr class="sub-val">
+        <td colspan="8"></td>
+        <td class="rgh main-val">@Utilities.Common.GetCurrencyFormate(TotalItemAmount)</td>
+        <td class="rgh main-val last">@Utilities.Common.GetCurrencyFormate(TotalInterestEarned)</td>
+        <td></td>
+   </tr>  
+</table>

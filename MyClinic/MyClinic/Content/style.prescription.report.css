@@ -1,0 +1,139 @@
+﻿
+table#list-report
+{
+    width: 100%;
+}
+
+table#list-report thead th
+{
+    background: #FFF;
+    text-align: center;
+    line-height: 32px;
+    height: 32px;   
+}
+
+table#list-report tr.bdr
+{
+    border-top: 1px solid #FFF;   
+}
+
+table#list-report th,
+table#list-report td
+{
+    border-left: 1px solid #FFF;   
+}
+
+table#list-report .last
+{
+   border-right: 1px solid #FFF;  
+}
+
+table#list-report .nb
+{
+    border: none;
+}
+
+table#list-report tfoot td
+{
+    border-bottom: 1px solid #FFF;
+}
+
+table#list-report .btn{
+    width:100px;
+    background-color:#7CC576;
+    color:White;
+    border:1px solid #7CC576;
+    border-radius:2px;   
+}
+
+table#list-report .act
+{
+    text-align: center;   
+}
+
+table#list-report .act .btn
+{
+    width: 46%;
+}
+
+.detail-html .ctr-bx 
+{
+    width: 94%;
+    margin: 0 auto;  
+}
+
+#main #cnt-cnt .frm-bx table#list-report td
+{
+    vertical-align: middle;
+}
+
+#main #cnt-cnt .frm-bx .info-bx {
+    float: left;
+    width: 65%;
+}
+
+.detail-html .ttl
+{
+    font-weight: bold;
+    
+}
+
+.detail-html .vle
+{
+    font-weight: normal;
+    line-height: 22px;
+    margin: 0 auto;
+    width: 94%;
+    word-wrap: break-word;
+}
+
+#list-report tbody tr td
+{
+    background: #FFF;   
+    font-size: 14px;
+    line-height: 22px;
+    padding: 5px 0;
+}
+
+#list-report tbody tr td p
+{
+    padding: 0px 2px;
+    margin:0px;   
+}
+
+#list-report tbody tr
+{
+    border-top: 1px solid #eeeeee; 
+}
+
+#list-report thead tr th,
+#list-report tbody tr td
+{
+    border-left: 1px solid #eeeeee;   
+}
+
+.detail-html .pndtl .rlst-btn input[type="button"]
+{
+    margin-top: 15px;
+}
+
+.detail-html .ttl
+{
+    width:15%;
+    vertical-align: top;
+}
+.detail-html .vle p,
+.detail-html .ttl label
+{
+    font-size: 14px;
+    line-height: 22px;
+    margin: 0 0px 22px;
+    padding: 0;
+    float: left;
+}
+
+.detail-html .vle
+{
+    width: 35%;
+    vertical-align: top;
+}

@@ -1,0 +1,230 @@
+#header
+{
+    height: 160px;
+    width: 100%;   
+}
+.part-one
+{
+    margin-bottom:15px;
+}
+.part-one,
+.part-one table.fit-bx
+{
+    height:340px;
+}
+
+.part-one .dte-info td
+{
+    height:70px;
+    font-weight: bold;
+}
+
+.part-two
+{
+    margin-bottom:15px;
+}
+.part-two,
+.part-two table.fit-bx
+{
+  height:172px;
+}
+.part-three,
+.part-three .fit-bx
+{
+    height:335px;
+}
+
+.part-three table td.sub,
+.part-three table td.sub table
+{
+    height:125px;
+}
+.part-three .dte-info td
+{
+    height:80px;
+}
+
+.container .row table
+{
+    width: 568px;    
+}
+
+.container > .row > table > tbody > tr > td
+{
+    width: 25%;   
+}
+
+.container .part-one .sub .part
+{
+    width: 100%;
+    border-bottom:0px solid black;
+    float:left;
+} 
+.container .part-one .sub .part span
+{
+    margin-left: 38%;
+    width: 62%;
+    float:left;
+}
+
+.container .part-two table.sub td:first-child,
+.container .part-three .sub table td:first-child
+{
+    width: 40%;
+}
+
+.desc-info > td
+{
+    height:135px;  
+    vertical-align: top;
+}
+
+.pnr-info > td
+{
+    height: 51px;    
+}
+
+.curc-info > td
+{
+    height: 55px;
+}
+
+.dte-info > td
+{
+    font-size: 14px;
+    height:65px;   
+    text-align: center;
+    width: 25%;
+    vertical-align:bottom;
+    font-weight: bold;
+    padding-bottom: 5px;
+}
+
+.curc-info td
+{
+    font-size: 14px; 
+    vertical-align: bottom;
+    padding-bottom: 5px;
+    font-weight: bold;
+}
+
+.tkt-n
+{
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.pnr-nme
+{
+    font-size: 14px;
+}
+
+.part-one .desc
+{
+    font-size: 14px;
+    line-height: 20px;
+    vertical-align: top;
+}
+
+.part-three .desc
+{
+   font-size: 14px;
+   line-height:20px;
+}
+
+.part-three .phne
+{
+    font-size: 14px;
+    text-align:center;
+    line-height:20px;
+}
+
+.spl-info
+{
+  color: blue;
+}
+
+.curc
+{
+    font-size: 16px;
+}
+.part-three .address
+{
+    font-size: 14px;
+    line-height:20px;
+    }
+.part-one .address
+{
+    font-size: 12px;
+    line-height:16px;
+    font-weight:bold;
+    }
+.m-l
+{
+    padding-left:15px;    
+}
+.valuator, .vt , .cat
+{
+    font-size:12px;
+    line-height:16px;    
+}
+
+.container .bdr
+{
+    border:none;
+}
+.container table.bdr td
+{
+    border:none;
+}
+/*New*/
+#print-lyt .container
+{
+    width:874px;   
+}
+
+#print-lyt .pnr-info th
+{
+   padding: 7px;
+   text-align: center;     
+}
+#print-lyt .list-medicine
+{
+    height: 20px;
+    text-align: center;
+    
+}
+#print-lyt .list-medicine .tll
+{
+    text-align: left;
+    padding-left: 5px;
+}
+#print-lyt .list-medicine .tlr
+{
+    text-align: right;
+    padding-right: 8px;
+    border:none;
+}
+#print-lyt .list-medicine span
+{
+    font-weight:bold;    
+}
+#print-lyt .date
+{
+    margin-top: 130px;
+    margin-right: 210px;
+}
+
+@page  
+{ 
+    size: auto;   /* auto is the initial value */ 
+
+    /* this affects the margin in the printer settings */ 
+    margin: 6mm 0mm 6.16mm 0mm;  
+} 
+
+body  
+{ 
+    /* this affects the margin on the content before sending to printer */ 
+    margin: 0px;  
+} 

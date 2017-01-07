@@ -1,0 +1,39 @@
+﻿
+
+<!doctype html>
+<html>
+  <head>
+    <script src="@Url.Content("~/Scripts/jquery-1.12.1.min.js?v=" + pageVersion)" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/tinyslide.js")" type="text/javascript"></script>
+    <link href="@Url.Content("~/Content/tinyslide.css")" rel="stylesheet" type="text/css" />
+  </head>
+  <body>
+
+    <section id="tiny" class="tinyslide">
+      <aside class="slides">
+        <figure>
+          <img url("../Images/SliderImage/slide1.jpg") alt="" />
+          <figcaption>
+            Neat Stuff
+          </figcaption>
+        </figure>
+        <figure>
+          <img src="../Images/SliderImage/slide2.jpg" alt="" />
+          <figcaption>
+            More Text
+          </figcaption>
+        </figure>
+        <figure>
+          <img src="../Images/SlidrImage/slide3.jpg" alt="" />
+          <figcaption>
+            Even More Text
+          </figcaption>
+        </figure>
+      </aside>
+    </section>
+    <script>
+        var tiny = $('#tiny').tiny().data('api_tiny');
+    </script>
+
+  </body>
+</html>

@@ -1,0 +1,78 @@
+﻿@using Utilities;
+@using MyClinic.Resources  
+@model MyClinic.Models.PatientOperationModels 
+
+@{
+    var host = Utilities.Common.host;
+    int intIndex = 0;
+    string PatientName = "";
+    string DiseaseName = "";    
+}          
+<table class="rpt-tbl nbdr lst-grp" style="width: 100%;">
+    <thead>
+        <tr style="background:#FFF;" class="html">
+            <th style="width:130px;">@Translator.PatientName</th>
+            <th style="width:150px;">@Translator.Diagnosis</th>
+            <th style="width:130px;">@Translator.DoctorName</th>
+            <th style="width:100px;">@Translator.Skill</th>
+            @if (Common.showDoctorTel)
+            {
+            <th>@Translator.DoctorTel</th>
+            }
+            <th>@Translator.Tel</th>
+            <th>@Translator.DiagnoseCycle</th>
+            <th>@Translator.Severity</th>
+            <th>@Translator.Visit</th>
+            <th>@Translator.VisitAgain</th>
+        </tr>
+    </thead>
+    <tbody>
+    @foreach (var record in Model.lstRecords)
+    {
+        if (PatientName != record.Name)
+        {
+            PatientName = record.Name;
+            <tr class="cat">
+                <td style="text-align:left;" colspan="9"><h3>@Html.Raw(record.Name)</h3></td>
+            </tr>
+        }
+        string ConcateDisease = record.Name + record.Dis_Name;
+        if (DiseaseName != ConcateDisease)
+        {
+            DiseaseName = ConcateDisease; 
+            intIndex = 1;
+            <tr class="itm">
+                <td class="fst" style="border-right: 0px;"></td>
+                <td colspan="8" style="border-left: 0px;"><h4>@Html.Raw(record.Dis_Name)</h4></td>
+            </tr>  
+        }
+
+        intIndex = intIndex + 1;
+        string clssR = "odd";
+        if (intIndex % 2 == 0)
+        {
+            clssR = "event";
+        }
+        var nextVisitDate = Utilities.Common.GetDateTimeFormate(record.ExpiredDate);
+        if (record.ExpiredDate.Year == 1990)
+        {
+            nextVisitDate = "";
+        }
+        <tr class="desc @clssR html">
+            <td class="fst" style="border-right: 0px;"></td>
+            <td class="sec" style="border-left: 0px;border-right: 0px;"></td>
+            <td class="sep" style="border-left: 0px;">@record.Doc_Name</td>
+            <td class="sep">@record.Doc_Skill</td>
+            @if (Common.showDoctorTel)
+            {
+            <td style="width:100px;" class="sep">@record.Doc_Tel</td>
+            }
+            <td style="width:100px;" class="sep">@record.Tel</td>
+            <td style="text-align:center;width:85px;" class="sep">@record.DiagnoseCycle</td>
+            <td style="width:110px;text-align:center;" class="sep">@record.Sym_Type</td>
+            <td class="sep" style="text-align:center;width:170px;">@Common.GetDateTimeFormateWithTimeAndMinute(record.DiagnoseDate)</td>
+            <td style="text-align:center;width:170px;">@nextVisitDate</td>
+        </tr> 
+    } 
+    </tbody>
+</table>

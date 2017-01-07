@@ -1,0 +1,981 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Action" xml:space="preserve">
+    <value>សកម្មភាព</value>
+  </data>
+  <data name="Active" xml:space="preserve">
+    <value>ដំណើរការ</value>
+  </data>
+  <data name="Add" xml:space="preserve">
+    <value>បង្កើត</value>
+  </data>
+  <data name="Address" xml:space="preserve">
+    <value>អាសយដ្ឋាន</value>
+  </data>
+  <data name="AddUser" xml:space="preserve">
+    <value>បង្កើតអ្នកប្រើប្រាស់</value>
+  </data>
+  <data name="AdjustmentReport" xml:space="preserve">
+    <value>របាយការណ៍ស្តីពីការកែប្រែការបញ្ចាំ</value>
+  </data>
+  <data name="All" xml:space="preserve">
+    <value>ទាំងអស់</value>
+  </data>
+  <data name="Amount" xml:space="preserve">
+    <value>ចំនួនទឹកប្រាក់</value>
+  </data>
+  <data name="AuditLogReport" xml:space="preserve">
+    <value>របាយការណ៍តាមដានសកម្មភាពទូរទៅ</value>
+  </data>
+  <data name="BackToList" xml:space="preserve">
+    <value>ត្រឡប់ទៅបញ្ជីដើម</value>
+  </data>
+  <data name="Backup" xml:space="preserve">
+    <value>រក្សាទុកទិន្នន័យបំរុង</value>
+  </data>
+  <data name="BackupFor" xml:space="preserve">
+    <value>រក្សាទុកទិន្នន័យបំរុងសំរាប់</value>
+  </data>
+  <data name="BackupManagement" xml:space="preserve">
+    <value>គ្រប់គ្រងរក្សាទុកទិន្នន័យបំរុង</value>
+  </data>
+  <data name="Close" xml:space="preserve">
+    <value>ដាច់</value>
+  </data>
+  <data name="Closed" xml:space="preserve">
+    <value>វត្ថុបញ្ចាំដែលបានដាច់</value>
+  </data>
+  <data name="Code" xml:space="preserve">
+    <value>លេខកូដ</value>
+  </data>
+  <data name="CompanyLogo" xml:space="preserve">
+    <value>រូបសញ្ញាក្រុមហ៊ុន</value>
+  </data>
+  <data name="Comparison" xml:space="preserve">
+    <value>ប្រៀបធៀប</value>
+  </data>
+  <data name="ConfirmPassword" xml:space="preserve">
+    <value>បញ្ជាក់លេខសម្ងាត់</value>
+  </data>
+  <data name="ContractDate" xml:space="preserve">
+    <value>ការបរិច្ឆេតថ្ងៃចុះកិច្ចសន្យា</value>
+  </data>
+  <data name="ContractDateIsNotValid" xml:space="preserve">
+    <value>ការបរិច្ឆេតនៃកិច្ចសន្យាមិនត្រឹមត្រូវ។</value>
+  </data>
+  <data name="CreatedBy" xml:space="preserve">
+    <value>បង្កើតឡើងដោយ</value>
+  </data>
+  <data name="CreatedById" xml:space="preserve">
+    <value>អត្តសញ្ញាណអ្នកបង្កើត</value>
+  </data>
+  <data name="CreatedDate" xml:space="preserve">
+    <value>កាលបរិច្ឆេទបង្កើត</value>
+  </data>
+  <data name="Csv" xml:space="preserve">
+    <value>CSV</value>
+  </data>
+  <data name="CurrentMonth" xml:space="preserve">
+    <value>ខែបច្ចុប្បន្ន</value>
+  </data>
+  <data name="DailyCashFlowReport" xml:space="preserve">
+    <value>របាយការណ៍លំហូរសាច់ប្រាក់ប្រចាំថ្ងៃ</value>
+  </data>
+  <data name="DailyOperationReport" xml:space="preserve">
+    <value>របាយការណ៍ប្រតិបត្តិការប្រចាំថ្ងៃ</value>
+  </data>
+  <data name="Date" xml:space="preserve">
+    <value>ការបរិច្ឆេត</value>
+  </data>
+  <data name="DateOfBirth" xml:space="preserve">
+    <value>ថ្ងៃខែកំណើត</value>
+  </data>
+  <data name="DayendClose" xml:space="preserve">
+    <value>បិទបញ្ជីប្រចាំថ្ងៃ</value>
+  </data>
+  <data name="DayendCloseAllTransactionReport" xml:space="preserve">
+    <value>របាយការណ៍បិទបញ្ជីទាំងអស់</value>
+  </data>
+  <data name="DayendCloseReport" xml:space="preserve">
+    <value>របាយការណ៍បិទបញ្ជីប្រចាំថ្ងៃ</value>
+  </data>
+  <data name="DayendCloseSummaryReport" xml:space="preserve">
+    <value>របាយការណ៍បិទបញ្ជីសង្ខេប</value>
+  </data>
+  <data name="DayendCloseTransactionReport" xml:space="preserve">
+    <value>របាយការណ៍បិទបញ្ជី</value>
+  </data>
+  <data name="DayendClosingFor" xml:space="preserve">
+    <value>បិទបញ្ជីសំរាប់ថ្ងៃ</value>
+  </data>
+  <data name="Days" xml:space="preserve">
+    <value>ថ្ងៃ</value>
+  </data>
+  <data name="Delete" xml:space="preserve">
+    <value>លុប</value>
+  </data>
+  <data name="Description" xml:space="preserve">
+    <value>លម្អិត</value>
+  </data>
+  <data name="Detail" xml:space="preserve">
+    <value>លម្អិត</value>
+  </data>
+  <data name="DetailAll" xml:space="preserve">
+    <value>លម្អិតទាំងអស់</value>
+  </data>
+  <data name="DetailUser" xml:space="preserve">
+    <value>លម្អិតព័ត៌មានអ្នកប្រើ</value>
+  </data>
+  <data name="DoYouWishToRollbackTheDayendCloseOf" xml:space="preserve">
+    <value>តើអ្នកពិតជាត្រូវការធ្វើឡើងវិញនៅការបិទបញ្ជីសំរាប់ថ្ងៃ</value>
+  </data>
+  <data name="DoYouWishToRunTheDayendCloseOf" xml:space="preserve">
+    <value>តើអ្នកពិតជាត្រូវការបិទបញ្ជីសំរាប់ថ្ងៃ</value>
+  </data>
+  <data name="Edit" xml:space="preserve">
+    <value>កែប្រែ</value>
+  </data>
+  <data name="EditUser" xml:space="preserve">
+    <value>កែប្រែអ្នកប្រើ</value>
+  </data>
+  <data name="Email" xml:space="preserve">
+    <value>អ៊ីម៉េល</value>
+  </data>
+  <data name="EmailIsNotValid" xml:space="preserve">
+    <value>អ៊ីម៉ែលមិនត្រឹមត្រូវ។</value>
+  </data>
+  <data name="Error404" xml:space="preserve">
+    <value>ទំព័ររកមិនឃើញ ។</value>
+  </data>
+  <data name="ErrorNonAuthorized" xml:space="preserve">
+    <value>អ្នកមិនមានសិទ្ធិចូលដំណើរការទំព័រនេះទេ ។</value>
+  </data>
+  <data name="ErrorSession" xml:space="preserve">
+    <value>ពេលវេលា​របស់​អ្នក​ត្រូវ​បាន​អស់ ។ សូមចូលក្នុងប្រព័ន្ធម្តងទៀត។</value>
+  </data>
+  <data name="Expired" xml:space="preserve">
+    <value>ផុតកំណត់ ។</value>
+  </data>
+  <data name="ExpireDate" xml:space="preserve">
+    <value>កាលបរិច្ឆេទ​ជួបបន្ទាប់</value>
+  </data>
+  <data name="ExpiredStatus" xml:space="preserve">
+    <value>ផុតកំណត់</value>
+  </data>
+  <data name="FailureDayendClose" xml:space="preserve">
+    <value>បរាជ័យនៃការដំណើរការបិទបញ្ជី</value>
+  </data>
+  <data name="Female" xml:space="preserve">
+    <value>ស្រី</value>
+  </data>
+  <data name="Filter" xml:space="preserve">
+    <value>តម្រង</value>
+  </data>
+  <data name="First" xml:space="preserve">
+    <value>ដំបូង</value>
+  </data>
+  <data name="FirstContractDate" xml:space="preserve">
+    <value>ការបរិច្ឆេតកិច្ចសន្យាដំបូង</value>
+  </data>
+  <data name="From" xml:space="preserve">
+    <value>ចាប់ពី</value>
+  </data>
+  <data name="FromDate" xml:space="preserve">
+    <value>ពីថ្ងៃ</value>
+  </data>
+  <data name="Gender" xml:space="preserve">
+    <value>ភេទ</value>
+  </data>
+  <data name="Green" xml:space="preserve">
+    <value>ពណ៏បៃតង</value>
+  </data>
+  <data name="Home" xml:space="preserve">
+    <value>ទំព័រដើម</value>
+  </data>
+  <data name="Id" xml:space="preserve">
+    <value>ល.រ</value>
+  </data>
+  <data name="IdType" xml:space="preserve">
+    <value>ប្រភេទអត្តសញ្ញាណ</value>
+  </data>
+  <data name="Image" xml:space="preserve">
+    <value>រូបភាព</value>
+  </data>
+  <data name="Inactive" xml:space="preserve">
+    <value>មិនដំណើរការ</value>
+  </data>
+  <data name="Index" xml:space="preserve">
+    <value>ទំព័រដើម</value>
+  </data>
+  <data name="Inflow" xml:space="preserve">
+    <value>លំហូរចូល</value>
+  </data>
+  <data name="IsActived" xml:space="preserve">
+    <value>ប្រើប្រាស់បាន</value>
+  </data>
+  <data name="IsLocked" xml:space="preserve">
+    <value>មិនអនុញ្ញាត</value>
+  </data>
+  <data name="IsSpecial" xml:space="preserve">
+    <value>ពិសេស</value>
+  </data>
+  <data name="Last" xml:space="preserve">
+    <value>ចុងក្រោយ</value>
+  </data>
+  <data name="LogDate" xml:space="preserve">
+    <value>កាលបរិច្ឆេទកំណត់ហេតុ</value>
+  </data>
+  <data name="Loggedinas" xml:space="preserve">
+    <value>ចូលក្នុងប្រព័ន្ធជា</value>
+  </data>
+  <data name="Login" xml:space="preserve">
+    <value>ចូលក្នុងប្រព័ន្ធ</value>
+  </data>
+  <data name="LogManagement" xml:space="preserve">
+    <value>គ្រប់គ្រងព័ត៌មានប្រតិបត្តិការណ៍</value>
+  </data>
+  <data name="Logout" xml:space="preserve">
+    <value>ចាកចេញ</value>
+  </data>
+  <data name="LogPage" xml:space="preserve">
+    <value>ទំព័រកំណត់ហេតុ</value>
+  </data>
+  <data name="MadeBy" xml:space="preserve">
+    <value>ធ្វើ​ឡើង​ដោយ</value>
+  </data>
+  <data name="Male" xml:space="preserve">
+    <value>ប្រុស</value>
+  </data>
+  <data name="Menu" xml:space="preserve">
+    <value>មាតិកា</value>
+  </data>
+  <data name="Message" xml:space="preserve">
+    <value>សារ</value>
+  </data>
+  <data name="MessageForm" xml:space="preserve">
+    <value>សូមបញ្ចូលតម្លៃរបស់អ្នកសម្រាប់សំណុំបែបបទមុនពេលដែលអ្នកចុចលើ</value>
+  </data>
+  <data name="MessageForm1" xml:space="preserve">
+    <value>ចំណងជើងដែលមានអក្សរដិតត្រូវបានទាមទារ។</value>
+  </data>
+  <data name="MessageFormBold" xml:space="preserve">
+    <value>ប៊ូតុងខាងក្រោម</value>
+  </data>
+  <data name="MessageInfo" xml:space="preserve">
+    <value>ព័ត៌មាន</value>
+  </data>
+  <data name="MessageNonAlthorize" xml:space="preserve">
+    <value>អ្នកមិនអាចកែសម្រួលការបញ្ចាំមួយនេះបានទេដោយសារតែត្រូវបានផុតកំណត់ដើម្បីកែសម្រួល។</value>
+  </data>
+  <data name="MessageNotRePrint" xml:space="preserve">
+    <value>អ្នកមិនអាចបោះពុម្ភបានទេ សូមទាក់ទងអ្នកប្រើជាន់ខ្ពស់ឬអ្នកគ្រប់គ្រង។</value>
+  </data>
+  <data name="MessageSetting" xml:space="preserve">
+    <value>ប្រព័ន្ធនឹងរក្សាទុកទិន្នន័យរបស់អ្នកដោយស្វ័យប្រវត្តិ​​ នៅពេលដែលចាកចេញពីប្រអប់បញ្ចូលទិន្នន័យ។</value>
+  </data>
+  <data name="ModifiedBy" xml:space="preserve">
+    <value>បានកែប្រែដោយ</value>
+  </data>
+  <data name="ModifiedDate" xml:space="preserve">
+    <value>កាលបរិច្ឆេទកែប្រែ</value>
+  </data>
+  <data name="Monthly" xml:space="preserve">
+    <value>ប្រចាំខែ</value>
+  </data>
+  <data name="MonthlyComparationOperation" xml:space="preserve">
+    <value>ការប្រៀបធៀបប្រតិបត្ដិការប្រចាំខែ</value>
+  </data>
+  <data name="MonthlyComparationOperationReport" xml:space="preserve">
+    <value>របាយការណ៍ប្រតិបត្ដិការប្រៀបធៀបប្រចាំខែ</value>
+  </data>
+  <data name="MoreThan" xml:space="preserve">
+    <value>ច្រើនជាង</value>
+  </data>
+  <data name="MsgBackup" xml:space="preserve">
+    <value>តើអ្នកចង់រក្សាទុកកំណត់ត្រាបំរុងសំរាប់</value>
+  </data>
+  <data name="MsgClose" xml:space="preserve">
+    <value>បិត</value>
+  </data>
+  <data name="MsgConfirmDelete" xml:space="preserve">
+    <value>តើអ្នកប្រាកដថាលុបកំណត់ត្រាលេខ</value>
+  </data>
+  <data name="MsgConfirmDeleteUser" xml:space="preserve">
+    <value>តើអ្នកពិតជាចង់លុបព័ត៌មានអ្នកប្រើប្រាស់ឈ្មោះ </value>
+  </data>
+  <data name="MsgFailureDelete" xml:space="preserve">
+    <value>មិនអាចលុបបានទេពីព្រោះត្រូវបាន ប្រើនៅក្នុង</value>
+  </data>
+  <data name="MsgSuccessDelete" xml:space="preserve">
+    <value>ព័ត៌មានត្រូវបានលុប ។</value>
+  </data>
+  <data name="MyTesting" xml:space="preserve">
+    <value>តេស្ត</value>
+  </data>
+  <data name="Name" xml:space="preserve">
+    <value>ឈ្មោះ</value>
+  </data>
+  <data name="Nation" xml:space="preserve">
+    <value>ជនជាតិ</value>
+  </data>
+  <data name="New" xml:space="preserve">
+    <value>បន្ថែមថ្មី</value>
+  </data>
+  <data name="NewStatus" xml:space="preserve">
+    <value>បង្កើតថ្មី</value>
+  </data>
+  <data name="Next" xml:space="preserve">
+    <value>បន្ទាប់</value>
+  </data>
+  <data name="No" xml:space="preserve">
+    <value>ទេ</value>
+  </data>
+  <data name="Normal" xml:space="preserve">
+    <value>ធម្មតា</value>
+  </data>
+  <data name="NotAllowPrint" xml:space="preserve">
+    <value>មិនអនុញ្ញាតឱ្យបោះពុម្ព</value>
+  </data>
+  <data name="Note" xml:space="preserve">
+    <value>ចំណាំ</value>
+  </data>
+  <data name="NotFound" xml:space="preserve">
+    <value>រកមិនឃើញ</value>
+  </data>
+  <data name="N_Nation" xml:space="preserve">
+    <value>ជនជាតិ</value>
+  </data>
+  <data name="OneDayRemain" xml:space="preserve">
+    <value>នៅសល់ ១​ថ្ងៃ​។</value>
+  </data>
+  <data name="Operation" xml:space="preserve">
+    <value>ប្រតិបត្ដិការ</value>
+  </data>
+  <data name="Outflow" xml:space="preserve">
+    <value>លំហូរចេញ</value>
+  </data>
+  <data name="Password" xml:space="preserve">
+    <value>លេខសម្ងាត់</value>
+  </data>
+  <data name="Phone" xml:space="preserve">
+    <value>លេខទូរស័ព្ទ</value>
+  </data>
+  <data name="Pleaseinputyourvalue" xml:space="preserve">
+    <value>សូមបញ្ចូលតម្លៃរបស់អ្នក។</value>
+  </data>
+  <data name="Pleaseinputyourvalueforformbeforeyouclickonbuttonadd" xml:space="preserve">
+    <value>សូមបញ្ចូលតម្លៃរបស់អ្នកមុនពេលដែលអ្នកចុចលើប៊ូតុងបន្ថែម។ ចំណាំ: អក្សរដិតនៃចំណងជើងត្រូវបានទាមទារ។</value>
+  </data>
+  <data name="PoliceReport" xml:space="preserve">
+    <value>របាយការណ៍សំរាប់ប៉ូលីស</value>
+  </data>
+  <data name="Previous" xml:space="preserve">
+    <value>មុន</value>
+  </data>
+  <data name="PreviousMonth" xml:space="preserve">
+    <value>ខែមុន</value>
+  </data>
+  <data name="Print" xml:space="preserve">
+    <value>បោះពុម្ព</value>
+  </data>
+  <data name="PrintPawn" xml:space="preserve">
+    <value>បោះពុម្ភការបញ្ចាំ</value>
+  </data>
+  <data name="ProcessType" xml:space="preserve">
+    <value>ប្រភេទដំណើរការ</value>
+  </data>
+  <data name="Reason" xml:space="preserve">
+    <value>ហេតុផល</value>
+  </data>
+  <data name="Records" xml:space="preserve">
+    <value>Records</value>
+  </data>
+  <data name="Red" xml:space="preserve">
+    <value>ពណ៏ក្រហម</value>
+  </data>
+  <data name="Remark" xml:space="preserve">
+    <value>កំណត់សំគាល់</value>
+  </data>
+  <data name="Remember" xml:space="preserve">
+    <value>ចងចាំ</value>
+  </data>
+  <data name="Renew" xml:space="preserve">
+    <value>ពន្យា</value>
+  </data>
+  <data name="RenewTransactionReport" xml:space="preserve">
+    <value>របាយការណ៍ប្រ​តិបត្តិការបញ្ចាំឡើងវិញ</value>
+  </data>
+  <data name="Report" xml:space="preserve">
+    <value>របាយការណ៍</value>
+  </data>
+  <data name="Reports" xml:space="preserve">
+    <value>របាយការណ៍</value>
+  </data>
+  <data name="Result" xml:space="preserve">
+    <value>លទ្ធផល</value>
+  </data>
+  <data name="ReturnToHome" xml:space="preserve">
+    <value>ត្រលប់ទៅទំព័រដើម</value>
+  </data>
+  <data name="Rollback" xml:space="preserve">
+    <value>ធ្វើឡើងវិញ</value>
+  </data>
+  <data name="Run" xml:space="preserve">
+    <value>ប្រតិបត្តិ</value>
+  </data>
+  <data name="RunAgain" xml:space="preserve">
+    <value>ប្រតិបត្តិឡើងវិញ</value>
+  </data>
+  <data name="Save" xml:space="preserve">
+    <value>រក្សាទុក</value>
+  </data>
+  <data name="Search" xml:space="preserve">
+    <value>ស្វែងរក</value>
+  </data>
+  <data name="SearchFor" xml:space="preserve">
+    <value>ស្វែងរកសំរាប់</value>
+  </data>
+  <data name="SelectOne" xml:space="preserve">
+    <value>ជ្រើសរើសមួយ</value>
+  </data>
+  <data name="SelectProcessType" xml:space="preserve">
+    <value>ជ្រើសរើសប្រភេទប្រតិបត្តិ</value>
+  </data>
+  <data name="SelectStatus" xml:space="preserve">
+    <value>ជ្រើសរើសស្ថានភាព</value>
+  </data>
+  <data name="SelectUser" xml:space="preserve">
+    <value>ជ្រើសរើសអ្នកប្រើ</value>
+  </data>
+  <data name="Setting" xml:space="preserve">
+    <value>ការកំណត់</value>
+  </data>
+  <data name="Sex" xml:space="preserve">
+    <value>ភេទ</value>
+  </data>
+  <data name="Skill" xml:space="preserve">
+    <value>ជំនាញ</value>
+  </data>
+  <data name="Special" xml:space="preserve">
+    <value>ពិសេស</value>
+  </data>
+  <data name="Status" xml:space="preserve">
+    <value>ស្ថានភាព</value>
+  </data>
+  <data name="StatusType" xml:space="preserve">
+    <value>ជ្រើសរើសប្រភេទ</value>
+  </data>
+  <data name="Submit" xml:space="preserve">
+    <value>ចូល</value>
+  </data>
+  <data name="SubTotal" xml:space="preserve">
+    <value>សរុបទាំងអស់</value>
+  </data>
+  <data name="SuccessDayendClose" xml:space="preserve">
+    <value>ជោគជ័យនៃការដំណើរការបិទបញ្ជី</value>
+  </data>
+  <data name="Tel" xml:space="preserve">
+    <value>លេខទូរស័ព្ទ</value>
+  </data>
+  <data name="Tel1" xml:space="preserve">
+    <value>លេខទូរស័ព្ទទី ១</value>
+  </data>
+  <data name="Tel2" xml:space="preserve">
+    <value>លេខទូរស័ព្ទទី ២</value>
+  </data>
+  <data name="Tel3" xml:space="preserve">
+    <value>លេខទូរស័ព្ទទី ៣</value>
+  </data>
+  <data name="To" xml:space="preserve">
+    <value>ទៅ</value>
+  </data>
+  <data name="ToDate" xml:space="preserve">
+    <value>ទៅថ្ងៃ</value>
+  </data>
+  <data name="TodayBackupon" xml:space="preserve">
+    <value>​ក្សាទុកថ្ងៃនេះនៅ</value>
+  </data>
+  <data name="Total" xml:space="preserve">
+    <value>សរុប</value>
+  </data>
+  <data name="TotalDayAllowPrint" xml:space="preserve">
+    <value>ចំនួនថ្ងៃដែលអនុញ្ញាតឲ្យបោះពុម្ភ</value>
+  </data>
+  <data name="TransactionDate" xml:space="preserve">
+    <value>ការបរិច្ឆេតប្រតិបត្តិការ</value>
+  </data>
+  <data name="TransDate" xml:space="preserve">
+    <value>ថ្ងៃប្រ​តិបត្តិ</value>
+  </data>
+  <data name="TransDescription" xml:space="preserve">
+    <value>លម្អិតអំពីប្រតិបត្តិការ</value>
+  </data>
+  <data name="TransNumber" xml:space="preserve">
+    <value>លេខសំបុត្រ</value>
+  </data>
+  <data name="TwoDayRemain" xml:space="preserve">
+    <value>នៅសល់​ ២ថ្ងៃ ។</value>
+  </data>
+  <data name="Type" xml:space="preserve">
+    <value>ប្រភេទ </value>
+  </data>
+  <data name="T_Type" xml:space="preserve">
+    <value>ប្រភេទអត្តសញ្ញាណ</value>
+  </data>
+  <data name="UnexpectedError" xml:space="preserve">
+    <value>មានបញ្ហាដោយចៃដន្យ</value>
+  </data>
+  <data name="UserId" xml:space="preserve">
+    <value>អត្តសញ្ញាណអ្នកប្រើ</value>
+  </data>
+  <data name="UserManagement" xml:space="preserve">
+    <value>គ្រប់គ្រងព័ត៌មានអ្នកប្រើប្រាស់</value>
+  </data>
+  <data name="UserManagerment" xml:space="preserve">
+    <value>ការគ្រប់គ្រងព័ត៌មានអ្នកប្រើប្រាស់</value>
+  </data>
+  <data name="UserName" xml:space="preserve">
+    <value>ឈ្មោះអ្នកប្រើប្រាស់</value>
+  </data>
+  <data name="UserNameEmpty" xml:space="preserve">
+    <value>ឈ្មោះសំរាប់ចូលមិនអាចទទេ។</value>
+  </data>
+  <data name="UserPage" xml:space="preserve">
+    <value>ទំព័រអ្នកប្រើប្រាស់</value>
+  </data>
+  <data name="UserType" xml:space="preserve">
+    <value>ប្រភេទអ្នកប្រើ</value>
+  </data>
+  <data name="U_Name" xml:space="preserve">
+    <value>ឈ្មោះអ្នកប្រើ</value>
+  </data>
+  <data name="ValidateReason" xml:space="preserve">
+    <value>ហេតុផលគឺត្រូវបានទាមទារ ។</value>
+  </data>
+  <data name="Waiting" xml:space="preserve">
+    <value>រងចាំ...</value>
+  </data>
+  <data name="Weekly" xml:space="preserve">
+    <value>ប្រចាំសប្តាហ៍</value>
+  </data>
+  <data name="Yellow" xml:space="preserve">
+    <value>ពណ៏លឿង</value>
+  </data>
+  <data name="Yes" xml:space="preserve">
+    <value>បាទ/ចាស</value>
+  </data>
+  <data name="Medicine" xml:space="preserve">
+    <value>ឈ្មោះថ្នាំ</value>
+  </data>
+  <data name="Morning" xml:space="preserve">
+    <value>ព្រឹក</value>
+  </data>
+  <data name="Night" xml:space="preserve">
+    <value>យប់</value>
+  </data>
+  <data name="Noon" xml:space="preserve">
+    <value>ថ្ងៃ</value>
+  </data>
+  <data name="Qty" xml:space="preserve">
+    <value>បរិមាណ</value>
+  </data>
+  <data name="Usage" xml:space="preserve">
+    <value>ការប្រើ</value>
+  </data>
+  <data name="DoctorName" xml:space="preserve">
+    <value>ឈ្មោះគ្រូពេទ្យ</value>
+  </data>
+  <data name="MedicineName" xml:space="preserve">
+    <value>ឈ្មោះថ្នាំ</value>
+  </data>
+  <data name="PatientName" xml:space="preserve">
+    <value>ឈ្មោះអ្នកជំងឺ</value>
+  </data>
+  <data name="PrescriptionManagement" xml:space="preserve">
+    <value>គ្រប់គ្រងព័ត៌មានវេជ្ជបញ្ជាអ្នកជំងឺ</value>
+  </data>
+  <data name="AddPrescription" xml:space="preserve">
+    <value>បញ្ជូលព័ត៌មានវេជ្ជបញ្ជាអ្នកជំងឺ</value>
+  </data>
+  <data name="Clear" xml:space="preserve">
+    <value>សម្អាត</value>
+  </data>
+  <data name="ResetController" xml:space="preserve">
+    <value>សម្អាត</value>
+  </data>
+  <data name="ConfirmClearPrescription" xml:space="preserve">
+    <value>តើអ្នកប្រកដជាចង់ដកចេញនូវថ្នាំទាំងអស់ពីបញ្ជីរឺ?</value>
+  </data>
+  <data name="AddPatient" xml:space="preserve">
+    <value>បន្ថែមអ្នក​ជម្ងឺថ្មី</value>
+  </data>
+  <data name="Age" xml:space="preserve">
+    <value>អាយុ</value>
+  </data>
+  <data name="Diagnosis" xml:space="preserve">
+    <value>ការធ្វើរោគវិនិច្ឆ័យ</value>
+  </data>
+  <data name="EditPatient" xml:space="preserve">
+    <value>កែប្រែព័ត៌មានអ្នកជម្ងឺ</value>
+  </data>
+  <data name="Employee" xml:space="preserve">
+    <value>បុគ្គលិក</value>
+  </data>
+  <data name="Patient" xml:space="preserve">
+    <value>អ្នកជម្ងឺ</value>
+  </data>
+  <data name="PatientDetail" xml:space="preserve">
+    <value>ព័ត៌មានលម្អិតពីអ្នកជម្ងឺ</value>
+  </data>
+  <data name="PatientManagerment" xml:space="preserve">
+    <value>គ្រប់គ្រងព័ត៌មានអ្នកជម្ងឺ</value>
+  </data>
+  <data name="AddMedicine" xml:space="preserve">
+    <value>បន្ថែមឈ្មោះថ្នាំថ្មី</value>
+  </data>
+  <data name="EditMedicine" xml:space="preserve">
+    <value>កែប្រែព័ត៌មានថ្នាំ</value>
+  </data>
+  <data name="MedicineDetail" xml:space="preserve">
+    <value>ព័ត៌មានលម្អិតពីថ្នាំ</value>
+  </data>
+  <data name="MedicineManagement" xml:space="preserve">
+    <value>ការគ្រប់គ្រងព័ត៌មានថ្នាំ</value>
+  </data>
+  <data name="AddEmployee" xml:space="preserve">
+    <value>បន្ថែមបុគ្គលិកថ្មី</value>
+  </data>
+  <data name="EditEmployee" xml:space="preserve">
+    <value>កែប្រែព័ត៌មានបុគ្គលិក</value>
+  </data>
+  <data name="EmployeeDetail" xml:space="preserve">
+    <value>ព័ត៌មានលម្អិតពីបុគ្គលិក</value>
+  </data>
+  <data name="EmployeeManagement" xml:space="preserve">
+    <value>ការគ្រប់គ្រងព័ត៌មានបុគ្គលិក</value>
+  </data>
+  <data name="MsgConfirmDeleteDiagnosis" xml:space="preserve">
+    <value>តើអ្នកចង់លុបការធ្វើរោគវិនិច្ឆ័យមានឈ្មោះអ្នកជំងឺ</value>
+  </data>
+  <data name="MsgConfirmDeleteEmployee" xml:space="preserve">
+    <value>តើអ្នកពិតជាចង់លុបព័ត៌មានបុគ្គលិកឈ្មោះ</value>
+  </data>
+  <data name="MsgConfirmDeleteMedicine" xml:space="preserve">
+    <value>តើអ្នកពិតជាចង់លុបព័ត៌មានថ្នាំឈ្មោះ</value>
+  </data>
+  <data name="MsgConfirmDeletePatient" xml:space="preserve">
+    <value>តើអ្នកពិតជាចង់លុបព័ត៌មានអ្នកជម្ងឺឈ្មោះ</value>
+  </data>
+  <data name="Position" xml:space="preserve">
+    <value>មុខងារ</value>
+  </data>
+  <data name="AddDiagnosis" xml:space="preserve">
+    <value>បន្ថែមការធ្វើរោគវិនិច្ឆ័យថ្មី</value>
+  </data>
+  <data name="DiagnoseBy" xml:space="preserve">
+    <value>អ្នកធ្វើរោគវិនិច្ឆ័យ</value>
+  </data>
+  <data name="DiagnoseCycle" xml:space="preserve">
+    <value>ចំនួនដង</value>
+  </data>
+  <data name="DiagnoseDate" xml:space="preserve">
+    <value>កាលបរិច្ឆេទធ្វើរោគវិនិច្ឆ័យ</value>
+  </data>
+  <data name="DiagnosisDetail" xml:space="preserve">
+    <value>ព័ត៌មានលម្អិតពីការធ្វើរោគវិនិច្ឆ័យ</value>
+  </data>
+  <data name="DiagnosisManagement" xml:space="preserve">
+    <value>ការគ្រប់គ្រងការធ្វើរោគវិនិច្ឆ័យ</value>
+  </data>
+  <data name="EditDiagnosis" xml:space="preserve">
+    <value>កែប្រែការធ្វើរោគវិនិច្ឆ័យ</value>
+  </data>
+  <data name="Symptom" xml:space="preserve">
+    <value>រោគសញ្ញា</value>
+  </data>
+  <data name="Year" xml:space="preserve">
+    <value>ឆ្នាំ</value>
+  </data>
+  <data name="Other" xml:space="preserve">
+    <value>ផ្សេងៗ</value>
+  </data>
+  <data name="RecordNo" xml:space="preserve">
+    <value>ល.រ</value>
+  </data>
+  <data name="DiagnosisDescription" xml:space="preserve">
+    <value>រោគវិនិច្ឆ័យ</value>
+  </data>
+  <data name="PatentName" xml:space="preserve">
+    <value>ឈ្មោះ</value>
+  </data>
+  <data name="MsgInvalidDiagnoseName" xml:space="preserve">
+    <value>ឈ្មោះអ្នកធ្វើរោគវិនិច្ឆ័យមិនត្រឹមត្រូវទេ សូមជ្រើសរើសម្តងទៀត។</value>
+  </data>
+  <data name="MsgInvalidPatientName" xml:space="preserve">
+    <value>ឈ្មោះអ្នកជម្ងឺមិនត្រឹមត្រូវទេ សូមជ្រើសរើសម្តងទៀត។</value>
+  </data>
+  <data name="DetailPrescription" xml:space="preserve">
+    <value>ព័ត៌មានលម្អិតនៃវេជ្ជបញ្ជា</value>
+  </data>
+  <data name="PrintPrescription" xml:space="preserve">
+    <value>បោះពុម្ភព័ត៌មានលម្អិតនៃវេជ្ជបញ្ជា</value>
+  </data>
+  <data name="EditPrescription" xml:space="preserve">
+    <value>កែប្រែព័ត៌មានវេជ្ជបញ្ជាអ្នកជំងឺ</value>
+  </data>
+  <data name="AreSureEditPresc" xml:space="preserve">
+    <value>តើអ្នកប្រកដជាចង់កែប្រែនូវថ្នាំ</value>
+  </data>
+  <data name="AreSureRemovePresc" xml:space="preserve">
+    <value>តើអ្នកប្រកដជាចង់ដកចេញនូវថ្នាំ</value>
+  </data>
+  <data name="Remove" xml:space="preserve">
+    <value>ដកចេញ</value>
+  </data>
+  <data name="EditMedical" xml:space="preserve">
+    <value>កែប្រែថ្នាំ</value>
+  </data>
+  <data name="Mor" xml:space="preserve">
+    <value>ព្រឹក</value>
+  </data>
+  <data name="Use" xml:space="preserve">
+    <value>ប្រើ</value>
+  </data>
+  <data name="MsgDiagnosis" xml:space="preserve">
+    <value>ការធ្វើរោគវិនិច្ឆ័យ ។</value>
+  </data>
+  <data name="MsgPrescription" xml:space="preserve">
+    <value>វេជ្ជបញ្ជា​ ។</value>
+  </data>
+  <data name="ThisDiagnosis" xml:space="preserve">
+    <value>ការធ្វើរោគវិនិច្ឆ័យនេះ</value>
+  </data>
+  <data name="ThisEmployee" xml:space="preserve">
+    <value>វេជ្ជបណ្ឌិតនេះ</value>
+  </data>
+  <data name="ThisMedicine" xml:space="preserve">
+    <value>ថ្នាំនេះ</value>
+  </data>
+  <data name="ThisPatient" xml:space="preserve">
+    <value>អ្នកជម្ងឺនេះ</value>
+  </data>
+  <data name="Visit" xml:space="preserve">
+    <value>កាលបរិច្ឆេទ​ជួប</value>
+  </data>
+  <data name="VisitAgain" xml:space="preserve">
+    <value>កាលបរិច្ឆេទ​ជួបបន្ទាប់</value>
+  </data>
+  <data name="SymptomType" xml:space="preserve">
+    <value>ប្រភេទរោគសញ្ញា</value>
+  </data>
+  <data name="AddDisease" xml:space="preserve">
+    <value>បន្ថែមជម្ងឺថ្មី</value>
+  </data>
+  <data name="MsgConfirmDeleteDisease" xml:space="preserve">
+    <value>តើអ្នកពិតជាចង់លុបព័ត៌មានជម្ងឺឈ្មោះ</value>
+  </data>
+  <data name="Disease" xml:space="preserve">
+    <value>ជម្ងឺ</value>
+  </data>
+  <data name="DiseaseDetail" xml:space="preserve">
+    <value>ព័ត៌មានលម្អិតរបស់ជម្ងឺ</value>
+  </data>
+  <data name="DiseaseManagement" xml:space="preserve">
+    <value>ការគ្រប់គ្រងព័ត៌មានលម្អិតរបស់ជម្ងឺ</value>
+  </data>
+  <data name="EditDisease" xml:space="preserve">
+    <value>កែប្រែព័ត៌មានរបស់ជម្ងឺ</value>
+  </data>
+  <data name="ThisDisease" xml:space="preserve">
+    <value>ជម្ងឺនេះ</value>
+  </data>
+  <data name="DiseaseName" xml:space="preserve">
+    <value>ឈ្មោះជម្ងឺ</value>
+  </data>
+  <data name="DoctorTel" xml:space="preserve">
+    <value>លេខទូរស័ព្ទគ្រូពេទ្យ</value>
+  </data>
+  <data name="DoctorOperationReport" xml:space="preserve">
+    <value>របាយការណ៍គ្រូពេទ្យ</value>
+  </data>
+  <data name="MonthlyOperationReport" xml:space="preserve">
+    <value>របាយការណ៍ប្រតិបត្តិការប្រចាំខែ</value>
+  </data>
+  <data name="PatientHistory" xml:space="preserve">
+    <value>ប្រវត្តិអ្នកជម្ងឺ</value>
+  </data>
+  <data name="SelectDoctor" xml:space="preserve">
+    <value>ជ្រើសរើសគ្រូពេទ្យ</value>
+  </data>
+  <data name="History" xml:space="preserve">
+    <value>ប្រវត្តិព្យាបាល</value>
+  </data>
+  <data name="PatientOperationReport" xml:space="preserve">
+    <value>របាយការណ៍ប្រវត្តិព្យាបាលអ្នកជម្ងឺ</value>
+  </data>
+  <data name="UnitId" xml:space="preserve">
+    <value>ឯកតា</value>
+  </data>
+  <data name="UsageId" xml:space="preserve">
+    <value>របៀបប្រើ</value>
+  </data>
+  <data name="PrintHistory" xml:space="preserve">
+    <value>បោះពុម្ភប្រវត្តិព្យាបាល</value>
+  </data>
+  <data name="DiseaseSummaryReport" xml:space="preserve">
+    <value>របាយការណ៍សង្ខេបអំពីប្រភេទជម្ងឺ</value>
+  </data>
+  <data name="TotalDiagnosis" xml:space="preserve">
+    <value>ចំនួនរោគវិនិច្ឆ័យ</value>
+  </data>
+  <data name="TotalAllDianosis" xml:space="preserve">
+    <value>ចំនួនសរុបនៃរោគវិនិច្ឆ័យ</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>បោះបង់</value>
+  </data>
+  <data name="MsgInvalidDiseaseName" xml:space="preserve">
+    <value>ឈ្មោះជម្ងឺមិនត្រឹមត្រូវទេ សូមជ្រើសរើសម្តងទៀត។</value>
+  </data>
+  <data name="MedicineType" xml:space="preserve">
+    <value>ប្រភេទថ្នាំ</value>
+  </data>
+  <data name="Upload" xml:space="preserve">
+    <value>ដាក់រូបភាព...</value>
+  </data>
+  <data name="UploadManagement" xml:space="preserve">
+    <value>គ្រប់គ្រងការដាក់រូបភាព</value>
+  </data>
+  <data name="DiagnosisPhoto" xml:space="preserve">
+    <value>រូបភាពរោគវិនិច្ឆ័យ</value>
+  </data>
+  <data name="MsgDeleteImage" xml:space="preserve">
+    <value>តើអ្នកពិតជាចង់លុបរូបភាពនេះ​ ?</value>
+  </data>
+  <data name="Severity" xml:space="preserve">
+    <value>ស្ថានភាពជំងឺ</value>
+  </data>
+  <data name="Day" xml:space="preserve">
+    <value>ថ្ងៃ</value>
+  </data>
+  <data name="Month" xml:space="preserve">
+    <value>ខែ</value>
+  </data>
+</root>

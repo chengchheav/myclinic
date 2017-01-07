@@ -1,0 +1,46 @@
+﻿@{
+    String iconFavicon = System.Configuration.ConfigurationManager.AppSettings["Icon:Url"];
+    String pageVersion = System.Configuration.ConfigurationManager.AppSettings["Source:Version"];
+    iconFavicon = iconFavicon + "?v=" + pageVersion;
+    var langPage = "en";
+    var lang = Utilities.Common.GetLanguage(Request.Url.Segments);
+    if (lang.Equals("km")){
+        langPage = "km";
+    }
+}
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>@ViewBag.Title</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="SHORTCUT ICON" href= "@iconFavicon" type="image/x-icon" />
+        <link href="@Url.Content("~/Content/style.fonts.css?v=" + pageVersion)" media="all" rel="stylesheet" type="text/css" />
+        <link href="@Url.Content("~/Content/layout-print.css?v=" + pageVersion)" media="print" rel="stylesheet" type="text/css" />
+        <link href="@Url.Content("~/Content/layout-screen.css?v=" + pageVersion)" media="screen" rel="stylesheet" type="text/css" />
+        <link href="@Url.Content("~/Content/bootstrap/css/bootstrap.min.css?v=" + pageVersion)" rel="stylesheet" type="text/css" />
+        <script src="@Url.Content("~/Scripts/jquery-1.12.1.min.js?v=" + pageVersion)" type="text/javascript"></script>
+        <script type="text/javascript">
+            @{ 
+                string controller_name = this.ViewContext.RouteData.Values["controller"].ToString();            
+                var host = Utilities.Common.host;
+            }           
+            var host = '@host';        
+            var controller = '@controller_name';     
+        
+        </script>
+    </head>
+    <body lang="@langPage" id="print-lyt">
+        @RenderBody() 
+        <script src="@Url.Content("~/Scripts/jscript.enum.js?v=" + pageVersion)" type="text/javascript"></script>
+        <script src="@Url.Content("~/Scripts/jscript.common.js?v=" + pageVersion)" type="text/javascript"></script>
+        <script src="@Url.Content("~/Scripts/jscript.dialog.js?v=" + pageVersion)" type="text/javascript"></script>
+        <script src="@Url.Content("~/Scripts/script.print.js")" type="text/javascript"></script>
+        <script type="text/javascript">
+            $(document).ready(function () {
+               $print.loadPrint();
+            });
+        </script>
+    </body>
+</html>

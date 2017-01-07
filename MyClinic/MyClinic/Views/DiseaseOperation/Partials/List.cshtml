@@ -1,0 +1,39 @@
+﻿@using Utilities;
+@using MyClinic.Resources  
+@model MyClinic.Models.DiseaseOperationModels 
+
+@{
+    var host = Utilities.Common.host;
+    int intIndex = 0;
+    int totalItem = 0;
+}          
+<table class="rpt-tbl lnk lst-grp" style="width: 100%;">
+    <thead>
+        <tr style="background:#FFF;" class="html">
+            <th>@Translator.Disease</th>
+            <th>@Translator.TotalDiagnosis</th>
+        </tr>
+    </thead>
+    <tbody>
+    @foreach (var record in Model.lstRecords)
+    {
+        intIndex = intIndex + 1;
+        string clssR = "odd";
+        if (intIndex % 2 == 0)
+        {
+            clssR = "event";
+        }
+        totalItem = totalItem + record.Qty;
+        var detailUrl = Url.Action("ReportDetail", "DiseaseOperation", new { diseaseId = record.DiseaseId });
+        
+        <tr class="desc lnk @clssR html" onclick="$manage.detailRecordByFullUrl('@detailUrl');">
+            <td class="sep" style="width: 200px; text-align:left;">@Html.Raw(record.DiseaseName)</td>
+            <td>@Html.Raw(record.Qty.ToString())</td>
+        </tr> 
+    } 
+        <tr class="html" style="background-color:#7cc576;">
+            <td class="ttl-itm sep"  style="font-size: 16px; font-weight: bold;color: #FFF;text-align:left;">@Translator.TotalAllDianosis</td>
+            <td style="font-size: 16px; font-weight: bold; color: #FFF;">@Html.Raw(totalItem.ToString())</td>
+        </tr>
+    </tbody>
+</table>

@@ -1,0 +1,24 @@
+﻿@using MyClinic.Resources;
+@{
+    ViewBag.Title = "Info";
+}
+
+<div class="middle-screen" style="top:20%;">
+    <table>
+        <tr>
+            <td align="center">
+                <img src="/Images/error.png" style="width:200px;"/>
+            </td>
+        </tr>
+        <tr>                    
+            <td colspan="2">
+                <p class="msg-err" >@Translator.ErrorNonAuthorized</p>
+            </td>
+        </tr>
+        <tr>
+            <td align="center">
+                <input style="float:none;font-weight:700;" onclick="$Common.setRedirectPage('@Url.Action("Index", "Home")');" class="myLabel" type="button" value="@Translator.ReturnToHome"/>
+            </td>
+        </tr>
+    </table>
+</div>

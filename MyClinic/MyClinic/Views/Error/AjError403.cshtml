@@ -1,0 +1,12 @@
+﻿@using MyClinic.Resources;
+<div class="aj-login" >
+    <ul>
+        <li><img src="/images/error.png" style="width:200px;" /></li>
+        <li>
+            <p class="msg-err">@Translator.ErrorNonAuthorized</p>
+        </li>
+        <li>
+            <input style="float:none;font-weight:700;" onclick="$Common.setRedirectPage('@Url.Action("Index", "Home")');" class="myLabel" type="button" value="@Translator.ReturnToHome"/>
+        </li>
+    </ul>
+</div>

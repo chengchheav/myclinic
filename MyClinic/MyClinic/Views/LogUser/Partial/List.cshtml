@@ -1,0 +1,44 @@
+﻿@model MyClinic.Models.LogModels
+@using Utilities
+@using MyClinic.Resources;
+
+@{
+    var pageUtilities = Model.pageUtilities;
+    var orderField = pageUtilities.orderBy;
+    var order = pageUtilities.order;
+    var host = Utilities.Common.host;
+    var intIndex = 1;
+}          
+
+<table style="width:100%" class="rpt-tbl">
+    <tr style="background:#FFF;">
+        <th>@Html.Raw(Sorting.GetSortOrderByDate(@Translator.Id, "Id", orderField, order))</th>
+        <th>@Html.Raw(Sorting.GetSortOrderByDate(@Translator.UserName, "U_Name", orderField, order))</th>
+        <th>@Html.Raw(Sorting.GetSortOrderByDate(@Translator.ProcessType, "ProcessType", orderField, order))</th>		
+        <th style="width:43%;">@Html.Raw(Sorting.GetSortOrderByDate(@Translator.Description, "Description", orderField, order))</th>
+        <th style="text-align: center;">@Html.Raw(Sorting.GetSortOrderByDate(@Translator.LogDate, "LogDate", orderField, order))</th>
+    </tr>
+      
+    @foreach (var log in Model.logRecords)
+    {
+        intIndex = intIndex + 1;
+        string clssR = "event";
+        if (intIndex % 2 == 0)
+        {
+            clssR = "odd";
+        }
+        <tr class="@clssR">
+            <td>@log.Id</td>
+            <td>@log.U_Name</td>
+            <td>@log.ProcessType</td>
+            <td>@log.Description</td>		
+            <td align="center">@Utilities.Common.GetDateTimeFormateFull(log.LogDate)</td>
+        </tr>
+    }
+
+</table>
+
+<div class="action">
+    @Html.Raw(pageUtilities.listHeader)
+    @Html.Raw(pageUtilities.listFooter)
+</div>

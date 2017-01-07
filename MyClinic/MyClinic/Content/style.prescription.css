@@ -1,0 +1,103 @@
+﻿.frm-fbx
+{
+    width: 100%;
+    padding: 0px 1%;
+}
+#main #cnt-cnt > .title
+{
+    margin-bottom: 20px;   
+}
+table#tbl-pres
+{
+    width: 100%;
+}
+
+table#tbl-pres thead th
+{
+    background: #FFF;
+    text-align: center;
+    line-height: 32px;
+    height: 32px;   
+}
+
+table#tbl-pres tr.bdr
+{
+    border-top: 1px solid #FFF;   
+}
+
+table#tbl-pres th,
+table#tbl-pres td
+{
+    border-left: 1px solid #FFF;   
+}
+
+table#tbl-pres .last
+{
+   border-right: 1px solid #FFF;  
+}
+
+table#tbl-pres .nb
+{
+    border: none;
+}
+
+table#tbl-pres tfoot td
+{
+    border-bottom: 1px solid #FFF;
+}
+
+table#tbl-pres .btn{
+    width:100px;
+    background-color:#7CC576;
+    color:White;
+    border:1px solid #7CC576;
+    border-radius:2px;   
+}
+
+table#tbl-pres .act
+{
+    text-align: center;   
+}
+
+table#tbl-pres .act .btn
+{
+    width: 46%;
+}
+
+table#tbl-pres .ctr-bx 
+{
+    width: 94%;
+    margin: 0 auto;  
+}
+
+table#tbl-pres .vle-bx 
+{
+    line-height: 22px;
+    margin: 0 auto;
+    width: 94%;
+    word-wrap: break-word;
+}
+#main #cnt-cnt .frm-bx table#tbl-pres td
+{
+    vertical-align: middle;
+}
+
+
+#main #cnt-cnt .frm-bx table p
+{
+    line-height: 22px;  
+    text-transform:capitalize; 
+}
+
+#main #cnt-cnt .frm-bx table#tbl-pres .msg span
+{
+    float:left;
+    vertical-align: top;
+}
+
+#main #cnt-cnt .frm-bx table#tbl-pres .msg td
+{
+    border: none;   
+}
+
+

@@ -1,0 +1,12 @@
+﻿@using MyClinic.Resources;
+<div class="aj-login" >
+    <ul>
+        <li><img src="/images/error.png" style="width:200px;" /></li>
+        <li>
+            <p class="msg-err">@Translator.ErrorSession</p>
+        </li>
+        <li>
+            <input style="float:none;font-weight:700;" onclick="$Common.setRedirectPage('@Url.Action("Index", "Login")');" class="myLabel" type="button" value="@Translator.Login"/>
+        </li>
+    </ul>
+</div>

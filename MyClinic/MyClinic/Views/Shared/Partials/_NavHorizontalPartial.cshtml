@@ -1,0 +1,71 @@
+﻿@using MyClinic.Resources;
+@{
+    var objSession = Session["user"] as MyClinic.Infrastructure.SessUser;
+    var authorized = 0;/*Report User*/
+    if (objSession != null)
+    {
+        if (objSession.UserType.Contains("ADM") || objSession.UserType.Contains("SPU"))
+        {
+            authorized = 1;/*Admin or Super User*/
+        }
+        else if (objSession.UserType.Contains("USR"))
+        {
+            authorized = 2;/*Normal User*/ 
+        }
+        else if (objSession.UserType.Contains("FUR"))
+        {
+            authorized = 3;
+        }    
+    }
+}
+
+<ul>   
+@{
+    if (authorized ==3)
+    {
+        <li class="icon-home"><a href="@Url.Action("Index", "Home", null, Request.Url.Scheme)">@Translator.Home</a></li>
+        <li class="patient"><a href="@Url.Action("Index", "Patient", null, Request.Url.Scheme)">@Translator.Patient</a></li> 
+    }
+    else
+    {     
+         <li class="icon-home"><a href="@Url.Action("Index", "Home", null, Request.Url.Scheme)">@Translator.Home</a></li>
+     
+         <!--<li class="diagnosis"><a href="@Url.Action("Index", "Diagnosis", null, Request.Url.Scheme)">@Translator.Diagnosis</a></li>-->
+         <li class="diagnosis"><a href="@Url.Action("Index", "Diagnosis", new { id = "0" }, Request.Url.Scheme)">@Translator.Diagnosis</a></li>
+         <li class="patient"><a href="@Url.Action("Index", "Patient", null, Request.Url.Scheme)">@Translator.Patient</a></li> 
+         <li class="medicine"><a href="@Url.Action("Index", "Medicine", null, Request.Url.Scheme)">@Translator.Medicine</a></li>
+         <li class="employee"><a href="@Url.Action("Index", "Employee", null, Request.Url.Scheme)">@Translator.Employee</a></li>
+         <li class="disease"><a href="@Url.Action("Index", "Disease", null, Request.Url.Scheme)">@Translator.Disease</a></li> 
+
+    
+        if (authorized == 0)
+        {
+                 <li class="icon-report"><a href="@Url.Action("Index", "Report", null, Request.Url.Scheme)">@Translator.Reports</a></li> 
+        }
+        else
+        {
+
+            /*<li class="icon-pawn-m"><a href="@Url.Action("Index", "Pawn", null, Request.Url.Scheme)">@Translator.PawnManagement</a></li>
+            <li class="icon-pawner-m"><a href="@Url.Action("Index", "Pawner", null, Request.Url.Scheme)">@Translator.PawnerManagement</a></li>
+            <li class="icon-i-m"><a href="@Url.Action("Index", "Item", null, Request.Url.Scheme)">@Translator.ItemManagement</a></li>
+            <li class="icon-ic-m"><a href="@Url.Action("Index", "ItemCategory", null, Request.Url.Scheme)">@Translator.ItemCategoryManagerment</a></li>
+            <li class="icon-valuer" ><a href="@Url.Action("Index", "Valuer", null, Request.Url.Scheme)">@Translator.ValuerManagement</a></li>
+            <li class="icon-dayend" ><a href="@Url.Action("Index", "DayendClose", null, Request.Url.Scheme)">@Translator.DayendClose</a></li>*/
+            if (authorized == 1)
+            {
+                    <li class="icon-report"><a href="@Url.Action("Index", "Report", null, Request.Url.Scheme)">@Translator.Reports</a></li> 
+                    <li class="icon-setting"><a href="@Url.Action("Index", "Setting", null, Request.Url.Scheme)">@Translator.Setting</a></li> 
+                    <li class="icon-u-m"><a href="@Url.Action("Index", "User", null, Request.Url.Scheme)">@Translator.UserManagement</a></li>
+                    <li class="icon-l-m" ><a href="@Url.Action("Index", "Log", null, Request.Url.Scheme)">@Translator.LogManagement</a></li>
+                
+            }
+            else if (authorized == 2)
+            {
+                    <li class="icon-l-m" ><a href="@Url.Action("Index", "LogUser", null, Request.Url.Scheme)">@Translator.LogManagement</a></li>
+            }
+                <li class="icon-backup" ><a  href="@Url.Action("Index", "Backup", null, Request.Url.Scheme)">@Translator.BackupManagement</a></li>
+            }
+        
+        }
+    }
+</ul>

@@ -1,0 +1,97 @@
+﻿@using Utilities;
+@using MyClinic.Resources  
+@model MyClinic.Models.DailyOperationModels
+@{
+    ViewBag.Title = Translator.DiseaseSummaryReport;
+    var host = Utilities.Common.host;
+    String pageVersion = System.Configuration.ConfigurationManager.AppSettings["Source:Version"];
+    int intIndex = 0;
+    int totalItem = 0;
+    int totalDisease = 0;
+    string diseaseName = "";
+}
+
+<link href="@Url.Content("~/Content/prints/style.report.css?v=" + pageVersion)" rel="stylesheet" type="text/css" />
+<div id="header">
+    <h1>@Translator.DiseaseSummaryReport</h1>
+</div>
+
+<link href="@Url.Content("~/Content/prints/style.report.css?v=" + pageVersion)" rel="stylesheet" type="text/css" />
+<div class="container">
+    <div class="row">
+        <table class="rpt-tbl lst-grp" style="width: 100%;">
+            <thead>
+                <tr style="background: #ddd;">
+                    <th class="fst">@Translator.Disease</th>
+                    <th>@Translator.PatientName</th>
+                    <th>@Translator.Sex</th>
+                    <th>@Translator.Age</th>
+                    <th>@Translator.SymptomType</th>
+                    <th>@Translator.DoctorName</th>
+                    <th>@Translator.Visit</th>
+                    <th class="lst">@Translator.VisitAgain</th>
+                </tr>
+            </thead>
+            <tbody>
+            @foreach (var record in Model.lstRecords)
+            {
+                if (diseaseName != record.Dis_Name)
+                {
+                    if (totalDisease > 0)
+                    {
+                        <tr class="html">
+                            <td colspan="2" style="background-color:#7cc576 !important;  text-align: right;color: #FFF !important; " class="fst">@Translator.Total</td>
+                            <td colspan="6" class="lst" style="color:#7cc576 !important; background: #FFF;font-size: 16px; font-weight: bold;">@Html.Raw(totalDisease.ToString())</td>
+                        </tr>      
+                    }
+                    intIndex = 0;
+                    totalDisease = 0;
+                    diseaseName = record.Dis_Name;
+                    <tr class="cat">
+                        <td colspan="8" class="fst lst"><h3>@Html.Raw(record.Dis_Name)</h3></td>
+                    </tr>
+                }
+
+                intIndex = intIndex + 1;
+                string clssR = "odd";
+                if (intIndex % 2 == 0)
+                {
+                    clssR = "event";
+                }
+                totalItem = totalItem + 1;
+                totalDisease = totalDisease + 1;
+                var detailUrl = Url.Action("Detail", "Diagnosis", new { id = record.Id });
+        
+                <tr class="desc @clssR html" onclick="$manage.detailRecordByFullUrl('@detailUrl');">
+                    <td class="fst" style="border-right: none;"></td>
+                    <td style="border-left: none;">@Utilities.Common.GetValueDisplay(@record.Name, String.Empty)</td>
+                    <td>@Utilities.Common.GetValueDisplay(record.Sex, String.Empty)</td>	
+                    <td>@record.Age</td>
+                    <td>@Utilities.Common.GetValueDisplay(record.Sym_Type, String.Empty)</td>
+                    <td>@Utilities.Common.GetValueDisplay(record.Emp_Name, String.Empty)</td>
+                    <td class="cntr">@Utilities.Common.GetDateTimeFormateFull(record.DiagnoseDate)</td>
+                    <td class="cntr lst">@Utilities.Common.GetDateTimeFormate(record.ExpiredDate)</td>
+                </tr> 
+            } 
+            @if (totalDisease > 0)
+            {
+                <tr class="html">
+                    <td colspan="2" style="background-color:#7cc576 !important; color: #FFF !important; text-align: right;">@Translator.Total</td>
+                    <td colspan="6" class="lst" style="color:#7cc576 !important; font-weight: bold;background: #FFF !important;font-size: 16px;" >@Html.Raw(totalDisease.ToString())</td>
+                </tr> 
+                <tr><td colspan="3"></td></tr> 
+            }
+                <tr class="html" style="background-color:#7cc576 !important;">
+                    <td colspan="2" class="fst"  style="font-size: 16px; color: #FFF !important;">@Translator.TotalAllDianosis</td>
+                    <td class="lst" colspan="6" style="font-size: 16px; font-weight: bold; color: #FFF !important;">@Html.Raw(totalItem.ToString())</td>
+                </tr>
+                <tr><td colspan="8"></td></tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<script type="text/javascript">
+    $(document).ready(function () {
+       $print.loadPrint();
+    });
+</script>

@@ -1,0 +1,93 @@
+﻿@model MyClinic.Models.DiagnosisModels
+@using Utilities
+@using MyClinic.Resources;
+@{
+    var pageUtilities = Model.pageUtilities;
+    var orderField = pageUtilities.orderBy;
+    var order = pageUtilities.order;
+    var intIndex = 1;
+}          
+<div class="note mng">
+    <ul>
+        <li><strong>@Translator.Note</strong></li>
+        <li><strong style="color:#FAC0C4;background: #FAC0C4;padding: 2px 10px; color: #555;">@Translator.Red</strong> @Translator.Expired</li>
+        <li><strong style="color:#F7F7D0;background: #F7F7D0;padding: 2px 10px; color: #555;">@Translator.Yellow</strong> @Translator.OneDayRemain</li>
+        <li><strong style="color:#E3F7D0;background: #E3F7D0;padding: 2px 10px; color: #555;">@Translator.Green</strong> @Translator.TwoDayRemain</li>
+    </ul>
+</div>
+<table class="rpt-tbl" id="myTable">
+    <tr style="background:#FFF;">
+        <th style="width:50px;">@Html.Raw(Sorting.GetSortOrder(Translator.Id,"Id", orderField, order))</th>
+        <th style="width:150px;">@Html.Raw(Sorting.GetSortOrder(Translator.PatientName, "Name", orderField, order))</th>
+        <th style="width:165px;">@Html.Raw(Sorting.GetSortOrder(Translator.Disease, "Disease", orderField, order))</th>
+        <th style="width:230px;max-width:395px;word-wrap:break-word;">@Html.Raw(Sorting.GetSortOrder(Translator.Symptom, "Symptom", orderField, order))</th>
+        <th style="width:80px;">@Html.Raw(Sorting.GetSortOrder(Translator.DiagnoseCycle, "DiagnoseCycle", orderField, order))</th>
+        <th style="width:150px;">@Html.Raw(Sorting.GetSortOrder(Translator.DoctorName, "DiagnoseBy", orderField, order))</th>
+        <th style="width:130px;">@Html.Raw(Sorting.GetSortOrder(Translator.Visit, "DiagnoseDate", orderField, order))</th>
+        <th style="width:130px;">@Html.Raw(Sorting.GetSortOrder(Translator.VisitAgain, "ExpiredDate", orderField, order))</th>
+        <th style="width:91px;"></th>
+    </tr>                 
+
+    @foreach (var diagnosis in Model.dtodiagnosiss)
+    {
+        var strClass = "op" + @diagnosis.Id;
+        intIndex = intIndex + 1;
+        string clssR = "event";
+        if (intIndex % 2 == 0)
+        {
+            clssR = "odd";
+        }
+
+        DateTime oldDate = diagnosis.ExpiredDate;
+        DateTime newDate = DateTime.Now;
+        int differenceInDays = (oldDate - newDate).Days;
+        string strExpClss = "";
+        if (differenceInDays == 1)
+        {
+            strExpClss = "next-exp";
+        }
+        else if (differenceInDays == 2)
+        {
+            strExpClss = "near-exp";
+        }
+        else if (differenceInDays <= 0)
+        {
+            strExpClss = "exp";
+        }
+        var objDateBirth = diagnosis.ExpiredDate;
+        string expiredDate = string.Empty;
+        var strValue = "1990-01-01";
+        DateTime objDate;
+        DateTime.TryParse(strValue, out objDate);
+        if (diagnosis.ExpiredDate != objDate)
+        {
+            expiredDate = Common.GetDateTimeFormate(objDateBirth);
+        }
+        
+    <tr id=@diagnosis.Id class="@clssR @strExpClss">
+        <td>@diagnosis.Id</td>
+        <td>@Html.Raw(diagnosis.Patient_Name)</td>
+        <td>@Html.Raw(diagnosis.Disease_Name)</td>
+        <td>@Html.Raw(diagnosis.Symptom)</td>
+        <td style="text-align:center;">@diagnosis.DiagnoseCycle</td>
+        <td>@Html.Raw(diagnosis.Diagnose_Name)</td>
+        <td class="cntr">@Common.GetDateTimeFormateWithTimeAndMinute(diagnosis.DiagnoseDate)</td>
+        <td class="cntr">@Common.FormatDateForList(diagnosis.ExpiredDate)</td>
+        <td>
+            <select id="sh" -moz-dir="rtl" class="d-ac showAction" data-value="@diagnosis.Id" data-name="@diagnosis.Patient_Name" onchange="$popup.initSetValueSelectAndPopUpAction(this,'@strClass');">
+                <option value="-1" class="al @strClass" style="display:none;">@Translator.Action</option>
+                <option value="0" class="al">@Translator.Edit</option>
+                <option value="1" class="al">@Translator.Detail</option>
+                <option value="2" class="al">@Translator.Delete</option>
+                <option value="3" class="al">@Translator.EditPrescription</option>
+                <option value="25" class="al">@Translator.DiagnosisPhoto</option>
+                <option value="4" class="al">@Translator.Print</option>                
+            </select>
+        </td>
+    </tr>
+    }
+</table>
+<div class="action">
+    @Html.Raw(pageUtilities.listHeader)
+    @Html.Raw(pageUtilities.listFooter)
+</div>

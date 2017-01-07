@@ -1,0 +1,48 @@
+﻿@using MyClinic.Resources;
+
+@{
+    ViewBag.Title = @Translator.Backup;
+    var date = DateTime.Now.ToString("dd/MMM/yyyy");
+    var createdDate = (DateTime)ViewData["CreatedDate"];
+
+
+    string strCreatedDate = Utilities.Common.GetDatePickerDisplay(DateTime.Today);
+   // var objCurDate = DateTime.Today;
+    //string createdDate = Common.GetDatePickerDisplay(objCurDate);
+    
+}
+<div class="title">@Translator.Backup</div>
+        <div class="middle-screen">
+            <table>
+                @if (createdDate != DateTime.Parse("1900-01-01"))
+                {
+                <tr>
+                    <td colspan="2" style="text-align:center;">
+                        <img src="/images/tick.gif" style="width:100px;" />
+                    </td>                    
+                </tr>
+                <tr>
+                    <td colspan="2" style="text-align:center;">
+                        @Translator.TodayBackupon @strCreatedDate
+                    </td>
+                </tr>
+                }
+                <tr>                    
+                    <td colspan="2">
+                        <p style="font-weight:700;text-align:center;font-size:20px;text-shadow: 0.5px 0.5px rgb(189, 182, 182);">@Translator.BackupFor @strCreatedDate.</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input onclick="$Common.setRedirectPage('@Url.Action("Index", "Home")');" class="myLabel" type="button" value="@Translator.ReturnToHome"/>
+                    </td>
+                     <td>
+                        <input style="margin-left:15px;" onclick="$dialogAlert.confirmBackup('','','@Translator.MsgBackup  @strCreatedDate ?','@Url.Action("Backup", "Backup")');" class="myLabel" type="button" value="@Translator.Backup"/>
+                     </td>
+                </tr>
+            </table>
+        </div>
+<script type="text/javascript">
+    $transaction.initDefindActionId("1");
+    $transaction.initChangeClassMenu("icon-backup", "icon-backup-selected");
+</script>

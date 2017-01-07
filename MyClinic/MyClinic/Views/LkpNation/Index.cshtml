@@ -1,0 +1,23 @@
+﻿@{
+    ViewBag.Title = "Index";
+    var host = Utilities.Common.host;
+}
+
+<h2>Index</h2>
+@foreach (var lkpnation in Model.lkpnations)
+{
+    <h1>@lkpnation.Id</h1>
+    <h1>@lkpnation.Nation</h1>
+    
+        @Html.Label("Country", "Country")
+
+        @Html.DropDownList("Country", Model.lkpnations.Select(item => new SelectListItem
+   {
+       Value = item.Id.ToString(),
+       Text = item.Nation.ToString(),
+       Selected = "select" == item.CountryValue.ToString() ? true : false
+   }), "--- Select One ---", new { @class = "slc-ctl" })
+   
+
+}
+    

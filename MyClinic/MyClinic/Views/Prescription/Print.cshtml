@@ -1,0 +1,132 @@
+﻿@using Utilities;
+@using MyClinic.Resources;
+@model MyClinic.Models.PrintPrescriptionModels
+@{
+    String pageVersion = System.Configuration.ConfigurationManager.AppSettings["Source:Version"];
+    ViewBag.Titlle = "Print";
+    var i = 0;
+}
+
+<link href="@Url.Content("~/Content/prints/Prescription.css?v=" + pageVersion)" rel="stylesheet" type="text/css" />
+
+
+<style>
+    
+    body
+    {
+       font-size:18px;
+    }
+    table th
+    {
+        font-size:15px;
+    }
+    table td
+    {
+        font-size:14px;
+        padding: 3px 0px;
+    }
+</style>
+
+<div id="header" class="bdr" style="margin-top:30px;"></div>
+<div class="container">
+    <div class="row part-one bdr">
+        <div class="col-xs-12" style="margin-left:10px;padding-right:0px;">
+            <table >
+                <tbody>
+                    <tr class="pnr-info">
+                        <td style="width: 180px;"></td>
+                        <td style="width: 252px;font-size:18px;">@Model.dtoDiagnosis.Patient_Name</td>
+                        <td></td>
+                        <td style="font-size:18px;">&nbsp;&nbsp;&nbsp;&nbsp;@Model.dtoDiagnosis.Patient_Sex&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@Model.dtoDiagnosis.Patient_Age Y</td>
+                    </tr>
+                    <tr style="height: 40px;">
+                        <td style="">
+                        </td>
+                        <td colspan="2" style="width: 700px;font-size:18px;">
+                            &nbsp;&nbsp;&nbsp;&nbsp;@Model.dtoDiagnosis.Disease_Name / @Model.dtoDiagnosis.DiagnoseCycle
+                        </td>
+                        <td style="font-size:18px;">
+                            <span style="font-size:18px;" class="fkh"> No: </span> @Model.dtoDiagnosis.Id
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="4">
+                            <table border="1">
+                                <tbody >
+                                    <tr class="pnr-info" style="font-family:Hanuman;">
+                                        <th width="20px;" style="font-weight:normal;">ល.រ<br />No</th>
+                                        <th style="font-weight:normal;">បរិយាយ<br />Description</th>
+                                        <th style="font-weight:normal;" width="20px">ចំនួន<br />Qty</th>
+                                        <th style="font-weight:normal;" width="50px">ប្រើ<br />Use</th>
+                                        <th style="font-weight:normal;" width="20px">ព្រឹក<br />Mor</th>
+                                        <th style="font-weight:normal;" width="20px">ថ្ងៃ<br />Noon</th>
+                                        <th style="font-weight:normal;" width="20px">យប់<br />Night</th>
+                                        <th style="font-weight:normal;" width="80px">ផ្សេងៗ<br />Other</th>
+                                    </tr>
+                                    @foreach (var prescrition in Model.medicineRecords)
+                                    {
+                                        i++;
+                                        
+                                        <tr id="@prescrition.Id" class="list-medicine">
+                                            <td>@i</td>
+                                            <td class="tll">@prescrition.Med_Name</td>
+                                            <td class="tll">@prescrition.Qty</td>
+                                            <td>@prescrition.Use_Name</td>
+                                            <td>@prescrition.Morning</td>
+                                            <td>@prescrition.Noon</td>
+                                            <td>@prescrition.Night</td>
+                                            <td></td>
+                                        </tr>
+                                    }
+                                        <tr id="" class="list-medicine">
+                                            <td></td>
+                                            <td class="tll">Consultation</td>
+                                            <td class="tll"></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                        </tr>
+                                        <tr id="" class="list-medicine">
+                                            <td></td>
+                                            <td class="tll">&nbsp;</td>
+                                            <td class="tll"></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                        </tr>
+                                    <tr class="list-medicine">
+                                        <td rowspan="2" colspan="4" style="vertical-align: top;padding: 10px 8px;text-align: left;border:none;">
+                                            <span style="font-weight:normal;"> Tel : @ViewData["PatientTel"]</span>
+                                        </td>
+                                        <td colspan="3" class="tlr">
+                                            <span style="font-weight:normal;" >Total Price : US$ </span>
+                                        </td>
+                                        <td> </td>
+                                    </tr>
+                                    <tr class="list-medicine">
+                                        <td colspan="3" class="tlr">
+                                            <span style="font-weight:normal;">Riels</span>
+                                        </td>
+                                        <td>
+                                                
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="date">
+        <p style="margin-left:400px;font-size:18px !important;">&nbsp;&nbsp;&nbsp;&nbsp;@DateTime.Today.ToString("dd/MM/yyyy")</p>
+    </div>
+</div>
+<script>
+    document.body.style.overflowX = "hidden";
+</script>

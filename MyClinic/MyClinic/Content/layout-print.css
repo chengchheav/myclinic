@@ -1,0 +1,19 @@
+﻿* {
+    color: #000 !important;
+    text-shadow: none !important;
+    background: transparent !important;
+    box-shadow: none !important;
+}
+    
+.container .row h1
+{
+    font-size: 18px;   
+}
+  
+.table {
+    border-collapse: collapse !important;
+}
+.table-bordered th,
+.table-bordered td {
+    border: 1px solid #ddd !important;
+}

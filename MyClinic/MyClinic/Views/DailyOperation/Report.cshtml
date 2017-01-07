@@ -1,0 +1,52 @@
+﻿@model MyClinic.Models.DailyOperationModels
+@using Utilities;
+@using MyClinic.Resources  
+@{
+    ViewBag.Title       = @Translator.DailyOperationReport;
+    var host            = Utilities.Common.host;
+    String pageVersion = System.Configuration.ConfigurationManager.AppSettings["Source:Version"];
+}
+<!----- Title ----->
+<link href="@Url.Content("~/Content/style.report.css?v=" + pageVersion)" rel="stylesheet" type="text/css" />
+<link href="@Url.Content("~/Content/themes/base/jquery.ui.all.css?v=" + pageVersion)" rel="stylesheet" type="text/css" />
+<div class="title">@Translator.DailyOperationReport</div>
+<div id="content" class="rpt-view">
+    <div class="action">
+        <div class="editor" id="lst-ctr-srch" data-action="@Url.Action("Ajreport", "DailyOperation")">
+            <ul>
+                <li>
+                    <select id="searchBy" class="slc-ctr">
+                        <option value="Name">@Translator.PatientName</option>
+                        <option value="Dis_Name">@Translator.DiseaseName</option>
+                        <option value="Emp_Name">@Translator.DoctorName</option>
+                        <option value="Sym_Type">@Translator.SymptomType</option>
+                     </select>
+                </li>
+                <li><input id="keyword" type="text" id="searchKeyWord" class="txt-ctr" placeholder="@Translator.Search..."/></li>
+                <li class="ttl-ctr">@Translator.FromDate:</li>
+                <li class="date"><input type="text" id="startDate" class="txt-ctr ch_date" name="startDate" value="@Model.startDate"></li>
+                <li class="ttl-ctr">@Translator.ToDate:</li>
+                <li class="date"><input type="text" id="endDate" class="txt-ctr ch_date" name="endDate" value="@Model.endDate"></li>
+                
+                <li class="ttl-ctr"><a style="padding:0px;"><input type="button" class="btn-stl" id="search-button" value="@Translator.Search" onclick="$manage.SearchManageRecords();" /></a></li>
+                <li class="ttl-ctr"><a style="padding:0px;" target="_blank"><input onclick="$print.printManageRecords('@Url.Action("ReportPrint", "DailyOperation")');" type="button" class="btn-stl" id="print-button" value="@Translator.Print"/></a></li>
+                <li class="ttl-ctr"><a style="padding:0px;" target="_blank"><input onclick="$manage.printManageRecords('@Url.Action("ReportCsv", "DailyOperation")');" type="button" class="btn-stl" id="csv-button" value="@Translator.Csv"/></a></li>
+           </ul>
+        </div>
+    </div>
+    <div class="clear"></div>
+    <div id="lstContainer" class="tbl">
+        @{Html.RenderPartial("Partials/List");}    
+    </div>
+</div>
+<script src="@Url.Content("~/Scripts/jquery.ui.datepicker.js?v=" + pageVersion)" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/script.datepicker.js?v=" + pageVersion)" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/script.manage.js?v=" + pageVersion)" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/script.print.js")" type="text/javascript"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $transaction.initDefindActionId("1");
+        $transaction.initChangeClassMenu("icon-report", "icon-report-selected");
+        $datepicker.initRangeDate();
+    });
+</script>

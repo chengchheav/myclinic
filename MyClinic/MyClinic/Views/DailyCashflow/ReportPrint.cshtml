@@ -1,0 +1,120 @@
+﻿@using Utilities;
+@using MyClinic.Resources
+@model MyClinic.Models.DailyCashflowModels
+
+@{
+    ViewBag.Title = Translator.DailyCashFlowReport;
+    var host = Utilities.Common.host;
+    String pageVersion = System.Configuration.ConfigurationManager.AppSettings["Source:Version"];
+    int intIndex = 0;
+    decimal totalAmount = 0;
+    var lastSourceName = "";
+    decimal subTotal = 0;
+}
+
+<link href="@Url.Content("~/Content/prints/style.report.css?v=" + pageVersion)" rel="stylesheet" type="text/css" />
+<div id="header">
+    <h1>@Translator.DailyCashFlowReport</h1>
+    <p class="srch-dte"><strong>@Common.GetSearchDateTimeFormate(Model.transDate)</strong></p>
+    <div class="container">
+        <div class="row">
+            <div style="text-align: left; float:left;"></div>
+            <div style="text-align: right; float:right;">@Common.GetCurrentFullDate()</div>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <h2>@Translator.Inflow</h2>
+        <table class="rpt-tbl">
+            <tr>
+                <th class="rgh last" colspan="2" style="padding-right: 2%;" colspan="2">@Translator.Amount</th>
+            </tr>
+            @foreach (var record in Model.lstRecords)
+            {
+                if (record.Cashflow.Trim().ToLower() == "Inflow".ToLower())
+                {
+                    intIndex = intIndex + 1;
+                    string clssR = "event";
+                    if(intIndex % 2 == 0){
+                        clssR = "odd";
+                    }
+
+                    if (!lastSourceName.Trim().ToLower().Equals(record.SourceName.Trim().ToLower()))
+                    {                
+                        if(!lastSourceName.Equals("")){
+                            <tr class="sub-val"><td style="text-align:right;"><b>@Translator.SubTotal:</b></td><td class="rgh main-val last" style="padding-right: 2%;background-color: #eeeeee !important;">@Utilities.Common.GetCurrencyFormate(totalAmount)</td></tr> 
+                        }
+
+                        lastSourceName = Utilities.Common.GetValueDisplay(record.SourceName, String.Empty);
+                        <tr>
+                            <td colspan="2"><b>@lastSourceName</b></td>
+                        </tr>  
+                        totalAmount = 0;
+                    }
+
+                    totalAmount = totalAmount + record.Amount;
+                    subTotal += record.Amount;
+                    <tr class="@clssR">
+                        <td>&nbsp;&nbsp;&nbsp;&nbsp;@Utilities.Common.GetValueDisplay(record.Name, String.Empty)</td>		
+                        <td class="rgh last" style="padding-right: 2%;">@Utilities.Common.GetCurrencyFormate(record.Amount)</td>
+                    </tr>
+                }
+            } 
+            <tr class="sub-val"><td style="text-align:right;border-left: 1px solid #ddd;"><b>@Translator.SubTotal:</b></td><td class="rgh main-val last" style="padding-right: 2%;background-color: #eeeeee !important;">@Utilities.Common.GetCurrencyFormate(totalAmount)</td></tr>
+            <tr class="sub-val"><td style="border-bottom: 1px solid #ddd; border-left: 1px solid #ddd;text-align:right;"><b>@Translator.Total:</b></td><td class="rgh main-val last" style="padding-right: 2%;background-color: #eeeeee !important;">@Utilities.Common.GetCurrencyFormate(subTotal)</td></tr>
+        </table>
+
+        @{
+            intIndex = 0;
+            totalAmount = 0;
+            subTotal = 0;
+            lastSourceName = "";            
+        }   
+        <h2>@Translator.Outflow</h2>
+        <table class="rpt-tbl">
+            <tr>
+                <th class="rgh last" colspan="2" style="padding-right: 2%;" colspan="2">@Translator.Amount</th>
+            </tr>
+            @foreach (var record in Model.lstRecords)
+            {
+                if (record.Cashflow.Trim().ToLower() == "Outflow".ToLower())
+                {
+                    intIndex = intIndex + 1;
+                    string clssR = "event";
+                    if(intIndex % 2 == 0){
+                        clssR = "odd";
+                    }
+
+                    if (!lastSourceName.Trim().ToLower().Equals(record.SourceName.Trim().ToLower()))
+                    {                
+                        if(!lastSourceName.Equals("")){
+                            <tr class="sub-val"><td style="text-align:right;"><b>@Translator.SubTotal:</b></td><td class="rgh main-val last" style="padding-right: 2%;background-color: #eeeeee !important;">@Utilities.Common.GetCurrencyFormate(totalAmount)</td></tr> 
+                        }
+
+                        lastSourceName = Utilities.Common.GetValueDisplay(record.SourceName, String.Empty);
+                        <tr>
+                            <td colspan="2"><b>@lastSourceName</b></td>
+                        </tr>  
+                        totalAmount = 0;
+                    }
+
+                    totalAmount = totalAmount + record.Amount;
+                    subTotal += record.Amount;
+                    <tr class="@clssR">
+                        <td>&nbsp;&nbsp;&nbsp;&nbsp;@Utilities.Common.GetValueDisplay(record.Name, String.Empty)</td>		
+                        <td class="rgh last" style="padding-right: 2%;">@Utilities.Common.GetCurrencyFormate(record.Amount)</td>
+                    </tr>
+                }
+            } 
+            <tr class="sub-val"><td style="text-align:right;border-left: 1px solid #ddd;"><b>@Translator.SubTotal:</b></td><td class="rgh main-val last" style="padding-right: 2%;background-color: #eeeeee !important;">@Utilities.Common.GetCurrencyFormate(totalAmount)</td></tr>
+            <tr class="sub-val"><td style="text-align:right;border-left: 1px solid #ddd;border-bottom: 1px solid #ddd;"><b>@Translator.Total:</b></td><td class="rgh main-val last" style="padding-right: 2%;background-color: #eeeeee !important;">@Utilities.Common.GetCurrencyFormate(subTotal)</td></tr>
+            
+        </table>
+    </div>
+</div>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $print.loadPrint();
+    });
+</script>

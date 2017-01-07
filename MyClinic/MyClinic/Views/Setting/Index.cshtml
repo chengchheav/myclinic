@@ -1,0 +1,165 @@
+﻿@model MyClinic.Models.SettingModels
+@using Utilities;
+@using MyClinic.Resources;
+@{
+    ViewBag.Title = @Translator.Setting;
+    var host = Utilities.Common.host;
+    Dictionary<string, string> dictValue = new Dictionary<string, string>();
+    foreach (var record in Model.settings)
+    {
+        dictValue.Add(record.Id.ToString(), record.KeyValue);
+    }
+    
+    string strId = String.Empty;
+    string strName = String.Empty;
+}
+<div class="title">@Translator.Setting</div>
+<div class="frm-bx" id="setting-pge">
+    <div class="frm-info">
+        <p>@Translator.Pleaseinputyourvalue <strong>@Translator.Note</strong> @Translator.MessageSetting</p>
+    </div>
+    <div class="info-bx" style="width: 50%;">
+        <fieldset>
+            <table>
+                <tbody>
+                    <tr>
+                        @{ 
+                            strId = "1";
+                            strName = "KeyValue" + strId;
+                            var strImage = Common.GetValueFromDict(dictValue, strId);
+                            var strBaseImage = ImageHelper.BaseDateImage(Server.MapPath("~/Uploads/default.jpg"));
+                            if (strImage != "")
+                            {
+                                strBaseImage = ImageHelper.BaseDateImage(Server.MapPath("~/Uploads/Logo/") + strImage);
+                            }
+                            
+                        }
+                        <td class="editor-label imp">
+                            <label>@Translator.CompanyLogo</label>
+                        </td>
+                        <td class="editor-field" >
+                            <div class="ImageStream" data-value="@strId">
+                                @Html.TextBox("Image", "", new { type = "file", accept = "image/*" })
+                                <div id="trigger">
+                                    <img src="@strBaseImage"/>
+                                </div>
+                                <input type="hidden" name="ImageStream" value="@strBaseImage"/>
+                            </div>
+                        </td>
+                    </tr>
+                    
+                    <tr>
+                        @{ strId = "2";}
+                        <td class="editor-label imp">
+                            <label>@Translator.Name</label>
+                        </td>
+                        <td class="editor-field" >
+                            <input type="text" class="txt-ctr" data-value="@strId" value="@Common.GetValueFromDict(dictValue, strId)" name="KeyValue"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        @{ strId = "3";}
+                        <td class="editor-label imp">
+                            <label>@Translator.Address</label>
+                        </td>
+                        <td class="editor-field" >
+                            <textarea class="txt-ctr" data-value="@strId" name="KeyValue">@Common.GetValueFromDict(dictValue, strId)</textarea>
+                        </td>
+                    </tr>
+                    <tr>
+                        @{ strId = "4";}
+                        <td class="editor-label imp">
+                            <label>@Translator.Phone</label>
+                        </td>
+                        <td class="editor-field" >
+                            <input type="text" class="txt-ctr" data-value="@strId" value="@Common.GetValueFromDict(dictValue, strId)" name="KeyValue"/>
+                        </td>
+                    </tr>
+                    <tr class="last">
+                        @{ strId = "5";}
+                        <td class="editor-label imp">
+                            <label>@Translator.Email</label>
+                        </td>
+                        <td class="editor-field" >
+                            <input type="text" class="txt-ctr" data-value="@strId" value="@Common.GetValueFromDict(dictValue, strId)" name="KeyValue"/>
+                        </td>
+                    </tr>
+                    <!--<tr class="last">
+                        @{ 
+                            strId = "6";
+                            strName = "KeyValue" + strId;
+                        }
+                        <td class="editor-label imp">
+                            <label>@Translator.TotalDayAllowPrint</label>
+                        </td>
+                        <td class="editor-field">
+                            <input type="text" class="txt-ctr" data-value="@strId" value="@Common.GetValueFromDict(dictValue, strId)" name="@strName"/>
+                        </td>
+                    </tr>-->
+                </tbody>
+            </table>
+        </fieldset>
+    </div>
+</div>
+<script src="@Url.Content("~/Scripts/script.setting.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/script.image.js")" type="text/javascript"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $setting.initSetting('@Url.Action("Ajindex", "Setting")');
+        $image.initLogo();
+        $transaction.initChangeClassMenu("icon-setting", "icon-setting-selected");
+    });
+</script>
+<style type="text/css">
+    #setting-pge table th.ttl
+    {
+        width: 45%;    
+    }
+    
+    #setting-pge table th.vlu
+    {
+        padding-left: 10px; 
+        line-height: 45px;  
+    } 
+    
+    #setting-pge table tr
+    {
+        border-bottom: 2px solid #FFF;   
+    }
+    
+    #setting-pge table tr.last
+    {
+        border-bottom: 0px solid #FFF;   
+    }
+    
+    #setting-pge table tr td
+    {
+        padding-bottom: 25px;   
+        line-height:18px;
+    }
+    
+    #setting-pge .ImageStream img
+    {
+        width: 100%;
+        height: auto;
+        object-fit: cover;    
+    }
+    
+    #setting-pge .ImageStream #trigger
+    {
+        background: #ffffff none repeat scroll 0 0;
+        border: 2px solid #ffffff;
+        height: 200px;
+        margin-top: 5px;
+        padding: 2px;
+        width: 200px;
+        cursor: pointer;
+    }
+    
+    #setting-pge .ImageStream input[type=file]
+    {
+        width:0px;
+        height:0px;
+    }
+</style>
+

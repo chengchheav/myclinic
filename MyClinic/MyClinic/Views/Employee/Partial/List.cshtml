@@ -1,0 +1,57 @@
+﻿@model MyClinic.Models.EmployeeModels
+@using Utilities
+@using MyClinic.Resources;
+@{
+    var pageUtilities = Model.pageUtilities;
+    var orderField = pageUtilities.orderBy;
+    var order = pageUtilities.order;
+    var intIndex = 1;
+}          
+
+<table class="rpt-tbl" id="myTable">
+    <tr style="background:#FFF;">
+        <th style="width:60px;">@Html.Raw(Sorting.GetSortOrder(Translator.Id, "Id", orderField, order))</th>
+        <th style="width:200px;">@Html.Raw(Sorting.GetSortOrder(Translator.Name, "Name", orderField, order))</th>
+        <th style="width:60px;">@Html.Raw(Sorting.GetSortOrder(Translator.Sex, "Sex", orderField, order))</th>
+        <th>@Html.Raw(Sorting.GetSortOrder(Translator.Email, "Email", orderField, order))</th>
+        <th style="width:130px;">@Html.Raw(Sorting.GetSortOrder(Translator.Tel, "Tel", orderField, order))</th>
+        <th style="width:300px;">@Html.Raw(Sorting.GetSortOrder("Position", "Position", orderField, order))</th>
+        <th style="width:91px"></th>
+    </tr>                 
+
+    @foreach (var employee in Model.dtoemployees)
+    {
+        var strClass = "op" + @employee.Id;
+        intIndex = intIndex + 1;
+        string clssR = "event";
+        if (intIndex % 2 == 0)
+        {
+            clssR = "odd";
+        }
+    <tr id=@employee.Id class="@clssR">
+        <td>@employee.Id</td>
+        <td>@Html.Raw(employee.Name)</td>
+        <td style="text-align:center;">@Html.Raw(employee.Sex)</td>
+        <td>@Html.Raw(employee.Email)</td>
+        <td>@Html.Raw(employee.Tel)</td>
+        <td>@Html.Raw(employee.PositionName)</td>
+        <!--<td>
+            @Html.ActionLink(Translator.Edit, "Edit", new { id = employee.Id }) |
+            @Html.ActionLink(Translator.Detail, "Detail", new { id = employee.Id }) |
+             <a class="btnsm" onclick="$dialogAlert.confirmDelete('','','@Translator.MsgConfirmDeleteEmployee : @employee.Name?',' @Url.Action("DeleteConfirmed", "employee", new { id = employee.Id }) ');">@Translator.Delete</a>
+        </td>-->
+        <td>
+            <select id="sh" -moz-dir="rtl" class="d-ac showAction" data-value="@employee.Id" data-name="@employee.Name" onchange="$popup.initSetValueSelectAndPopUpAction(this,'@strClass');">
+                    <option value="-1" class="al @strClass" style="display:none;">@Translator.Action</option>
+                    <option value="13" class="al">@Translator.Edit</option>
+                    <option value="14" class="al">@Translator.Detail</option>
+                    <option value="15" class="al">@Translator.Delete</option>
+              </select>
+        </td>
+    </tr>
+    }
+</table>
+<div class="action">
+    @Html.Raw(pageUtilities.listHeader)
+    @Html.Raw(pageUtilities.listFooter)
+</div>

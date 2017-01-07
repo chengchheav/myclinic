@@ -1,0 +1,226 @@
+﻿@using MyClinic.Resources;
+@{
+    String iconFavicon = System.Configuration.ConfigurationManager.AppSettings["Icon:Url"];
+    String pageVersion = System.Configuration.ConfigurationManager.AppSettings["Source:Version"];
+    iconFavicon = iconFavicon + "?v=" + pageVersion;
+    var link = Utilities.Common.GetLanguageChangeUrl(Request.Url.Segments);
+    var langPage = "en";
+    var lang = Utilities.Common.GetLanguage(Request.Url.Segments);
+    if (lang.Equals("km"))
+    {
+        langPage = "km";
+    }
+    
+    var objSession = Session["user"] as MyClinic.Infrastructure.SessUser;
+    
+    string userName = "";
+    if (objSession != null){
+        userName = objSession.Name;
+    }
+    else{
+        <script type="text/javascript">
+            $Common.setRedirectPage('@Url.Action("Index","Login")');
+        </script>
+    }
+
+    var rd = ViewContext.RouteData;
+    var controller = rd.GetRequiredString("controller");
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>@ViewBag.Title</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="SHORTCUT ICON" href= "@iconFavicon" type="image/x-icon" />
+    <link href="@Url.Content("~/Content/Site.css?v=" + pageVersion)" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/jquery-ui-1.8.16.custom.css?v=" + pageVersion)" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/form.css?v=" + pageVersion)" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/layout.css?v=" + pageVersion)" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/responsive.css?v=" + pageVersion)" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/menu/css/mmenu.css?v=" + pageVersion)" rel="stylesheet" type="text/css" />
+    <script src="@Url.Content("~/Scripts/jquery-1.12.1.min.js?v=" + pageVersion)" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/jquery-ui.min.js?v=" + pageVersion)" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/modernizr-1.7.min.js?v=" + pageVersion)" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/dialog.min.js?v=" + pageVersion)" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/transaction.js?v=" + pageVersion)" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/script.popupaction.js?v=" + pageVersion)" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/jquery.numeric.js?v=" + pageVersion)" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/paging.js?v=" + pageVersion)" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/translator.js?v=" + pageVersion)" type="text/javascript"></script>
+    <link href="@Url.Content("~/Content/bootstrap/css/bootstrap.min.css?v=" + pageVersion)" rel="stylesheet" type="text/css" />
+    <!--mmenu-->
+    <link href="@Url.Content("~/Content/menu/css/demo.css?v=" + pageVersion)" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/menu/css/jquery.mmenu.all.css?v=" + pageVersion)" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/menu/css/jquery.mmenu.iconbar.css?v=" + pageVersion)" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/style.fonts.css?v=" + pageVersion)" rel="stylesheet" type="text/css" />    
+
+    <script type="text/javascript">
+        @{ 
+            string controller_name = this.ViewContext.RouteData.Values["controller"].ToString();
+            var host = Utilities.Common.host;
+            host = host+'/'+langPage;
+            /*if(host.Contains("/")){
+                if (host.Substring(host.Length - 1, 1) == "/"){
+                    host = host+langPage;
+                }else{
+                    host = host+'/'+langPage;
+                }
+            }*/
+        }           
+        var host = '@host';
+        var hostNoLang = '@Utilities.Common.host';        
+        var controller = '@controller_name';
+        var lang = '@langPage';   
+        
+    </script>
+</head>
+<body lang="@langPage">
+    <div class="page">
+        
+        <!----- Header Site ----->
+        <header>
+            <div class="container-fluid">
+                @Html.Partial("Partials/_HeaderSitePartial")
+                
+            </div>
+        </header>
+
+        <!------ Nav Horizontal ----->
+        <nav id="menu">
+             @Html.Partial("Partials/_NavHorizontalPartial")
+        </nav>
+        @{
+            var logoImage = Utilities.Common.host + "/Images/Admin-CP.png";
+        }
+        <!----- Header ----->
+        <div id="header" class="Fixed">
+            <div style="float:left;">
+                <a id="nav" href="#menu"></a>
+             </div>
+            <div style="float:left;">
+                <span style="position: absolute; left: 120px; top: -1px;"><img src="@logoImage" /></span>
+            </div>
+            <div style="float:right;position: relative;right: 80px;">
+                <div class="h-info">
+                    <ul>
+                        <li><a style="padding: 0px 5px;cursor:default !important;">@Translator.Loggedinas</a></li>
+                        <li><a class="h-green" href="@Url.Action("EditUserProfile", "Account")"><span>@userName</span></a></li>
+                        <li><a class="off"></a>
+                        <!--<a class="h-red">-->
+
+                            <!--Login Out-->                        
+                            <div class="tab tab-up" style="z-index:1;">                            
+					            <div class="select">                                
+                                    @Translator.Logout
+                                </div>
+					            <div class="clear"></div>
+
+					            <div class="wrap2" style="width:140px;">
+						            <span class="arrow"></span>
+						                <a class="dropdown" href="@Url.Action("Logoff","Login")">Yes</a>
+						                <a class="dropdown select dis">No</a>
+						            <div class="clear"></div>
+					            </div>
+				            </div>
+                        </li>
+                        <li style="margin-left:50px;cursor:pointer;margin-top:-1px;" onclick="$Common.setRedirectPage('@link');">
+                                <div id="language" style="z-index:2;position:relative;">                
+                                    @Html.Partial("Partials/_LanguagePartial")
+                                </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="clear"></div>
+        
+
+        <section id="main">        
+            
+                       
+
+                <div id="hdr-cnt">
+                    @Html.Partial("Partials/_HeaderPartial")
+                </div>
+
+                <div id="nav-cnt">
+                    @Html.Partial("Partials/_NavVerticlePartial")
+                </div>
+
+                <!----- Content ----->
+                 <div id="cnt-cnt">
+                     @RenderBody()
+                 </div>                 
+
+                 <div id="ftr-cnt">
+                    @Html.Partial("Partials/_FooterPartial")
+                </div>
+                     
+        </section>        
+        
+        <!----- Footer ----->
+        <footer>
+            <div class="container-fluid">
+                @Html.Partial("Partials/_FooterSitePartial")
+            </div>
+        </footer>
+
+    </div>
+    <script src="@Url.Content("~/Content/bootstrap/js/bootstrap.min.js?v=" + pageVersion)" type="text/javascript"></script>
+        
+    <script src="@Url.Content("~/Scripts/jscript.enum.js?v=" + pageVersion)" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/jscript.common.js?v=" + pageVersion)" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/jscript.dialog.js?v=" + pageVersion)" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/jquery.select.js?v=" + pageVersion)" type="text/javascript"></script>
+
+    <!--mmenu-->
+    <script src="@Url.Content("~/Content/menu/js/jquery.mmenu.all.min.js?v=" + pageVersion)" type="text/javascript"></script>
+    <script src="@Url.Content("~/Content/menu/js/jquery.mmenu.fixedelements.min.js?v=" + pageVersion)" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/main.js?v=" + pageVersion)" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/script.msg.js?v=" + pageVersion)" type="text/javascript"></script>    
+
+    <script type="text/javascript">
+        $(function () {
+            $("#menu")
+					.mmenu({
+					    extensions: ["iconbar" , "pageshadow"]
+					}, {
+					    // configuration
+					    classNames: {
+                            vertical: "expand",
+					        fixedElements: {
+					            fixed: "header"
+                                //fixedTop: "is-fixed"
+					        }
+					    }
+					}).on('click',
+						'a[href^="#/"]',
+						function () {
+						    alert("Thank you for clicking, but that's a demo link.");
+						    return false;
+						}
+					);
+        });
+		</script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $Common.initNavigationTemplate();
+            $dialogAlert.initTemplate();
+            $msg.waiting = "@Translator.Waiting";
+            $msg.yes = "@Translator.Yes";
+            $msg.no = "@Translator.No";
+            $msg.message = "@Translator.Message";
+            $msg.messageDelete = "@Translator.MsgConfirmDelete";
+            $msg.messageSuccessDelete = "@Translator.MsgSuccessDelete";
+            $msg.close = "@Translator.MsgClose";
+            $msg.messageFailureDelete = "@Translator.MsgFailureDelete";
+            $msg.menu = "@Translator.Menu";
+            $(".mm-navbar a").html($msg.menu);
+        });
+    </script>
+    </body>
+</html>

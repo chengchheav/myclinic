@@ -1,0 +1,90 @@
+﻿@using Utilities;
+@using MyClinic.Resources  
+@model MyClinic.Models.PatientOperationModels
+@{
+    ViewBag.Title = Translator.PatientOperationReport;
+    var host = Utilities.Common.host;
+    String pageVersion = System.Configuration.ConfigurationManager.AppSettings["Source:Version"];
+    int intIndex = 0;
+    string PatientName = "";
+    string DiseaseName = "";
+}
+
+<link href="@Url.Content("~/Content/prints/style.report.css?v=" + pageVersion)" rel="stylesheet" type="text/css" />
+<div id="header">
+    <h1>@Translator.PatientOperationReport</h1>
+</div>
+
+<div class="container">
+    <div class="row">
+        <table class="rpt-tbl lst-grp" style="width: 100%;">
+            <thead>
+                <tr style="background:#FFF;" class="html">
+                    <th class="lst">@Translator.PatientName</th>
+                    <th style="width:100px;">@Translator.Disease</th>
+                    <th>@Translator.DoctorName</th>
+                    <th>@Translator.Skill</th>
+                    @if (Common.showDoctorTel)
+                    {
+                    <th>@Translator.DoctorTel</th>
+                    }
+                    <th>@Translator.Tel</th>
+                    <th>@Translator.DiagnoseCycle</th>
+                    <th>@Translator.SymptomType</th>
+                    <th>@Translator.Visit</th>
+                    <th class="lst">@Translator.VisitAgain</th>
+                </tr>
+            </thead>
+            <tbody>
+            @foreach (var record in Model.lstRecords)
+            {
+                if (PatientName != record.Name)
+                {
+                    PatientName = record.Name;
+                    <tr class="cat">
+                        <td class="lst fst" colspan="9"><h3>@Html.Raw(record.Name)</h3></td>
+                    </tr>
+                }
+                string ConcateDisease = record.Name + record.Dis_Name;
+                if (DiseaseName != ConcateDisease)
+                {
+                    DiseaseName = ConcateDisease; 
+                    intIndex = 1;
+                    <tr class="itm">
+                        <td class="fst" style="border-right: 0px;"></td>
+                        <td class="lst" colspan="8" style="border-left: 0px;"><h4>@Html.Raw(record.Dis_Name)</h4></td>
+                    </tr>  
+                }
+
+                intIndex = intIndex + 1;
+                string clssR = "odd";
+                if (intIndex % 2 == 0)
+                {
+                    clssR = "event";
+                }
+                var nextVisitDate = Utilities.Common.GetDateTimeFormate(record.ExpiredDate);
+                if (record.ExpiredDate.Year == 1990)
+                {
+                    nextVisitDate = "";
+                }
+                <tr class="desc @clssR html">
+                    <td class="fst" style="border-right: 0px;"></td>
+                    <td class="sec" style="border-left: 0px;border-right: 0px;"></td>
+                    <td class="sep" style="border-left: 0px;">@record.Doc_Name</td>
+                    <td class="sep">@record.Doc_Skill</td>
+                    @if (Common.showDoctorTel)
+                    {
+                    <td class="sep">@record.Doc_Tel</td>
+                    }
+                    <td class="sep">@record.Tel</td>
+                    <td style="text-align:center;" class="sep">@record.DiagnoseCycle</td>
+                    <td style="text-align:center;width:90px;" class="sep">@record.Sym_Type</td>
+                    <td class="sep" style="text-align: center;width:130px;">@Common.GetDateTimeFormateWithTimeAndMinute(record.DiagnoseDate)</td>
+                    <td class="lst" style="text-align: center;width:130px;">@nextVisitDate</td>
+                </tr> 
+            } 
+                <tr><td colspan="10"></td></tr>
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -1,0 +1,51 @@
+﻿.headSpace
+{
+    width:100%;
+    height:300px;
+}
+.container
+{
+    width: 100%;
+    padding: 0px 20px;
+    background-color: Red;
+}
+.container .part1
+{
+    width:100%;
+    height: 150px;
+    background-color: Blue;
+
+}
+.container .part1 table
+{
+    width:100%;
+}
+.container .part1 table .name
+{
+    padding-left: 200px;
+    width: 900px;
+}
+.container .part1 table .sex
+{
+    width: 100px;
+}
+.container .part1 table .age
+{
+    width: 100px;
+}
+.container .part1 table .diagnos
+{
+    padding-left: 270px;
+}
+
+.container .part2
+{
+    width:100%;
+    height: 400px;
+    padding-left: 20px;
+}
+.container .part2 table
+{
+    width: 100%;
+}
+

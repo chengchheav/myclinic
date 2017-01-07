@@ -1,0 +1,84 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+<!----- Title ----->
+<div class="title">Title Page</div>
+
+<div id="content">
+
+<div class="action">
+    <div class="editor">
+        <ul>
+            <li><a>Save</a></li>
+            <li><a>Cancel</a></li>
+            <li><a>Delete</a></li>
+        </ul>
+    </div>
+</div>
+
+<div class="clear"></div>
+
+<div class="Profile-add">
+    <table border="1" style="width:100%">
+      <tr>
+        <td><img src="/Images/photo.jpg" /></td>
+        <td>
+            <label class="myLabel" style="margin: -50px 12px 0px;">
+                <input type="file" required/>
+                <span>Upload Photo</span>
+            </label>
+        </td>
+      </tr>
+      <tr>
+        <td><span>User Name</span></td>
+        <td><input type="text" /></td>
+      </tr>
+      <tr>
+        <td><span>User ID</span></td>
+        <td><input type="text" /></td>
+      </tr>
+      <tr>
+        <td><span>Sex</span></td>
+        <td>
+            <select>
+                <option>Male</option>
+                <option>Female</option>
+            </select>
+        </td>
+      </tr>
+      <tr>
+        <td><span>Password</span></td>
+        <td><input type="password" /></td>
+      </tr>
+      <tr>
+        <td><span>Phone</span></td>
+        <td><input type="text" /></td>
+      </tr>
+      <tr>
+        <td><span>E-mail</span></td>
+        <td><input type="text" /></td>
+      </tr>
+    </table>
+
+</div>
+
+<div class="Profile-add" style="margin-left: 20px;">
+    <table border="1" style="width:100%;">
+      <tr>
+        <td valign="top">Description</td>
+        <td><textarea rows="4" cols="50" name="comment" form="usrform"></textarea></td>
+      </tr>
+      <tr>
+        <td>Upload File</td>
+        <td>
+            <label class="myLabel" style="margin-left: 5px; margin-top: 6px;">
+                <input type="file" required/>
+                <span>Select</span>
+            </label>
+        </td>
+      </tr>
+    </table>
+
+</div>
+
+</div>

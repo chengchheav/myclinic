@@ -1,0 +1,76 @@
+﻿@using Utilities;
+@using MyClinic.Resources
+@model MyClinic.Models.DailyVoidModels
+@{
+    ViewBag.Title = Translator.DailyVoidorCancelReport;
+    var host = Utilities.Common.host;
+    String pageVersion = System.Configuration.ConfigurationManager.AppSettings["Source:Version"];
+    int intIndex = 0;
+    decimal TotalItemAmount = 0;
+    decimal TotalInterestEarned = 0;
+}
+<div id="header">
+    <h1 style="text-align: center;">@Translator.DailyVoidorCancelReport</h1>
+    <p style="text-align: center;"><strong>@Common.GetSearchDateTimeFormate(Model.strDate)</strong></p>
+    <table>
+        <tbody>
+            <tr>
+                <td colspan="6" style="text-align: left;">@Translator.Result <strong>@Model.totalRecords</strong> @Translator.Records</td>
+                <td colspan="5" style="text-align: right;">@Common.GetCurrentFullDate()</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<div id="body">
+    <table>
+        <thead>
+            <tr style="background: #eeeeee;border: 1px solid #ddd;">
+                <th>@Translator.Name</th>
+                <th>@Translator.ItemCategory</th>
+                <th>@Translator.PawnItem</th>
+                <th style="text-align: center;">@Translator.TicketNumber</th>
+                <th style="text-align: center;">@Translator.ViaTicket</th>
+                <th style="text-align: center;">@Translator.PawnDate</th>
+                <th style="text-align: center;">@Translator.ExpireDate</th>
+                <th style="text-align: center;">@Translator.TransDate</th>
+                <th style="text-align: right;">@Translator.ItemAmount</th>
+                <th style="text-align: right;">@Translator.InterestEarned</th>
+                <th>@Translator.Reason</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var record in Model.lstRecords)
+            {
+                intIndex = intIndex + 1;
+                string strExpClss = "";
+                if (intIndex % 2 == 0)
+                {
+                    strExpClss = "background-color:#eeeeee;";
+                }
+
+                TotalItemAmount = TotalItemAmount + record.ItemAmount;
+                TotalInterestEarned = TotalInterestEarned + record.InterestEarned;
+                
+                <tr style="@strExpClss border: 1px solid #ddd;">
+                    <td>@Utilities.Common.GetValueDisplay(@record.PawnerName, String.Empty)</td>
+                    <td>@Utilities.Common.GetValueDisplay(record.CategoryName, String.Empty)</td>	
+                    <td>@Utilities.Common.GetValueDisplay(record.ItemName, String.Empty)</td>
+                    <td style="text-align: center;">@Utilities.Common.GetValueDisplay(record.TransNumber, String.Empty)</td>
+                    <td style="text-align: center;">@Utilities.Common.GetValueDisplay(record.ViaTransNumber, String.Empty)</td>
+                    <td style="text-align: center;">@Utilities.Common.GetDateTimeFormate(record.PawnDate)</td>
+                    <td style="text-align: center;">@Utilities.Common.GetDateTimeFormate(record.ExpireDate)</td>
+                    <td style="text-align: center;">@Utilities.Common.GetDateTimeFormate(record.TransDate)</td>
+                    <td style="text-align: right;">@Utilities.Common.GetCurrencyFormate(record.ItemAmount)</td>
+                    <td style="text-align: right;">@Utilities.Common.GetCurrencyFormate(record.InterestEarned)</td>
+                    <td>@Utilities.Common.GetValueDisplay(record.Reason, String.Empty)</td>
+                </tr>
+            } 
+            <tr class="sub-val">
+                <td colspan="8"></td>
+                <td style="text-align: right;background-color:#eeeeee;border: 1px solid #ddd;">@Utilities.Common.GetCurrencyFormate(TotalItemAmount)</td>
+                <td style="text-align: right;background-color:#eeeeee;border: 1px solid #ddd;">@Utilities.Common.GetCurrencyFormate(TotalInterestEarned)</td>
+                <td></td>
+           </tr> 
+        </tbody>
+    </table>
+</div>

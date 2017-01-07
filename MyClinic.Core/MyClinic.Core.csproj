@@ -1,0 +1,124 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{2BC7044A-23FE-4B1C-91DB-BD553A900062}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>MyClinic.Core</RootNamespace>
+    <AssemblyName>MyClinic.Core</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\MyClinic\packages\EntityFramework.6.1.3\lib\net40\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\MyClinic\packages\EntityFramework.6.1.3\lib\net40\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="log4net">
+      <HintPath>..\MyClinic\packages\ExternalComponent\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Enums\Enums.cs" />
+    <Compile Include="Implement\AdjustmentRepository.cs" />
+    <Compile Include="Implement\AuditLogRepository.cs" />
+    <Compile Include="Implement\BackupDbTimer.cs" />
+    <Compile Include="Implement\BackupService.cs" />
+    <Compile Include="Implement\DiseaseOperationRepository.cs" />
+    <Compile Include="Implement\MedicineUnitRepository.cs" />
+    <Compile Include="Implement\PatientOperationRepository.cs" />
+    <Compile Include="Implement\DoctorOperationRepository.cs" />
+    <Compile Include="Implement\DaignosisRepository.cs" />
+    <Compile Include="Implement\DailyOperationRepository.cs" />
+    <Compile Include="Implement\DiseaseRepository.cs" />
+    <Compile Include="Implement\MedicineTypeRepository.cs" />
+    <Compile Include="Implement\EmployeeRepository.cs" />
+    <Compile Include="Implement\MedicineRepository.cs" />
+    <Compile Include="Implement\MonthlyOperationRepository.cs" />
+    <Compile Include="Implement\PatientRepository.cs" />
+    <Compile Include="Implement\PrescriptionRepository.cs" />
+    <Compile Include="Implement\EntityFrameworkHelper.cs" />
+    <Compile Include="Implement\LkpNationRepository.cs" />
+    <Compile Include="Implement\LogRepository.cs" />
+    <Compile Include="Implement\SequenceRepository.cs" />
+    <Compile Include="Implement\SettingRepository.cs" />
+    <Compile Include="Implement\UserRepository.cs" />
+    <Compile Include="Interface\IDiseaseOperationRepository.cs" />
+    <Compile Include="Interface\IMedicineUnitRepository.cs" />
+    <Compile Include="Interface\IPatientOperationRepository.cs" />
+    <Compile Include="Interface\IDailyOperationRepository.cs" />
+    <Compile Include="Interface\IDiseaseRepository.cs" />
+    <Compile Include="Interface\IDoctorOperationRepository.cs" />
+    <Compile Include="Interface\IMedicineTypeRepository.cs" />
+    <Compile Include="Interface\IDiagnosisRepository.cs" />
+    <Compile Include="Interface\IEmployeeRepository.cs" />
+    <Compile Include="Interface\IMedicineRepository.cs" />
+    <Compile Include="Interface\IMonthlyOperationRepository.cs" />
+    <Compile Include="Interface\IPatientRepository.cs" />
+    <Compile Include="Interface\IPrescriptionRepository.cs" />
+    <Compile Include="Interface\IAdjustmentRepository.cs" />
+    <Compile Include="Interface\IAuditLogRepository.cs" />
+    <Compile Include="Interface\IBackupService.cs" />
+    <Compile Include="Interface\ILkpNationRepository.cs" />
+    <Compile Include="Interface\ILogRepository.cs" />
+    <Compile Include="Interface\ISequenceRepository.cs" />
+    <Compile Include="Interface\ISettingRepository.cs" />
+    <Compile Include="Interface\IUserRepository.cs.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MyClinic.Infrastructure\MyClinic.Infrastructure.csproj">
+      <Project>{B766E13A-B8A6-4D00-AB59-66300D79667C}</Project>
+      <Name>MyClinic.Infrastructure</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Utilities\Utilities.csproj">
+      <Project>{8A5DE254-E951-4D57-8B5D-68E57CA33D31}</Project>
+      <Name>Utilities</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

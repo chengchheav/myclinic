@@ -1,0 +1,108 @@
+﻿@using Utilities;
+@using MyClinic.Resources;
+@model MyClinic.Models.PrescriptionModels
+@{
+    ViewBag.Title = Translator.AddPrescription;
+    var host = Utilities.Common.host;
+    var objTranslateSwitch = new TranslateSwitch();
+    String pageVersion = System.Configuration.ConfigurationManager.AppSettings["Source:Version"];
+    var objSessionDiagnosis = Session["diagnosis"] as MyClinic.Infrastructure.Diagnosis;
+    var usageSelectBox = ViewData["usageSelectBox"].ToString(); 
+}
+
+<link href="@Url.Content("~/Content/easy-autocomplete.min.css?v=")" rel="stylesheet" type="text/css" />
+<link href="@Url.Content("~/Content/themes/base/jquery.ui.all.css?v=")" rel="stylesheet" type="text/css" />
+<link href="@Url.Content("~/Content/style.prescription.css?v=" + pageVersion)" rel="stylesheet" type="text/css" /> 
+<script language="javascript">
+    var usageSelectBox = '@Html.Raw(usageSelectBox)';
+</script>
+<div class="title">@Translator.AddPrescription</div>
+<div class="frm-bx">
+    <div class="frm-info">
+         <p>@Translator.MessageForm <strong>@Translator.MessageFormBold</strong>. <strong>@Translator.Note:</strong> @Translator.MessageForm1</p>
+    </div>
+    @using (Html.BeginForm("Add", "Prescription", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        @Html.ValidationSummary(true) 
+        <div class="info-bx" style="width:90%;">
+            <fieldset>
+                <table class="two-ctr">
+                    <tr>
+                        <td class="editor-label1 imp">
+                            <label>@Translator.PatentName</label>
+                        </td>
+                        <td class="editor-field" style="width:20%;">
+                            <p>@Model.patient.Name</p>
+                        </td>
+                        <td class="editor-label2 imp">
+                            <label>@Translator.Sex</label>
+                        </td>
+                        <td class="editor-field" >
+                            <p>@Model.patient.Sex</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="editor-label1 imp">
+                            <label>@Translator.DiagnosisDescription</label>
+                        </td>
+                        <td class="editor-field" colspan="3" style="padding-bottom: 10px;">
+                            <p>@Model.disease.Name</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="4">
+                             <table id="tbl-pres">
+                                <thead>
+                                    <tr>
+                                        <th style="width:5%;">@Translator.RecordNo</th>
+                                        <th style="width:23%;">@Translator.Medicine</th>
+                                        <th style="width:8%;">@Translator.Qty</th>
+                                        <!--<th style="width:10%;">@Translator.MedicineType</th>-->
+                                        <th style="width:12%;">@Translator.Usage</th>
+                                        <th style="width:8%;">@Translator.Morning</th>
+                                        <th style="width:8%;">@Translator.Noon</th>
+                                        <th style="width:8%;">@Translator.Night</th>
+                                        <th style="width:22%;">@Translator.Other</th>
+                                        <th  style="width:15%;" class="last">
+                                            <a href="#" onclick="$pres.addPres('click');" id="adm">+</a>
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody></tbody>
+                                <tfoot>
+                                    <tr class="msg bdr">
+                                        <td colspan="2" id="msgMedicine" style="width: 20%;"></td>
+                                        <td id="msgQty"></td>
+                                        <td id="msgMedicineType"></td>
+                                        <td colspan="3" id="msgTime"></td>
+                                        <td id="msgRemark"></td>
+                                        <td id="msgAct"></td>
+                                    </tr>
+                                </tfoot>    
+                            </table>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="4">
+                            <input type="button" id="btn-add" class="myLabel" value="@Translator.Clear" onclick="$pres.confirmClear('@Translator.ConfirmClearPrescription');"/>
+                            <input type="button" id="btnCancel" style="color:White;" class="myLabel" onclick="$Common.setRedirectPage('@Url.Action("Index", "Home")');" value="@Translator.Cancel"/>
+                            <input id="btnSubmit" class="myLabel" type="submit" onclick="return $pres.checkValidForm();" value="@Translator.Save"/>
+                        </td>
+                    </tr> 
+                </table>
+            </fieldset>
+        </div>
+    }
+</div>
+<script src="@Url.Content("~/Scripts/jquery.easy-autocomplete.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/script.auto.js?v=" + pageVersion)" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/script.prescription.js?v=" + pageVersion)" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/script.keyChecking.js?v=" + pageVersion)" type="text/javascript"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $transaction.initChangeClassMenu("diagnosis", "diagnosis-selected");
+        $pres.init('@Url.Action("AutoMedicine", "Medicine")');
+        $pres.intiTriggerAddMedicine("#adm");
+
+    });
+</script>

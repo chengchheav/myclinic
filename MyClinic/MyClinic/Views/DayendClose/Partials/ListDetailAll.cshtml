@@ -1,0 +1,222 @@
+﻿@model MyClinic.Models.DayendCloseModels
+@using Utilities;
+@using MyClinic.Resources
+
+@{
+    var orderField = Model.orderBy;
+    var order = Model.order;
+    var host = Utilities.Common.host;
+    int intIndex = 0;
+    decimal ItemAmount = 0;
+    decimal InterestEarned = 0;
+    decimal RedeemSome = 0; 
+    String strUrl = Url.Action("AjdetailAll", "DayendClose", new { intCat = Model.intCat, strDate = Model.strDate, strStatus = Model.strStatus });
+}          
+<h2>@Translator.NewGrantTransaction</h2>
+<table class="rpt-tbl">
+    <tr class="hdr">
+        <th class="frt-rcd">@Html.Raw(Sorting.GetSortOrderLink(Translator.Id, "Id", orderField, order, strUrl))</th>
+        <th>@Html.Raw(Sorting.GetSortOrderLink(Translator.Name, "PawnerName", orderField, order, strUrl))</th>
+        <th>@Html.Raw(Sorting.GetSortOrderLink(Translator.Sex, "Gender", orderField, order, strUrl))</th>
+        <th>@Html.Raw(Sorting.GetSortOrderLink(Translator.Tel, "Tel", orderField, order, strUrl))</th>
+        <th>@Html.Raw(Sorting.GetSortOrderLink(Translator.CategoryName, "CategoryName", orderField, order, strUrl))</th>
+        <th>@Html.Raw(Sorting.GetSortOrderLink(Translator.PawnItem, "ItemName", orderField, order, strUrl))</th>
+        <th>@Html.Raw(Sorting.GetSortOrderLink(Translator.ItemNumber, "ItemNumber", orderField, order, strUrl))</th>
+        <th class="cntr">@Html.Raw(Sorting.GetSortOrderLink(Translator.TicketNumber ,"TransNumber", orderField, order, strUrl))</th>
+        <th class="cntr">@Html.Raw(Sorting.GetSortOrderLink(Translator.ViaTicket, "ViaTransNumber", orderField, order, strUrl))</th>
+        <th class="cntr">@Html.Raw(Sorting.GetSortOrderLink(Translator.PawnDate, "PawnDate", orderField, order, strUrl))</th>
+        <th class="cntr">@Html.Raw(Sorting.GetSortOrderLink(Translator.ExpireDate, "ExpireDate", orderField, order, strUrl))</th>
+        <th class="cntr">@Html.Raw(Sorting.GetSortOrderLink(Translator.ItemAmount, "ItemAmount", orderField, order, strUrl))</th>
+        <th class="cntr">@Html.Raw(Sorting.GetSortOrderLink(Translator.InterestEarned, "InterestEarned", orderField, order, strUrl))</th>
+        <th class="cntr">@Html.Raw(Sorting.GetSortOrderLink(Translator.Status, "TransStatus", orderField, order, strUrl))</th>
+    </tr>
+      
+    @foreach (var record in Model.lstPawnTransaction)
+    {
+        if (record.TransStatus == 1)
+        {
+            intIndex = intIndex + 1;
+            string clssR = "odd";
+            if(intIndex % 2 == 0){
+                clssR = "event";
+            }
+
+            ItemAmount = ItemAmount + record.ItemAmount;
+            InterestEarned = InterestEarned + record.InterestEarned;
+        
+            <tr class="@clssR">
+                <td class="frt-rcd">@record.Id</td>
+                <td>@Utilities.Common.GetValueDisplay(@record.PawnerName, String.Empty)</td>
+                <td>@Utilities.Common.GetGender(record.Gender)</td>
+                <td>@Utilities.Common.GetValueDisplay(record.Tel, String.Empty)</td>	
+                <td>@Utilities.Common.GetValueDisplay(record.CategoryName, String.Empty)</td>	
+                <td>@Utilities.Common.GetValueDisplay(record.ItemName, String.Empty)</td>
+                <td>@Utilities.Common.GetValueDisplay(record.ItemNumber, String.Empty)</td>
+                <td class="cntr">@Utilities.Common.GetValueDisplay(record.TransNumber, String.Empty)</td>
+                <td class="cntr">@Utilities.Common.GetValueDisplay(record.ViaTransNumber, String.Empty)</td>
+                <td class="cntr">@Utilities.Common.GetDateTimeFormate(record.PawnDate)</td>
+                <td class="cntr">@Utilities.Common.GetDateTimeFormate(record.ExpireDate)</td>
+                <td class="rgh">@Utilities.Common.GetCurrencyFormate(record.ItemAmount)</td>
+                <td class="rgh">@Utilities.Common.GetCurrencyFormate(record.InterestEarned)</td>
+                <td class="cntr status">@Utilities.Common.GetPawnStatus(record.TransStatus) </td>
+            </tr>
+        }
+    } 
+
+    @if (Model.strStatus == "InterestEarned")
+    {
+        <tr class="sub-val"><td colspan="12"></td><td class="rgh main-val">@Utilities.Common.GetCurrencyFormate(InterestEarned)</td><td></td></tr>      
+    }
+    else
+    { 
+        <tr class="sub-val"><td colspan="11"></td> <td class="rgh main-val">@Utilities.Common.GetCurrencyFormate(ItemAmount)</td><td colspan="2"></td></tr>
+    }
+</table>
+
+@{
+    intIndex = 0;
+    ItemAmount = 0;
+    InterestEarned = 0;   
+}
+<h2>@Translator.RedeemTransaction</h2>
+<table class="rpt-tbl">
+    <tr class="hdr">
+        <th class="frt-rcd">@Html.Raw(Sorting.GetSortOrderLink(Translator.Id, "Id", orderField, order, strUrl))</th>
+        <th>@Html.Raw(Sorting.GetSortOrderLink(Translator.Name, "PawnerName", orderField, order, strUrl))</th>
+        <th>@Html.Raw(Sorting.GetSortOrderLink(Translator.Sex, "Gender", orderField, order, strUrl))</th>
+        <th>@Html.Raw(Sorting.GetSortOrderLink(Translator.Tel, "Tel", orderField, order, strUrl))</th>
+        <th>@Html.Raw(Sorting.GetSortOrderLink(Translator.CategoryName, "CategoryName", orderField, order, strUrl))</th>
+        <th>@Html.Raw(Sorting.GetSortOrderLink(Translator.PawnItem, "ItemName", orderField, order, strUrl))</th>
+        <th>@Html.Raw(Sorting.GetSortOrderLink(Translator.ItemNumber, "ItemNumber", orderField, order, strUrl))</th>
+        <th class="cntr">@Html.Raw(Sorting.GetSortOrderLink(Translator.TicketNumber, "TransNumber", orderField, order, strUrl))</th>
+        <th class="cntr">@Html.Raw(Sorting.GetSortOrderLink(Translator.ViaTicket, "ViaTransNumber", orderField, order, strUrl))</th>
+        <th class="cntr">@Html.Raw(Sorting.GetSortOrderLink(Translator.PawnDate, "PawnDate", orderField, order, strUrl))</th>
+        <th class="cntr">@Html.Raw(Sorting.GetSortOrderLink(Translator.ExpireDate, "ExpireDate", orderField, order, strUrl))</th>
+        <th class="cntr">@Html.Raw(Sorting.GetSortOrderLink(Translator.ItemAmount, "ItemAmount", orderField, order, strUrl))</th>
+        <th class="cntr">@Html.Raw(Sorting.GetSortOrderLink(Translator.InterestEarned, "InterestEarned", orderField, order, strUrl))</th>
+        <th class="cntr">@Html.Raw(Sorting.GetSortOrderLink(Translator.Status, "Status", orderField, order, strUrl))</th>
+    </tr>
+      
+    @foreach (var record in Model.lstPawnTransaction)
+    {
+        if (record.TransStatus == 3)
+        {
+            intIndex = intIndex + 1;
+            string clssR = "odd";
+            if (intIndex % 2 == 0)
+            {
+                clssR = "event";
+            }
+
+            ItemAmount = ItemAmount + record.ItemAmount;
+            InterestEarned = InterestEarned + record.InterestEarned;
+        
+            <tr class="@clssR">
+                <td class="frt-rcd">@record.Id</td>
+                <td>@Utilities.Common.GetValueDisplay(@record.PawnerName, String.Empty)</td>
+                <td>@Utilities.Common.GetGender(record.Gender)</td>
+                <td>@Utilities.Common.GetValueDisplay(record.Tel, String.Empty)</td>	
+                <td>@Utilities.Common.GetValueDisplay(record.CategoryName, String.Empty)</td>	
+                <td>@Utilities.Common.GetValueDisplay(record.ItemName, String.Empty)</td>
+                <td>@Utilities.Common.GetValueDisplay(record.ItemNumber, String.Empty)</td>
+                <td class="cntr">@Utilities.Common.GetValueDisplay(record.TransNumber, String.Empty)</td>
+                <td class="cntr">@Utilities.Common.GetValueDisplay(record.ViaTransNumber, String.Empty)</td>
+                <td class="cntr">@Utilities.Common.GetDateTimeFormate(record.PawnDate)</td>
+                <td class="cntr">@Utilities.Common.GetDateTimeFormate(record.ExpireDate)</td>
+                <td class="rgh">@Utilities.Common.GetCurrencyFormate(record.ItemAmount)</td>
+                <td class="rgh">@Utilities.Common.GetCurrencyFormate(record.InterestEarned)</td>
+                <td class="cntr status">@Utilities.Common.GetPawnStatus(record.TransStatus) </td>
+            </tr>
+        }
+    } 
+
+    @if (Model.strStatus == "InterestEarned")
+    {
+        <tr class="sub-val"><td colspan="12"></td><td class="rgh main-val">@Utilities.Common.GetCurrencyFormate(InterestEarned)</td><td></td></tr>      
+    }
+    else
+    { 
+        <tr class="sub-val"><td colspan="11"></td> <td class="rgh main-val">@Utilities.Common.GetCurrencyFormate(ItemAmount)</td><td colspan="2"></td></tr>
+    }
+</table>
+
+@{
+    intIndex = 0;
+    ItemAmount = 0;
+    InterestEarned = 0;
+    RedeemSome = 0;  
+}
+<h2>@Translator.Renew Transaction</h2>
+<table class="rpt-tbl">
+    <tr class="hdr">
+        <th class="frt-rcd">@Html.Raw(Sorting.GetSortOrderLink(Translator.Id, "Id", orderField, order, strUrl))</th>
+        <th>@Html.Raw(Sorting.GetSortOrderLink(Translator.Name, "PawnerName", orderField, order, strUrl))</th>
+        <th>@Html.Raw(Sorting.GetSortOrderLink(Translator.Sex, "Gender", orderField, order, strUrl))</th>
+        <th>@Html.Raw(Sorting.GetSortOrderLink(Translator.Tel, "Tel", orderField, order, strUrl))</th>
+        <th>@Html.Raw(Sorting.GetSortOrderLink(Translator.CategoryName, "CategoryName", orderField, order, strUrl))</th>
+        <th>@Html.Raw(Sorting.GetSortOrderLink(Translator.PawnItem, "ItemName", orderField, order, strUrl))</th>
+        <th>@Html.Raw(Sorting.GetSortOrderLink(Translator.ItemNumber, "ItemNumber", orderField, order, strUrl))</th>
+        <th class="cntr">@Html.Raw(Sorting.GetSortOrderLink(Translator.TicketNumber, "TransNumber", orderField, order, strUrl))</th>
+        <th class="cntr">@Html.Raw(Sorting.GetSortOrderLink(Translator.ViaTicket, "ViaTransNumber", orderField, order, strUrl))</th>
+        <th class="cntr">@Html.Raw(Sorting.GetSortOrderLink(Translator.PawnDate, "PawnDate", orderField, order, strUrl))</th>
+        <th class="cntr">@Html.Raw(Sorting.GetSortOrderLink(Translator.ExpireDate, "ExpireDate", orderField, order, strUrl))</th>
+        <th class="cntr">@Html.Raw(Sorting.GetSortOrderLink(Translator.ItemAmount, "ItemAmount", orderField, order, strUrl))</th>
+        <th class="cntr">@Html.Raw(Sorting.GetSortOrderLink(Translator.RedeemSome, "RedeemSome", orderField, order, strUrl))</th>
+        <th class="cntr">@Html.Raw(Sorting.GetSortOrderLink(Translator.InterestEarned, "InterestEarned", orderField, order, strUrl))</th>
+        <th class="cntr">@Html.Raw(Sorting.GetSortOrderLink(Translator.Status, "Status", orderField, order, strUrl))</th>
+    </tr>
+      
+    @foreach (var record in Model.lstPawnTransaction)
+    {
+        if (record.TransStatus == 2)
+        {
+            intIndex = intIndex + 1;
+            string clssR = "odd";
+            if (intIndex % 2 == 0)
+            {
+                clssR = "event";
+            }
+
+            ItemAmount = ItemAmount + record.ItemAmount;
+            InterestEarned = InterestEarned + record.InterestEarned;
+            RedeemSome = RedeemSome + record.RedeemSome;
+        
+            <tr class="@clssR">
+                <td class="frt-rcd">@record.Id</td>
+                <td>@Utilities.Common.GetValueDisplay(@record.PawnerName, String.Empty)</td>
+                <td>@Utilities.Common.GetGender(record.Gender)</td>
+                <td>@Utilities.Common.GetValueDisplay(record.Tel, String.Empty)</td>	
+                <td>@Utilities.Common.GetValueDisplay(record.CategoryName, String.Empty)</td>	
+                <td>@Utilities.Common.GetValueDisplay(record.ItemName, String.Empty)</td>
+                <td>@Utilities.Common.GetValueDisplay(record.ItemNumber, String.Empty)</td>
+                <td class="cntr">@Utilities.Common.GetValueDisplay(record.TransNumber, String.Empty)</td>
+                <td class="cntr">@Utilities.Common.GetValueDisplay(record.ViaTransNumber, String.Empty)</td>
+                <td class="cntr">@Utilities.Common.GetDateTimeFormate(record.PawnDate)</td>
+                <td class="cntr">@Utilities.Common.GetDateTimeFormate(record.ExpireDate)</td>
+                <td class="rgh">@Utilities.Common.GetCurrencyFormate(record.ItemAmount)</td>
+                <td class="rgh">@Utilities.Common.GetCurrencyFormate(record.RedeemSome)</td>
+                <td class="rgh">@Utilities.Common.GetCurrencyFormate(record.InterestEarned)</td>
+                <td class="cntr status">@Utilities.Common.GetPawnStatus(record.TransStatus) </td>
+            </tr>
+        }
+    } 
+
+    @if (Model.strStatus == "InterestEarned")
+    {
+        <tr class="sub-val">
+            <td colspan="11"></td>
+            <td class="rgh main-val">@Utilities.Common.GetCurrencyFormate(RedeemSome)</td>
+            <td class="rgh main-val">@Utilities.Common.GetCurrencyFormate(InterestEarned)</td>
+            <td></td>
+        </tr>      
+    }
+    else
+    { 
+        <tr class="sub-val">
+            <td colspan="11"></td> 
+            <td class="rgh main-val">@Utilities.Common.GetCurrencyFormate(ItemAmount)</td>
+            <td class="rgh main-val">@Utilities.Common.GetCurrencyFormate(RedeemSome)</td>
+            <td></td>
+        </tr>
+    }
+</table>
